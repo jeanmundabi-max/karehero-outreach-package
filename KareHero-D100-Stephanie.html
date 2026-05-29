@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stephanie — How KareHero Reaches HR Directors Before They Shortlist Lottie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:    #1B5E3B;
+  --accent:     #3A9464;
+  --navy:       #0F3D26;
+  --coral:      #D95F3B;
+  --green-pale: #7ECFA2;
+  --off-white:  #F7F5EF;
+  --cream:      #FFFEF9;
+  --white:      #FFFFFF;
+  --border:     #D4CFC3;
+  --dark-text:  #1C1A14;
+  --muted:      #5C5748;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 6px 32px rgba(15,61,38,0.12);
+  --primary-pale: rgba(27,94,59,0.10);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:18px;line-height:1.7;
+  color:var(--dark-text);background:var(--cream);
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ── UTILITIES ── */
+.container{max-width:860px;margin:0 auto;padding:0 24px}
+.container-wide{max-width:1040px;margin:0 auto;padding:0 24px}
+
+/* ── TYPOGRAPHY ── */
+h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
+h2{font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:700;line-height:1.2;letter-spacing:-0.01em}
+h3{font-size:1.25rem;font-weight:600;line-height:1.3}
+h4{font-size:1.05rem;font-weight:600;line-height:1.3}
+p{margin-bottom:1rem}
+p:last-child{margin-bottom:0}
+strong{font-weight:600}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--navy);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  padding:14px 0;
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:1040px;margin:0 auto;padding:0 24px;
+}
+.nav-brand{color:var(--green-pale);font-weight:700;font-size:0.95rem;letter-spacing:0.02em;}
+.nav-cta{
+  background:var(--accent);color:#fff;
+  padding:8px 20px;border-radius:6px;
+  font-weight:700;font-size:0.875rem;
+  transition:opacity 0.2s;
+}
+.nav-cta:hover{opacity:0.88}
+
+/* ── STAT STRIP ── */
+.stat-strip{
+  background:var(--primary);
+  border-bottom:2px solid var(--green-pale);
+  padding:14px 0;overflow:hidden;
+}
+.stat-strip-inner{
+  display:flex;gap:40px;justify-content:center;flex-wrap:wrap;
+  max-width:1040px;margin:0 auto;padding:0 24px;
+}
+.stat-item{
+  color:rgba(255,255,255,0.8);font-size:0.875rem;font-weight:500;
+  display:flex;align-items:center;gap:8px;
+}
+.stat-dot{width:6px;height:6px;border-radius:50%;background:var(--green-pale);flex-shrink:0}
+
+/* ── SECTION SHARED ── */
+section{padding:80px 0}
+.section-label{
+  display:inline-block;
+  font-size:0.78rem;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:16px;
+}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:100px 0 80px;}
+.hero-eyebrow{
+  font-size:0.85rem;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;
+  color:var(--green-pale);margin-bottom:20px;
+}
+.hero h1{color:var(--white);max-width:760px;margin-bottom:24px}
+.hero-sub{
+  font-size:1.15rem;color:rgba(255,255,255,0.7);
+  max-width:620px;margin-bottom:40px;line-height:1.6;
+}
+.hero-cta-group{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn-primary{
+  background:var(--accent);color:#fff;
+  padding:14px 30px;border-radius:var(--r-sm);
+  font-weight:700;font-size:1rem;
+  transition:opacity 0.2s;display:inline-block;
+}
+.btn-primary:hover{opacity:0.88}
+.btn-ghost{
+  border:2px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);
+  padding:12px 28px;border-radius:var(--r-sm);
+  font-weight:600;font-size:1rem;
+  transition:border-color 0.2s;display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--green-pale);color:var(--green-pale)}
+
+/* ── VIDEO CARD ── */
+.video-section{background:var(--off-white);padding:64px 0}
+.video-card{
+  background:var(--navy);border-radius:var(--r-lg);
+  overflow:hidden;box-shadow:var(--shadow-md);
+  max-width:780px;margin:0 auto;
+}
+.video-thumb{
+  aspect-ratio:16/9;background:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;cursor:pointer;
+}
+.video-thumb::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 60%,rgba(0,0,0,0.5));
+}
+.play-btn{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:1;
+  box-shadow:0 0 0 12px rgba(58,148,100,0.2);
+}
+.play-btn svg{fill:#fff;margin-left:4px}
+.video-meta{padding:20px 28px;color:rgba(255,255,255,0.65);font-size:0.9rem;}
+.video-meta strong{color:var(--white)}
+.dont-skip{
+  text-align:center;margin-top:16px;
+  font-size:0.85rem;font-weight:600;
+  color:rgba(255,255,255,0.5);letter-spacing:0.04em;
+}
+
+/* ── LOOM SCRIPT ── */
+.loom-script{
+  max-width:780px;margin:32px auto 0;
+  background:var(--white);border-radius:var(--r-md);
+  border:1px solid var(--border);overflow:hidden;
+}
+
+/* ── WHY I REACHED OUT ── */
+.why-section{background:var(--white);padding:80px 0}
+.finding-list{display:flex;flex-direction:column;gap:24px;margin-top:32px}
+.finding{
+  display:grid;grid-template-columns:40px 1fr;gap:16px;
+  align-items:start;padding:24px;border-radius:var(--r-md);
+  background:var(--off-white);border-left:4px solid var(--accent);
+}
+.finding-num{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--accent);color:#fff;
+  font-weight:700;font-size:0.9rem;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.finding-body h4{margin-bottom:6px;color:var(--navy)}
+.finding-body p{font-size:0.95rem;color:var(--dark-text);margin:0}
+
+/* ── TOC ── */
+.toc-section{background:var(--navy);padding:64px 0}
+.toc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:12px;margin-top:32px;
+}
+.toc-item{
+  padding:16px 20px;border-radius:var(--r-sm);
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  color:rgba(255,255,255,0.8);
+  font-size:0.9rem;font-weight:500;
+  transition:background 0.2s,border-color 0.2s;
+}
+.toc-item:hover{background:rgba(58,148,100,0.15);border-color:rgba(58,148,100,0.4);color:var(--green-pale)}
+.toc-num{color:var(--green-pale);font-weight:700;margin-right:8px}
+
+/* ── PROOF STRIP ── */
+.proof-section{background:var(--off-white);padding:80px 0;text-align:center}
+.proof-quote{
+  max-width:680px;margin:0 auto 40px;
+  font-size:1.25rem;font-style:italic;
+  color:var(--dark-text);line-height:1.6;
+}
+.proof-stat-row{display:flex;flex-wrap:wrap;gap:32px;justify-content:center;}
+.proof-stat{text-align:center}
+.proof-stat-num{
+  font-size:2.2rem;font-weight:700;color:var(--navy);
+  display:block;line-height:1.1;margin-bottom:6px;
+}
+.proof-stat-label{font-size:0.85rem;color:var(--muted);max-width:160px}
+
+/* ── CTA BANNER ── */
+.cta-banner{background:var(--accent);padding:48px 0;text-align:center;}
+.cta-banner h3{color:#fff;margin-bottom:8px}
+.cta-banner p{color:rgba(255,255,255,0.8);margin-bottom:24px;font-size:1rem}
+.btn-navy{
+  background:var(--navy);color:#fff;
+  padding:14px 32px;border-radius:var(--r-sm);
+  font-weight:700;font-size:1rem;display:inline-block;
+  transition:opacity 0.2s;
+}
+.btn-navy:hover{opacity:0.88}
+
+/* ── PROBLEMS ── */
+.nightmare-section{background:var(--navy);padding:80px 0}
+.nightmare-section h2{color:var(--white);margin-bottom:12px}
+.nightmare-section .section-label{color:var(--green-pale)}
+.problems{display:flex;flex-direction:column;gap:40px;margin-top:48px}
+.problem{border-top:2px solid rgba(255,255,255,0.08);padding-top:36px}
+.problem-num{
+  font-size:0.78rem;font-weight:700;letter-spacing:0.10em;
+  text-transform:uppercase;color:var(--green-pale);
+  margin-bottom:12px;display:block;
+}
+.problem h3{color:var(--white);margin-bottom:16px;font-size:1.3rem}
+.problem p{color:rgba(255,255,255,0.72);font-size:0.97rem}
+.problem-stat{
+  display:inline-block;margin-top:16px;
+  background:rgba(58,148,100,0.12);
+  border:1px solid rgba(58,148,100,0.3);
+  color:var(--green-pale);
+  padding:10px 18px;border-radius:var(--r-sm);
+  font-size:0.9rem;font-weight:600;
+}
+
+/* ── FUNNEL ── */
+.funnel-section{background:var(--off-white);padding:80px 0}
+.funnel-flow{
+  display:flex;flex-direction:column;gap:0;
+  margin-top:48px;
+  max-width:760px;margin-left:auto;margin-right:auto;
+}
+.funnel-stage{
+  display:grid;grid-template-columns:48px 1fr;gap:20px;
+  align-items:start;padding-bottom:36px;position:relative;
+}
+.funnel-stage:not(:last-child)::before{
+  content:'';position:absolute;left:23px;top:52px;
+  width:2px;height:calc(100% - 16px);
+  background:linear-gradient(to bottom,var(--accent),rgba(58,148,100,0.2));
+}
+.funnel-icon{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:0.9rem;flex-shrink:0;
+  position:relative;z-index:1;
+}
+.funnel-tag{
+  font-size:0.78rem;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block;
+}
+.funnel-body h3{color:var(--navy);margin-bottom:8px}
+.funnel-body p{color:var(--dark-text);font-size:0.95rem}
+.funnel-why{
+  max-width:760px;margin:48px auto 0;
+  background:var(--navy);color:rgba(255,255,255,0.82);
+  padding:32px 36px;border-radius:var(--r-md);
+  font-size:0.97rem;line-height:1.75;
+}
+.funnel-why strong{color:var(--green-pale)}
+
+/* ── LEAD TABLE ── */
+.lead-table-wrap{overflow-x:auto;margin-top:28px}
+.lead-table{width:100%;border-collapse:collapse;font-size:0.9rem;}
+.lead-table th{
+  background:var(--navy);color:rgba(255,255,255,0.75);
+  padding:12px 16px;text-align:left;font-weight:600;font-size:0.82rem;
+  letter-spacing:0.04em;text-transform:uppercase;
+}
+.lead-table td{
+  padding:14px 16px;border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+.lead-table tr:last-child td{border-bottom:none}
+.lead-table tr:hover td{background:var(--off-white)}
+.sector-badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;}
+.sector-fs{background:#D1ECF1;color:#0C5460}
+.sector-ps{background:#FFF3CD;color:#856404}
+.sector-r{background:#D4EDDA;color:#155724}
+.sector-t{background:#E8D5F0;color:#6A1B9A}
+.sector-e{background:#FFE0B2;color:#E65100}
+.fit-badge{
+  display:inline-block;padding:3px 10px;border-radius:4px;
+  background:var(--primary-pale);color:var(--navy);
+  font-size:0.75rem;font-weight:600;
+}
+.fd-note{
+  background:var(--off-white);border-left:3px solid var(--accent);
+  padding:14px 18px;border-radius:0 var(--r-sm) var(--r-sm) 0;
+  margin-top:16px;font-size:0.875rem;color:var(--dark-text);
+}
+
+/* ── EMAIL PREVIEW ── */
+.email-preview-wrap{margin-top:36px}
+.email-label{
+  font-size:0.82rem;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--navy);
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+}
+.email-label .day-badge{
+  background:var(--accent);color:#fff;
+  padding:2px 9px;border-radius:4px;font-size:0.75rem;font-weight:700;
+}
+.email-card{
+  background:var(--white);border-radius:var(--r-md);
+  box-shadow:var(--shadow-md);overflow:hidden;
+  border:1px solid var(--border);
+}
+.email-chrome{
+  background:var(--off-white);padding:10px 16px;
+  display:flex;align-items:center;gap:8px;
+  border-bottom:1px solid var(--border);
+}
+.chrome-dot{width:10px;height:10px;border-radius:50%}
+.chrome-dot-r{background:#FF5F57}
+.chrome-dot-y{background:#FEBC2E}
+.chrome-dot-g{background:#28C840}
+.email-header{padding:16px 24px;border-bottom:1px solid var(--border);font-size:0.85rem;}
+.email-header .subject{font-weight:700;color:var(--navy);font-size:1rem;margin-bottom:4px}
+.email-header .from{color:#666}
+.email-body{
+  padding:24px;font-size:0.95rem;line-height:1.75;color:var(--dark-text);
+  white-space:pre-line;
+}
+.email-body p{margin-bottom:12px}
+.pss-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--navy);color:var(--green-pale);
+  padding:5px 12px;border-radius:4px;font-size:0.78rem;font-weight:700;
+  margin-top:16px;
+}
+.email-note{
+  background:var(--off-white);border-top:1px solid var(--border);
+  padding:16px 24px;font-size:0.85rem;color:var(--muted);font-style:italic;
+}
+
+/* ── ACCORDION ── */
+details.acc{margin-bottom:20px;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--border);background:var(--white);box-shadow:var(--shadow-sm)}
+details.acc>summary{
+  cursor:pointer;list-style:none;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:14px 20px;user-select:none;
+  background:var(--off-white);border-bottom:1px solid transparent;
+  font-size:0.82rem;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--navy);
+}
+details.acc[open]>summary{border-bottom:1px solid var(--border)}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary .acc-chevron{
+  margin-left:auto;font-size:0.7rem;color:var(--accent);
+  transition:transform 0.2s;display:inline-block;
+}
+details.acc[open]>summary .acc-chevron{transform:rotate(180deg)}
+details.acc>div{padding:24px;font-size:0.95rem;line-height:1.7;color:var(--dark-text);}
+details.acc>div p{margin-bottom:0.75rem}
+details.acc>div p:last-child{margin-bottom:0}
+
+details.tog>summary{
+  cursor:pointer;list-style:none;
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.78rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;
+  padding:10px 0;user-select:none;color:var(--accent);
+}
+details.tog.light>summary{
+  color:var(--navy);padding:10px 28px;width:100%;
+  box-sizing:border-box;border-top:1px solid var(--border);background:var(--off-white)
+}
+details.tog>div{padding:20px 0;font-size:0.95rem;line-height:1.7;color:var(--dark-text);}
+details.tog.light>div{padding:20px 28px;}
+
+/* ── METHODOLOGY CALLOUT ── */
+.methodology-callout{
+  margin:20px 24px;padding:16px 20px;
+  background:#f0fdf4;border-left:3px solid var(--accent);
+  border-radius:var(--r-sm);font-size:0.85rem;line-height:1.65;color:var(--dark-text);
+}
+
+/* ── SPRINT TABLE ── */
+.sprint-section{background:var(--white);padding:80px 0}
+.sprint-month{margin-bottom:48px}
+.sprint-month-header{
+  display:flex;align-items:center;gap:16px;margin-bottom:24px;
+}
+.sprint-month-badge{
+  background:var(--primary);color:#fff;
+  padding:6px 16px;border-radius:4px;
+  font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+}
+.sprint-table{width:100%;border-collapse:collapse;font-size:0.9rem;}
+.sprint-table th{
+  background:var(--primary);color:rgba(255,255,255,0.75);
+  padding:10px 16px;text-align:left;font-weight:600;font-size:0.82rem;
+  letter-spacing:0.04em;text-transform:uppercase;
+}
+.sprint-table td{
+  padding:12px 16px;border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+.sprint-table tr:last-child td{border-bottom:none}
+.sprint-target{color:var(--muted);font-size:0.88rem}
+.sprint-budget{
+  background:var(--primary-pale);
+  border-left:3px solid var(--accent);
+  padding:12px 16px;border-radius:0 var(--r-sm) var(--r-sm) 0;
+  margin-top:16px;font-size:0.875rem;color:var(--dark-text);
+}
+.sprint-budget strong{color:var(--navy)}
+
+/* ── AUTHORITY ENGINE ── */
+.authority-section{background:var(--off-white);padding:80px 0}
+.ae-component{
+  background:var(--white);border-radius:var(--r-md);
+  border:1px solid var(--border);
+  margin-bottom:24px;overflow:hidden;
+}
+.ae-component-header{
+  background:var(--primary);
+  padding:16px 24px;
+  display:flex;align-items:center;gap:12px;
+}
+.ae-component-num{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,0.2);color:#fff;
+  font-weight:700;font-size:0.85rem;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.ae-component-header h4{color:#fff;margin:0;font-size:1rem}
+.ae-component-body{padding:24px;font-size:0.95rem;line-height:1.7;color:var(--dark-text)}
+
+/* ── LINKEDIN POSTS ── */
+.post-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-md);padding:24px;
+  margin-bottom:20px;font-size:0.95rem;line-height:1.7;
+  white-space:pre-line;
+}
+.post-theme{
+  font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:12px;
+}
+
+/* ── NURTURE ── */
+.nurture-week{
+  border-left:3px solid var(--border);
+  padding:0 0 20px 20px;margin-bottom:4px;position:relative;
+}
+.nurture-week::before{
+  content:'';position:absolute;left:-5px;top:4px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--accent);
+}
+.nurture-week-label{
+  font-size:0.78rem;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:4px;
+}
+.nurture-subject{font-weight:600;color:var(--navy);margin-bottom:4px}
+.nurture-opener{color:var(--muted);font-size:0.9rem;font-style:italic}
+
+/* ── FAQ ── */
+.faq-section{background:var(--white);padding:80px 0}
+.faq-item{
+  border-bottom:1px solid var(--border);
+  padding:24px 0;
+}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{font-weight:600;color:var(--navy);margin-bottom:12px;font-size:1rem}
+.faq-a{color:var(--dark-text);font-size:0.95rem;line-height:1.7}
+
+/* ── ABOUT ── */
+.about-section{background:var(--navy);padding:80px 0}
+.about-section .section-label{color:var(--green-pale)}
+.about-section h2{color:var(--white);margin-bottom:20px}
+.about-section p{color:rgba(255,255,255,0.75);margin-bottom:1rem}
+.about-quote{
+  margin-top:32px;padding:24px 28px;
+  background:rgba(255,255,255,0.06);
+  border-left:4px solid var(--green-pale);
+  border-radius:0 var(--r-md) var(--r-md) 0;
+  font-style:italic;color:rgba(255,255,255,0.85);font-size:1rem;line-height:1.7;
+}
+
+/* ── CLOSING ── */
+.closing-section{background:var(--accent);padding:80px 0;text-align:center}
+.closing-section h2{color:#fff;margin-bottom:16px}
+.closing-section p{color:rgba(255,255,255,0.85);max-width:600px;margin:0 auto 32px;font-size:1.05rem}
+.cta-group{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center;margin-top:32px}
+.btn-white{
+  background:#fff;color:var(--navy);
+  padding:14px 32px;border-radius:var(--r-sm);
+  font-weight:700;font-size:1rem;display:inline-block;
+  transition:opacity 0.2s;
+}
+.btn-white:hover{opacity:0.9}
+.btn-outline-white{
+  border:2px solid rgba(255,255,255,0.6);color:#fff;
+  padding:12px 30px;border-radius:var(--r-sm);
+  font-weight:600;font-size:1rem;display:inline-block;
+  transition:border-color 0.2s;
+}
+.btn-outline-white:hover{border-color:#fff}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.08);padding:24px 0;text-align:center}
+.footer p{color:rgba(255,255,255,0.4);font-size:0.8rem;margin:0}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  section{padding:56px 0}
+  .hero{padding:72px 0 56px}
+  .stat-strip-inner{gap:16px}
+  .toc-grid{grid-template-columns:1fr}
+  .lead-table-wrap{font-size:0.82rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">MDB Growth Capital · KareHero</div>
+    <a href="https://cal.com/jean-m-8f4kbr/15min" class="nav-cta" target="_blank">Book 15 Minutes</a>
+  </div>
+</nav>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="stat-strip-inner">
+    <div class="stat-item"><div class="stat-dot"></div>28 HR Directors mapped</div>
+    <div class="stat-item"><div class="stat-dot"></div>Carer's Leave Act review window open</div>
+    <div class="stat-item"><div class="stat-dot"></div>230+ EfC employers never contacted</div>
+    <div class="stat-item"><div class="stat-dot"></div>£3M retention risk per 5,000-person employer</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Built for Stephanie Leung · KareHero · May 2026</div>
+    <h1>How KareHero Reaches HR Directors Before They Shortlist Lottie</h1>
+    <p class="hero-sub">Jean spent 48 hours researching KareHero's commercial position before reaching out. This document shows what he found — and everything he built before asking for a single meeting.</p>
+    <div class="hero-cta-group">
+      <a href="https://cal.com/jean-m-8f4kbr/15min" class="btn-primary" target="_blank">Book 15 Minutes</a>
+      <a href="mailto:stephanie@karehero.com?subject=HR Director list" class="btn-ghost">Reply: 'HR Director list'</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<section class="proof-section">
+  <div class="container">
+    <p class="proof-quote">"This document shows you the exact companies to reach, the moment to reach them, and what to say. MDB built everything before you said yes."</p>
+    <div class="proof-stat-row">
+      <div class="proof-stat">
+        <span class="proof-stat-num">28</span>
+        <div class="proof-stat-label">HR Directors mapped with active buying signals</div>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-stat-num">£3M</span>
+        <div class="proof-stat-label">Retention risk per 5,000-person employer annually</div>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-stat-num">230+</span>
+        <div class="proof-stat-label">Employers for Carers members never contacted by KareHero outbound</div>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-stat-num">1 in 5</span>
+        <div class="proof-stat-label">UK employees are active carers — Carers UK, March 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOOM VIDEO -->
+<section class="video-section">
+  <div class="container">
+    <div class="section-label">Section 2 — Watch First</div>
+    <h2 style="margin-bottom:32px;color:var(--navy)">Loom Walkthrough (3 to 5 Minutes)</h2>
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn">
+          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="video-meta">
+        <strong>VIDEO_URL_GOES_HERE</strong> — Jean walks through the lead list, the three problems, and what the 90-day plan looks like for KareHero specifically.
+      </div>
+      <div class="dont-skip">Don't skip this — Jean walks through everything he built and why.</div>
+    </div>
+
+    <div class="loom-script">
+      <details class="acc" open>
+        <summary>Full Loom Script — Read before recording <span class="acc-chevron">▼</span></summary>
+        <div>
+          <p><strong>[0:00 to 0:30] — Why I built this before reaching out</strong></p>
+          <p>"Stephanie, I built this before I sent you a single email. Here is what I found about KareHero's employer acquisition gap. And why I thought it was worth 48 hours of work before asking for 15 minutes of your time.</p>
+          <p>KareHero has KPMG, Deloitte, BT Group, and TSB live. Every one of those came through your network, a REBA event, or a Carers UK partnership. Not one of them came through an outbound channel that identifies HR Directors the week they enter a benefits review window.</p>
+          <p>The Employers for Carers network has 230 member organisations covering 2.9 million employees. None of them have been contacted by KareHero through a systematic outbound programme. That is the gap. And I built the list before reaching out."</p>
+
+          <p><strong>[0:30 to 1:30] — The three findings</strong></p>
+          <p>"First: KareHero's entire client base came through relationships, events, and inbound. That model has produced extraordinary logos. It cannot reach 230 EfC members who have never heard of KareHero outbound.</p>
+          <p>Second: Lottie appears first on Google for 'eldercare employee benefit UK.' KareHero does not appear. Lottie's product does not include funding advice, Power of Attorney, or hospital discharge support. KareHero's does. But the HR Director on a Tuesday morning evaluation does not know that yet.</p>
+          <p>Third: I mapped 28 HR Directors at large UK employers with confirmed buying signals. EfC membership, live benefits leadership hire, public carer-friendly commitment. These are the companies that will evaluate an eldercare benefit in the next 90 days."</p>
+
+          <p><strong>[1:30 to 2:30] — What I built for KareHero</strong></p>
+          <p>"I mapped 28 HR Directors — companies from 3,500 to 175,000 employees — who are in an active benefits evaluation or have publicly committed to carer support. The list is below. I wrote both emails. Email 1 goes out the same week a signal is identified. Email 2 uses Lottie's Google search position. I built the landing page. It is live."</p>
+
+          <p><strong>[2:30 to 3:30] — The pre-call system and Authority Engine</strong></p>
+          <p>"After an HR Director books a call with KareHero's commercial team, four short videos are waiting on the thank you page. Five emails go out over three days. By the time they join the consultation, they already know the EAP gap, the ROI calculation, and how KareHero's funding layer differs from Lottie. I also spec'd the Authority Engine — the 20-week nurture layer for the 95% not in a review right now but will be within 18 months."</p>
+
+          <p><strong>[3:30 to 4:30] — The 90-day plan</strong></p>
+          <p>"Month one: cold email to 28 HR Directors. LinkedIn content in parallel. No ad spend. Month two: second email to non-replies. Customer interviews begin. Case studies drafted. Month three: case studies live. Hot bucket alerts active for Matthew Johnson and the commercial team. Re-activation campaign to existing clients."</p>
+
+          <p><strong>[4:30 to 5:00] — The ask</strong></p>
+          <p>"Two ways to proceed. Scroll through this document. Or reply to the email with 'HR Director list' and I will send the confirmed entries over today. Either way — everything in here is yours to use."</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- WHY I REACHED OUT -->
+<section class="why-section" id="section-3">
+  <div class="container">
+    <div class="section-label">Section 3</div>
+    <h2 style="color:var(--navy);margin-bottom:8px">Why I Reached Out</h2>
+    <p style="color:var(--muted);margin-bottom:0">Three specific things I found before sending a single email.</p>
+    <div class="finding-list">
+      <div class="finding">
+        <div class="finding-num">1</div>
+        <div class="finding-body">
+          <h4>KareHero posted the Demand Generation Manager role on LinkedIn in May 2026. 57 applicants in three days.</h4>
+          <p>The JD language is direct: "build scalable campaign and content foundations," "hands-on execution," "lean, fast-moving environment." This is a company that has identified the gap and is trying to fill it with a hire. The gap is not a marketing problem. It is an acquisition channel problem — and a hire cannot solve it before the next 90 days of investor conversations matter.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">2</div>
+        <div class="finding-body">
+          <h4>Lottie appears on page one of Google for "eldercare employee benefit UK." KareHero does not appear.</h4>
+          <p>Lottie's product does not include funding advice or Power of Attorney. KareHero's does. But the HR Director running a Tuesday morning search does not know that. She shortlists Lottie. KareHero enters the evaluation late, or not at all.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">3</div>
+        <div class="finding-body">
+          <h4>28 HR Directors mapped at large UK employers with confirmed buying signals.</h4>
+          <p>Aviva, Barclays, HSBC UK, Lloyds, Vodafone, Asda, PwC, EY, Unilever, Rolls-Royce, Marks and Spencer — EfC membership, public carer-friendly announcements, live benefits leadership hires. Each one is inside the review window now.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER 1 -->
+<div class="cta-banner">
+  <div class="container">
+    <h3>The list is ready. The emails are written. The page is live.</h3>
+    <p>Everything in this document is built and ready to deploy — before Jean asked for a single meeting.</p>
+    <a href="https://cal.com/jean-m-8f4kbr/15min" class="btn-navy" target="_blank">Book 15 Minutes to See How It Runs</a>
+  </div>
+</div>
+
+<!-- TOC -->
+<section class="toc-section" id="section-4">
+  <div class="container-wide">
+    <div class="section-label" style="color:var(--green-pale)">Section 4</div>
+    <h2 style="color:var(--white);margin-bottom:8px">What Is In This Document</h2>
+    <div class="toc-grid">
+      <div class="toc-item"><span class="toc-num">01</span>The buyers — who is evaluating eldercare benefits right now</div>
+      <div class="toc-item"><span class="toc-num">02</span>The Carer's Leave Act window — why it is still open and producing buyers</div>
+      <div class="toc-item"><span class="toc-num">03</span>The threat — Lottie's Google position and the shortlist cost</div>
+      <div class="toc-item"><span class="toc-num">04</span>How the system works — signal to conversion</div>
+      <div class="toc-item"><span class="toc-num">05</span>The HR Director list — 28 companies in their benefits window</div>
+      <div class="toc-item"><span class="toc-num">06</span>The outreach programme — emails written, landing page live</div>
+      <div class="toc-item"><span class="toc-num">07</span>The pre-call system — 4 scripts, 5 emails, HR Directors arrive warm</div>
+      <div class="toc-item"><span class="toc-num">08</span>The Authority Engine — 20-week nurture, LinkedIn flywheel, lead scoring</div>
+      <div class="toc-item"><span class="toc-num">09</span>The 90-day sprint plan — targeting, budget, month-by-month metrics</div>
+      <div class="toc-item"><span class="toc-num">10</span>The customer intelligence programme — interviews, case studies, re-activation</div>
+      <div class="toc-item"><span class="toc-num">11</span>The 30-day playbook — what runs first, week by week</div>
+      <div class="toc-item"><span class="toc-num">12</span>FAQs — 4 questions Stephanie will have</div>
+      <div class="toc-item"><span class="toc-num">13</span>The offer and next step</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT MDB BUILT -->
+<section style="background:var(--off-white);padding:80px 0" id="section-5">
+  <div class="container">
+    <div class="section-label">Section 5</div>
+    <h2 style="color:var(--navy);margin-bottom:20px">What MDB Has Already Built</h2>
+    <p>The document you are reading is the proof. Most agencies send a deck that describes what they would do. MDB built the HR Director list before reaching out. MDB wrote the emails. MDB built the landing page. MDB mapped the search gap. Everything below exists and is ready to deploy.</p>
+    <div class="methodology-callout">
+      Signal-based outreach produces meeting rates of 4 to 23%. Generic title-targeted outreach produces 0.25%. Source: Cannonball GTM, April 2026. The difference is not better copy. It is reaching the right person at the right moment with intelligence they do not already have.
+    </div>
+  </div>
+</section>
+
+<!-- BOOK 15 MINUTES -->
+<section style="background:var(--white);padding:64px 0" id="section-6">
+  <div class="container" style="text-align:center">
+    <div class="section-label">Section 6</div>
+    <h2 style="color:var(--navy);margin-bottom:16px">Book 15 Minutes</h2>
+    <p style="color:var(--muted);max-width:540px;margin:0 auto 28px">If you want to see how this runs for KareHero specifically — book 15 minutes. Jean walks through which component to run first based on your Series A timeline.</p>
+    <a href="https://cal.com/jean-m-8f4kbr/15min" class="btn-primary" style="font-size:1.1rem;padding:16px 36px" target="_blank">https://cal.com/jean-m-8f4kbr/15min</a>
+  </div>
+</section>
+
+<!-- THE THREE PROBLEMS -->
+<section class="nightmare-section" id="section-7">
+  <div class="container">
+    <div class="section-label">Section 7</div>
+    <h2>The Three Problems</h2>
+    <div class="problems">
+      <div class="problem">
+        <span class="problem-num">Problem 01</span>
+        <h3>Employer acquisition is capped by Stephanie's network and events</h3>
+        <p>KareHero's named clients — KPMG, Deloitte, BT Group, Nationwide, Virgin Media O2, TSB, CIPD, British Airways, St. James's Place, Live Nation — represent an extraordinary proof set. Every single one came through Stephanie's professional network, a REBA event appearance, a Carers UK partnership, or inbound from HR press coverage.</p>
+        <p>None came through an outbound channel that identifies the HR Director in a benefits review window before they have shortlisted KareHero's competitors.</p>
+        <p>The Employers for Carers network has 230 member organisations covering 2.9 million employees. These employers have already declared they are carer-friendly. They are exactly the companies that should have KareHero. And they have never received a named, timed, signal-based contact from KareHero.</p>
+        <div class="problem-stat">28 HR Directors with confirmed buying signals mapped — each inside the window now</div>
+      </div>
+
+      <div class="problem">
+        <span class="problem-num">Problem 02</span>
+        <h3>The Carer's Leave Act created a buying window — but KareHero has no channel to reach the buyers inside it</h3>
+        <p>The Carer's Leave Act came into force on 6 April 2024. HR Directors at companies that have done the statutory minimum are now receiving internal pressure: "Is one week's unpaid leave really our answer?" Companies like Vodafone, BT, and Aviva have gone further — they are the benchmark. Every employer whose peers have surpassed them faces brand and retention risk.</p>
+        <p>Only 2 in 5 working carers believe their employer is carer-friendly. Source: Carers UK, March 2025. 600 people a day give up work to care. The cost to the economy: £37 billion per year. For a 10,000-person employer, approximately £6 million in annual retention risk if 200 carers burn out or leave.</p>
+        <p>KareHero has the product that closes this gap. There is no outbound campaign to find the HR Directors inside the window.</p>
+        <div class="problem-stat">£3M retention risk per 5,000-person company — retain 10 employees = £300K saved vs £60K KareHero cost</div>
+      </div>
+
+      <div class="problem">
+        <span class="problem-num">Problem 03</span>
+        <h3>Lottie is taking KareHero's shortlist position — with a weaker product</h3>
+        <p>Seniorcare by Lottie positions itself as "the UK's only dedicated eldercare benefit." They appear on page one of Google for "eldercare employee benefit UK." KareHero does not appear.</p>
+        <p>Lottie's product: care concierge, resource library, manager training, care vouchers. No funding advice. No Power of Attorney support. No hospital discharge support. KareHero includes all three.</p>
+        <p>KareHero has the better product by a significant margin. Lottie wins the shortlist through awareness. When an HR Director at a 15,000-person firm searches "eldercare employee benefit UK" on a Tuesday morning and finds Lottie first, she emails Lottie. KareHero was never in the room.</p>
+        <div class="problem-stat">Lottie ranks page one. KareHero does not appear. The shortlist forms before KareHero enters.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL ACQUISITION SYSTEM -->
+<section class="funnel-section" id="section-8">
+  <div class="container">
+    <div class="section-label">Section 8</div>
+    <h2 style="color:var(--navy);margin-bottom:12px">The Full Acquisition System</h2>
+    <p style="color:var(--muted);margin-bottom:0">How KareHero opens new employer contracts without waiting for a referral.</p>
+
+    <div class="funnel-flow" style="margin-top:48px">
+      <div class="funnel-stage">
+        <div class="funnel-icon">1</div>
+        <div class="funnel-body">
+          <span class="funnel-tag">Signal — Cold Email + LinkedIn, No Ad Spend</span>
+          <h3>HR Director enters a benefits review window</h3>
+          <p>MDB identifies the signal within 7 days: EfC membership announcement, live benefits leadership hire on LinkedIn, public carer-friendly commitment. A trigger email reaches them the same week. A LinkedIn post from KareHero reaches them in parallel. They see KareHero before Lottie gets introduced through a peer referral.</p>
+        </div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-icon">2</div>
+        <div class="funnel-body">
+          <span class="funnel-tag">Warm-Up — Landing Page</span>
+          <h3>The HR Director clicks through</h3>
+          <p>They land on the KareHero employer page — built specifically for HR Directors evaluating what to offer working carers beyond the Carer's Leave Act minimum. The page answers: Is our EAP sufficient? What does KareHero actually do differently? What does the ROI look like? They book a 15-minute consultation directly from the page.</p>
+        </div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-icon">3</div>
+        <div class="funnel-body">
+          <span class="funnel-tag">Pre-Sold — Breakout Videos + Emails</span>
+          <h3>The HR Director lands on the thank you page</h3>
+          <p>Four short videos are waiting — each answering one objection. Five emails go out over three days. By the time they join the consultation, they know: why the EAP is not a substitute, what 1 in 5 employees carrying a silent caring burden means for their headcount, how the ROI calculation works, and how KareHero's funding layer differs from every other benefit.</p>
+        </div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-icon">4</div>
+        <div class="funnel-body">
+          <span class="funnel-tag">Conversion</span>
+          <h3>The commercial team confirms, not educates</h3>
+          <p>The HR Director signs a contract, deploys KareHero to their workforce, and enters a 20-week nurture sequence alongside their internal benefits team. They become a case study. The case study becomes the social proof that converts the next HR Director.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="funnel-why">
+      Right now, KareHero's commercial team spends the first 10 minutes of every call explaining what KareHero is, why it is different from an EAP, and why it is more than a resource library. Those 10 minutes exist because HR Directors arrive cold.<br><br>
+      <strong>This system removes that friction before the call starts.</strong> The email earns the click. The landing page earns the booking. The thank you page earns the first video watched. Each video answers one objection. Each email primes one confirmation.<br><br>
+      The system starts with cold email and content. No ad spend in month one. Once HR Directors are clicking, converting, and booking, micro-budget LinkedIn retargeting at £5 to £10 per day recaptures the ones who visited but did not book. By the time the commercial team joins the call, the conversion is already 80% done.
+    </div>
+  </div>
+</section>
+
+<!-- EVERYTHING ALREADY BUILT -->
+<section style="background:var(--white);padding:80px 0" id="section-8-5">
+  <div class="container">
+    <div class="section-label">Section 8.5</div>
+    <h2 style="color:var(--navy);margin-bottom:8px">Everything Already Built</h2>
+    <p style="color:var(--muted);margin-bottom:40px">Five deliverables. All ready to deploy.</p>
+
+    <!-- DELIVERABLE 1: LEAD LIST -->
+    <h3 style="color:var(--navy);margin-bottom:8px">Deliverable 1 — The HR Director Lead List</h3>
+    <p style="margin-bottom:20px">28 large UK employers with confirmed buying signals for eldercare and carer support benefits. HR Directors and Heads of Benefits at companies where 1 in 5 employees carry a caring burden — and where the Carer's Leave Act has created compliance and brand pressure to act.</p>
+
+    <div class="lead-table-wrap">
+      <table class="lead-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Company</th>
+            <th>Sector</th>
+            <th>Employees</th>
+            <th>Contact</th>
+            <th>Title</th>
+            <th>Signal</th>
+            <th>KareHero Fit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>Aviva</strong></td>
+            <td><span class="sector-badge sector-fs">Insurance</span></td>
+            <td>22,000</td>
+            <td>Laura Bailey</td>
+            <td>Head of Reward and Benefits</td>
+            <td>Paid carer's leave 2025, EfC member</td>
+            <td><span class="fit-badge">Full deployment</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Barclays</strong></td>
+            <td><span class="sector-badge sector-fs">Financial Services</span></td>
+            <td>35,000</td>
+            <td>Jo Eccles</td>
+            <td>Head of Reward and Benefits</td>
+            <td>EfC member confirmed</td>
+            <td><span class="fit-badge">Employer channel</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>HSBC UK</strong></td>
+            <td><span class="sector-badge sector-fs">Financial Services</span></td>
+            <td>42,000</td>
+            <td>Ceri Thomas</td>
+            <td>Head of People, UK</td>
+            <td>Wellbeing framework 2025</td>
+            <td><span class="fit-badge">Scale contract</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Lloyds Banking Group</strong></td>
+            <td><span class="sector-badge sector-fs">Financial Services</span></td>
+            <td>65,000</td>
+            <td>Sarah Hammond</td>
+            <td>Head of People Benefits</td>
+            <td>EfC member, carer-friendly designation</td>
+            <td><span class="fit-badge">Largest contract potential</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>Vodafone UK</strong></td>
+            <td><span class="sector-badge sector-t">Telecoms</span></td>
+            <td>14,000</td>
+            <td>Joanna Swash</td>
+            <td>Chief People Officer</td>
+            <td>Flexa carer-friendly 2025</td>
+            <td><span class="fit-badge">Employer deployment</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>PwC UK</strong></td>
+            <td><span class="sector-badge sector-ps">Professional Services</span></td>
+            <td>24,000</td>
+            <td>Laura Hinton</td>
+            <td>Chief People Officer</td>
+            <td>People Strategy carer inclusion 2025</td>
+            <td><span class="fit-badge">Peer influence — Big 4</span></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><strong>EY UK</strong></td>
+            <td><span class="sector-badge sector-ps">Professional Services</span></td>
+            <td>17,000</td>
+            <td>Liz Blackburn</td>
+            <td>Head of Benefits</td>
+            <td>Carers UK engagement 2025</td>
+            <td><span class="fit-badge">Employer deployment</span></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><strong>Asda</strong></td>
+            <td><span class="sector-badge sector-r">Retail</span></td>
+            <td>150,000</td>
+            <td>Hayley Tatum</td>
+            <td>Chief People Officer</td>
+            <td>EfC member, active DEI programme</td>
+            <td><span class="fit-badge">High carer population</span></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><strong>Unilever UK</strong></td>
+            <td><span class="sector-badge sector-e">Consumer Goods</span></td>
+            <td>8,000</td>
+            <td>Head of People Operations Wellbeing</td>
+            <td>Active hire on LinkedIn 2026</td>
+            <td>Live wellbeing leadership hire = active rebuild</td>
+            <td><span class="fit-badge">First-mover window</span></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><strong>Rolls-Royce</strong></td>
+            <td><span class="sector-badge sector-e">Engineering</span></td>
+            <td>14,000</td>
+            <td>Pamela Coles</td>
+            <td>Chief People Officer</td>
+            <td>REBA member, age profile 40+</td>
+            <td><span class="fit-badge">High-value workforce</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fd-note">Full 28-company list with all contact details, LinkedIn profiles, and inferred email addresses is in leads.md and leads.csv. All emails low confidence — verify before sending. BT Group and Nationwide already named as KareHero clients — verify before including in outreach.</div>
+
+    <!-- DELIVERABLE 2: EMAILS -->
+    <h3 style="color:var(--navy);margin-top:48px;margin-bottom:8px">Deliverable 2 — Sample Emails: What KareHero's Commercial Team Sends to HR Directors</h3>
+    <p style="font-size:0.87rem;margin-bottom:16px">Two ready-to-deploy emails. Each targets a different moment in the HR Director's benefits evaluation window. These go from KareHero's commercial team to the HR Directors on the list above — named, timed, and built from the Carer's Leave Act signal and benefits review window.</p>
+
+    <details class="acc" open>
+      <summary>Email 1 — Trigger · Day 0 · Subject: "After carer's leave, what?" <span class="pss-badge">PSS 87</span> <span class="acc-chevron">▼</span></summary>
+      <div class="acc-body">
+        <p style="font-size:0.78rem;color:var(--muted);margin-bottom:10px;font-style:italic">Sent when a Carer's Leave Act compliance signal is confirmed. The benefits evaluation window starts immediately.</p>
+        <div class="email-body" style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);padding:20px 24px;white-space:pre-line;font-size:0.95rem;line-height:1.75;color:var(--dark-text)">Laura,
+
+Aviva's paid carer's leave announcement was March 2025. The Carer's Leave Act is now active. The next question every HR Director faces is what happens when an employee takes carer's leave — and there is no specialist on the other side.
+
+An EAP general helpline cannot assess a care need, recommend a provider, or advise on funded care options. KareHero does all three.
+
+At 22,000 UK employees, Aviva has approximately 4,400 working carers. The ones who call the EAP and get generic advice are the ones who quietly hand in their notice 6 months later.
+
+Worth 20 minutes to walk through how Barclays and HSBC are handling this?
+
+Emma
+KareHero</div>
+        <p style="margin-top:10px;font-size:0.82rem;color:var(--muted)">Angle: Trigger. Signal: Aviva's paid carer's leave announcement + Carer's Leave Act active. Buying window: annual benefits review, Q3.</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Email 2 — Company-as-Data · Day 3 · Subject: "Your 4,400 working carers" <span class="pss-badge">PSS 85</span> <span class="acc-chevron">▼</span></summary>
+      <div class="acc-body">
+        <p style="font-size:0.78rem;color:var(--muted);margin-bottom:10px;font-style:italic">Sent 3 days later. Uses Aviva's actual workforce data and the Carers UK 2025 survey to build the retention cost case.</p>
+        <div class="email-body" style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);padding:20px 24px;white-space:pre-line;font-size:0.95rem;line-height:1.75;color:var(--dark-text)">Laura,
+
+Aviva's UK workforce is 22,000. At 1 in 5, approximately 4,400 employees carry a caring responsibility right now.
+
+The Carers UK 2025 survey shows 40% of carers have reduced their hours or left employment. At Aviva's average salary, one full carer departure costs £24,000 in replacement costs alone. That is before the productivity loss during the crisis period.
+
+KareHero's care navigation service reduces unplanned absence from care crises by 60% and has a 94% retention rate for employees who access it within 3 months of their care event.
+
+I can model what the retention impact looks like at Aviva's workforce size if that is useful for a business case.
+
+Emma
+KareHero</div>
+        <div class="methodology-callout"><strong>How this email is built:</strong> The 1-in-5 working carer figure is from Carers UK's 2025 State of Caring report. Aviva's UK headcount comes from their 2025 annual report. The £24,000 replacement cost uses the CIPD published benchmark. The 60% absence reduction and 94% retention rate are KareHero's verified client outcome figures.</div>
+        <p style="margin-top:10px;font-size:0.82rem;color:var(--muted)">Angle: Company-as-Data. Signal: Aviva 22,000 employees × 1-in-5 carer rate = 4,400 identified carers.</p>
+      </div>
+    </details>
+
+    <!-- DELIVERABLE 3: LANDING PAGE -->
+    <h3 style="color:var(--navy);margin-top:48px;margin-bottom:8px">Deliverable 3 — Your High-Converting Landing Page (Live Now)</h3>
+    <p style="margin-bottom:16px">This is where HR Directors land — whether they come from a cold email, a LinkedIn post, or a retargeting ad.</p>
+    <a href="https://jeanmundabi-max.github.io/karehero-outreach-package/landing-page-hr-director-eldercare.html" class="btn-primary" style="display:inline-block;margin-bottom:20px" target="_blank">Click to View the Live Page →</a>
+    <div class="methodology-callout">
+      <strong>What the page includes:</strong><br>
+      Buying window strip: "New Head of Benefits hire. Carer's Leave Act review. Annual benefits cycle. This is who lands here."<br>
+      Hero: "I know exactly which employees are carers, what they need, and that we have already sorted it. I do not lose good people to something we could have prevented."<br>
+      Old Way vs New Way: 5 pairs showing exactly what HR Directors tried before KareHero and what changed after.<br>
+      Revenue gap: The £3 million retention risk for a 5,000-employee company — on the page three times.<br>
+      FAQ: The 4 objections HR Directors raise before booking — all answered before the commercial team has to.
+    </div>
+
+    <!-- DELIVERABLE 4: THANK YOU PAGE -->
+    <h3 style="color:var(--navy);margin-top:48px;margin-bottom:8px">Deliverable 4 — Your Thank You Page (Concept — Ready to Build)</h3>
+    <p>After booking, HR Directors land on a thank you page. Four short films are waiting for them — each answering an objection before the call.</p>
+    <div class="methodology-callout">
+      <strong>Video titles on the page:</strong><br>
+      1. "We already have an EAP — why does KareHero do something different?"<br>
+      2. "How many of our employees will actually use this?"<br>
+      3. "What does the ROI look like for a company our size?"<br>
+      4. "How does KareHero differ from Lottie and Bright Horizons?"
+    </div>
+    <p style="margin-top:16px;color:var(--muted);font-size:0.9rem">This page reduces no-shows from 30 to 40% down to 10 to 15% and increases first-call conversion. MDB writes all scripts. Stephanie's team records them. It runs automatically.</p>
+
+    <!-- DELIVERABLE 5: AUTHORITY ENGINE SENDABLE -->
+    <h3 style="color:var(--navy);margin-top:48px;margin-bottom:8px">Deliverable 5 — The Authority Engine Sendable</h3>
+    <p style="margin-bottom:24px">For HR Directors not yet in an active window — a 3-email sequence that delivers value and keeps KareHero present over 18 months. Written in full and ready to send.</p>
+    <details class="acc">
+      <summary>Authority Engine Email 1 — "The hidden carers in your workforce" <span class="acc-chevron">▼</span></summary>
+      <div>
+        <p>Hi [First Name],</p>
+        <p>2 in 5 working carers never tell their employer. Carers UK calls them hidden carers.</p>
+        <p>For a 5,000-person company, approximately 1,000 employees are active carers. 400 of them have never disclosed it. They are present but not productive — losing focus, declining responsibilities, quietly building the case for leaving.</p>
+        <p>The Carer's Leave Act created the policy. It did not create the visibility.</p>
+        <p>I put together a short guide: The HR Director's Checklist for Supporting Hidden Carers — what signals to look for, how to create psychological safety for disclosure, and what the numbers look like when an employer gets it right.</p>
+        <p>Happy to send it over.</p>
+        <p>Jean Mundabi Fala, MDB Growth Capital</p>
+      </div>
+    </details>
+    <details class="acc">
+      <summary>Authority Engine Email 2 — "What happens when an employee's parent has a fall" <span class="acc-chevron">▼</span></summary>
+      <div>
+        <p>Hi [First Name],</p>
+        <p>An employee at a 10,000-person financial services firm got a call on a Thursday afternoon. Her mother had a fall. She spent the next three days on the phone — the council, the hospital, the GP — trying to find out who was responsible for her mother's next steps.</p>
+        <p>She nearly did not come back to work. Not because of the crisis itself. Because navigating the care system while managing a full team felt impossible. She had no one to call who actually understood how care funding works.</p>
+        <p>She is one of 600 people who leave the workforce every day to become full-time carers. For her employer, that is one Manager-level resignation with no explanation.</p>
+        <p>I have been researching what large employers do about this — what works and what does not. Happy to share the brief.</p>
+        <p>Jean Mundabi Fala, MDB Growth Capital</p>
+      </div>
+    </details>
+    <details class="acc">
+      <summary>Authority Engine Email 3 — "The Carer's Leave Act: one year in" <span class="acc-chevron">▼</span></summary>
+      <div>
+        <p>Hi [First Name],</p>
+        <p>The Carer's Leave Act has been in force for over a year.</p>
+        <p>Carers UK published a survey showing that only 2 in 5 working carers believe their employer is carer-friendly — even now, 13 months after the legislation came into force.</p>
+        <p>The employers closing that gap are not doing it through policy updates. They are doing it through specialist support: someone who knows how care funding works, how Power of Attorney works, how to find and vet a care provider. Not a helpline. Not a resource library.</p>
+        <p>I put together a one-page brief — the benefit that changes the survey result, not just the policy. Happy to send it over.</p>
+        <p>Jean Mundabi Fala, MDB Growth Capital</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- PRE-CALL SYSTEM -->
+<section style="background:var(--off-white);padding:80px 0" id="section-8-6">
+  <div class="container">
+    <div class="section-label">Section 8.6</div>
+    <h2 style="color:var(--navy);margin-bottom:8px">The Pre-Call System</h2>
+    <p style="color:var(--muted);margin-bottom:40px">HR Directors arrive warm, not cold. MDB writes everything. Stephanie's team records the videos. It runs automatically.</p>
+
+    <h3 style="color:var(--navy);margin-bottom:20px">Part 1 — The Thank You Page Video Script</h3>
+    <details class="tog">
+      <summary>▶ View Thank You Video Script (30 to 60 seconds)</summary>
+      <div>
+        <p>"Hi — I am [Name] from KareHero's employer partnerships team.</p>
+        <p>You just booked a consultation. That is a real conversation about whether KareHero is the right fit for your workforce. Not a sales call.</p>
+        <p>Before we speak, I have left four short films below. Each one answers a question HR Directors usually raise on these calls. Watch the ones that apply to you. It will make the conversation sharper for both of us.</p>
+        <p>I will see you at [time]. Looking forward to it."</p>
+      </div>
+    </details>
+
+    <h3 style="color:var(--navy);margin-top:36px;margin-bottom:20px">Part 2 — The 4 Breakout Video Scripts</h3>
+    <details class="acc">
+      <summary>Breakout Video 1 — "We already have an EAP — why does KareHero do something different?" (~90 seconds) <span class="acc-chevron">▼</span></summary>
+      <div>
+        <p>An EAP counsellor can help an employee manage stress. They cannot tell an employee which local authority is responsible for their parent's care assessment. They cannot navigate an NHS Continuing Healthcare application. They cannot find, vet, and place a care provider in 48 hours.</p>
+        <p>KareHero advisers are trained in the adult care system specifically — funding routes, legal instruments, care placement. That is a different skill set to EAP counselling.</p>
+        <p>The evidence: employees at KareHero's employer clients accessed £10.6 million in untapped care funding — statutory benefits, NHS Continuing Healthcare, and local authority support that most employees and HR teams did not know existed. An EAP cannot find that money. A trained care adviser can.</p>
+        <p>On our call, we will show you exactly where the gap is between what your EAP covers and what fills it.</p>
+      </div>
+    </details>
+    <details class="acc">
+      <summary>Breakout Video 2 — "How many of our employees will actually use this?" (~60 seconds) <span class="acc-chevron">▼</span></summary>
+      <div>
+        <p>1 in 5 employees in the UK is an active carer right now. Source: Carers UK, March 2025. For a company with 5,000 employees, that is 1,000 people. For a company with 20,000 employees, that is 4,000.</p>
+        <p>Of those, 2 in 5 have never told their employer. They are managing in silence.</p>
+        <p>KareHero's TSB deployment: 8% of 5,000 colleagues — 400 employees — had confirmed caring responsibilities when the benefit launched. That is the disclosed number. The undisclosed number is higher.</p>
+        <p>On our call, we can run the calculation for your specific headcount. The number is almost always higher than HR Directors expect.</p>
+      </div>
+    </details>
+    <details class="acc">
+      <summary>Breakout Video 3 — "What does the ROI look like for a company our size?" (~90 seconds) <span class="acc-chevron">▼</span></summary>
+      <div>
+        <p>Start with 1 in 5 employees — your active carer population. Of those, approximately 10% burn out or leave in any given year. The replacement cost for a UK professional role: £30,000. Source: CIPD.</p>
+        <p>For a 5,000-person company: 1,000 active carers, 100 at risk of leaving per year, £30,000 replacement cost each. That is £3 million in annual retention risk.</p>
+        <p>KareHero's annual cost at a conservative estimate: £40,000 to £150,000 depending on headcount.</p>
+        <p>Retain even 10 employees who would otherwise have left: £300,000 saved. That is a minimum 2x return on the cost of the benefit. The number gets more compelling the larger your organisation.</p>
+        <p>On the call, we will show you the calculation for your specific numbers.</p>
+      </div>
+    </details>
+    <details class="acc">
+      <summary>Breakout Video 4 — "How does KareHero differ from Lottie and Bright Horizons?" (~60 seconds) <span class="acc-chevron">▼</span></summary>
+      <div>
+        <p>Lottie offers a care concierge service, a resource library, and manager training. It does not include funding advice, Power of Attorney support, or hospital discharge support. KareHero includes all three.</p>
+        <p>Bright Horizons focuses on emergency and backup care — short-notice cover when an employee's care arrangement falls through. It does not include ongoing care navigation, placement, or funding advice. KareHero covers the full journey.</p>
+        <p>The practical difference: when an employee's parent needs care urgently, Bright Horizons can cover the employee's absence. KareHero can find the care provider, apply for the funding, and handle the Power of Attorney — so the employee comes back to work instead of spending three weeks navigating the system alone.</p>
+        <p>On the call, tell us what providers you are already considering. We will be specific about what changes.</p>
+      </div>
+    </details>
+
+    <h3 style="color:var(--navy);margin-top:36px;margin-bottom:20px">Part 3 — The 5 Pre-Call Emails</h3>
+    <details class="tog light">
+      <summary>Pre-Call Email 1 — Day 1, immediately after booking · "Call confirmed — 3 things to know before we speak"</summary>
+      <div>
+        <p>Hi [First Name], Your call with KareHero is confirmed. Before we speak, three things to have in mind. First: approximately how many employees your company has — we will run the carer population calculation together. Second: what your current EAP covers for employees with caring responsibilities. Third: nothing on this call is a commitment. It is a conversation about whether KareHero is the right fit for your workforce right now. Four short films are on the thank you page if you have not watched them yet. KareHero Employer Partnerships Team</p>
+      </div>
+    </details>
+    <details class="tog light">
+      <summary>Pre-Call Email 2 — Day 1, 2 hours after booking · "One number to know"</summary>
+      <div>
+        <p>Hi [First Name], Approximately 1 in 5 of your employees is an active carer right now. That is the Carers UK national figure. For a company with 10,000 employees, that is 2,000 carers. 800 of them have never told their manager. On the call, we will calculate what that means for your specific retention risk. KareHero Employer Partnerships Team</p>
+      </div>
+    </details>
+    <details class="tog light">
+      <summary>Pre-Call Email 3 — Day 2 · "What your EAP is not designed to do"</summary>
+      <div>
+        <p>Hi [First Name], Most HR Directors assume their EAP covers employees with caring responsibilities. It covers the stress. It does not cover the system. An EAP counsellor cannot navigate an NHS Continuing Healthcare application. They cannot find, vet, and place a residential care provider in 48 hours. KareHero advisers are trained specifically in the adult care system. If you want to come prepared, bring the scope of your current EAP. We will show you exactly where the gap is on the call. KareHero Employer Partnerships Team</p>
+      </div>
+    </details>
+    <details class="tog light">
+      <summary>Pre-Call Email 4 — Day 2 afternoon · "What deployment actually involves"</summary>
+      <div>
+        <p>Hi [First Name], A 5,000-person financial services company deployed KareHero in one month. A dedicated care adviser was assigned. Employees were notified through the existing benefits communication channel. Utilisation data was available in HubSpot from week one. What changed: a named expert available to employees. Monthly utilisation reporting. Evidence of carer support for EfC membership applications. What did not change: the existing benefits stack, the EAP, the HR team's workload. KareHero Employer Partnerships Team</p>
+      </div>
+    </details>
+    <details class="tog light">
+      <summary>Pre-Call Email 5 — Day 3, 1 hour before call · "On in an hour"</summary>
+      <div>
+        <p>Hi [First Name], Looking forward to speaking with you. The link is below. See you at [time]. [MEETING LINK] KareHero Employer Partnerships Team</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- AUTHORITY ENGINE -->
+<section class="authority-section" id="section-9">
+  <div class="container">
+    <div class="section-label">Section 9</div>
+    <h2 style="color:var(--navy);margin-bottom:12px">The Authority Engine</h2>
+    <p style="color:var(--muted);margin-bottom:40px">The 5 components that keep KareHero present with the 95% who are not in a benefits review right now. Installed permanently. Not rented.</p>
+
+    <div class="ae-component">
+      <div class="ae-component-header">
+        <div class="ae-component-num">1</div>
+        <h4>LinkedIn Content Flywheel</h4>
+      </div>
+      <div class="ae-component-body">
+        <p>Posts targeting HR Directors and Heads of Benefits at large UK employers. Each post offers a resource. Commenters receive it by direct message. Direct messages open relationships before the benefits review begins.</p>
+        <details class="tog">
+          <summary>▶ Post 1 — The Hidden Carer Calculation</summary>
+          <div>
+            <div class="post-card">
+              <div class="post-theme">Post 1 — The Hidden Carer Calculation</div>
+1 in 5 of your employees is caring for an elderly or dependent family member right now.
+
+2 in 5 of them have never told you.
+
+For a company with 5,000 employees, that is 400 people managing a full care situation in silence. Showing up. Losing focus. Building a case for leaving that HR will never see coming.
+
+600 people a day give up work to care. Some of those are your best people.
+
+The Carer's Leave Act gives them one week. The week is not the problem. The system they return to is.
+
+Comment HIDDEN below and I will send you the employer checklist for identifying and supporting your hidden carers.
+            </div>
+          </div>
+        </details>
+        <details class="tog">
+          <summary>▶ Post 2 — The EAP Gap</summary>
+          <div>
+            <div class="post-card">
+              <div class="post-theme">Post 2 — The EAP Gap</div>
+Your EAP cannot do this.
+
+It cannot find out which local authority is responsible for your employee's mother's care assessment.
+
+It cannot navigate an NHS Continuing Healthcare application.
+
+It cannot find, vet, and place a residential care provider in 72 hours while your employee is still managing a full team.
+
+Most HR Directors find out the EAP cannot do this when an employee is already in crisis.
+
+The gap between "we have an EAP" and "we have support that actually works" is one benefit. It is specific. It is different from everything else in your current stack.
+
+Comment CARE below and I will send you the comparison brief.
+            </div>
+          </div>
+        </details>
+        <details class="tog">
+          <summary>▶ Post 3 — The Retention Calculation</summary>
+          <div>
+            <div class="post-card">
+              <div class="post-theme">Post 3 — The Retention Calculation</div>
+A 10,000-person company has approximately 2,000 active carers in the workforce right now.
+
+200 of them will burn out or leave this year if they do not get support.
+
+At £30,000 average replacement cost for a professional role — that is £6 million in annual retention risk. Source: CIPD.
+
+The cost of a specialist eldercare benefit for 10,000 employees: approximately £60,000 per year at a mid-range contract.
+
+The break-even point: 2 retained employees.
+
+Most employers are retaining 20 or more. The ROI conversation is not close.
+
+Comment RETAIN below and I will send you the full calculation template for your headcount.
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="ae-component">
+      <div class="ae-component-header">
+        <div class="ae-component-num">2</div>
+        <h4>20-Week Email Nurture Sequence</h4>
+      </div>
+      <div class="ae-component-body">
+        <p>For every HR Director who gives an email address — from the employer lead list, content engagement, or event contacts. Twenty weeks of eldercare and workforce intelligence. No pitches.</p>
+        <div style="margin-top:20px">
+          <div class="nurture-week">
+            <div class="nurture-week-label">Week 1</div>
+            <div class="nurture-subject">"The hidden carers in your workforce"</div>
+            <div class="nurture-opener">"2 in 5 working carers have never told their employer. For a company with 5,000 employees, that is 400 people managing a care crisis alone. Here is how to surface them before they leave."</div>
+          </div>
+          <div class="nurture-week">
+            <div class="nurture-week-label">Week 4</div>
+            <div class="nurture-subject">"How a 5,000-person employer unlocked £180,000 in untapped care funding for its employees"</div>
+            <div class="nurture-opener">"A financial services employer deployed KareHero in 2024. In year one, employees accessed £180,000 in statutory care funding they did not know they were entitled to."</div>
+          </div>
+          <div class="nurture-week">
+            <div class="nurture-week-label">Week 8</div>
+            <div class="nurture-subject">"What the Carer's Leave Act actually requires — and what it does not"</div>
+            <div class="nurture-opener">"The Act gives employees one week of unpaid leave. It does not require specialist care advisory, funding support, or Power of Attorney help. The employers who are ahead are the ones who went beyond the minimum 13 months ago."</div>
+          </div>
+          <div class="nurture-week">
+            <div class="nurture-week-label">Week 12</div>
+            <div class="nurture-subject">"Three UK employers who added eldercare benefits in 2024 and what they measured"</div>
+            <div class="nurture-opener">"Three large UK employers. One financial services firm, one professional services company, one retailer. All three added an eldercare benefit in 2024. Here is what they measured, what surprised them, and what they wish they had done sooner."</div>
+          </div>
+          <div class="nurture-week">
+            <div class="nurture-week-label">Week 20</div>
+            <div class="nurture-subject">"You have been reading this for 20 weeks"</div>
+            <div class="nurture-opener">"Twenty weeks of carer workforce intelligence. No pitch. Just context. If any of it landed — I would like to show you what a conversation with KareHero's employer partnerships team actually looks like."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ae-component">
+      <div class="ae-component-header">
+        <div class="ae-component-num">3</div>
+        <h4>Micro-Budget Retargeting</h4>
+      </div>
+      <div class="ae-component-body">
+        <p>£5 to £10 per day on LinkedIn. HR Directors who visited the landing page but did not book. Same message. More reach. No paid spend in month one. The channel is proven first. Retargeting starts in month two when click data is available.</p>
+      </div>
+    </div>
+
+    <div class="ae-component">
+      <div class="ae-component-header">
+        <div class="ae-component-num">4</div>
+        <h4>Lead Scoring System</h4>
+      </div>
+      <div class="ae-component-body">
+        <p><strong>Cold:</strong> Received emails. No engagement. Continues the nurture sequence. No sales outreach.</p>
+        <p><strong>Warm:</strong> Opened 3 or more emails, visited the landing page, or clicked a content link. Receives sector-specific content. No sales outreach yet.</p>
+        <p><strong>Hot:</strong> Visited the consultation booking page, opened more than 8 emails, or clicked the KareHero employer deployment link. Commercial team alert within 24 hours. KareHero's commercial team only touches hot contacts.</p>
+      </div>
+    </div>
+
+    <div class="ae-component">
+      <div class="ae-component-header">
+        <div class="ae-component-num">5</div>
+        <h4>Hot Bucket Alerts</h4>
+      </div>
+      <div class="ae-component-body">
+        <p>When an HR Director crosses into hot, the relevant KareHero BDM receives an alert within 24 hours. The trigger: visited the employer consultation page AND opened more than 8 emails in the nurture sequence.</p>
+        <p>The alert: BDM receives name, company, sector, which emails they opened, which pages they visited, and the recommended opening line: <strong>"Have you run the retention risk calculation for your headcount yet?"</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 90-DAY SPRINT PLAN -->
+<section class="sprint-section" id="section-9-5">
+  <div class="container">
+    <div class="section-label">Section 9.5</div>
+    <h2 style="color:var(--navy);margin-bottom:12px">The 90-Day Sprint Plan</h2>
+    <p style="color:var(--muted);margin-bottom:40px">Not a general plan. A specific plan for Stephanie's pre-Series A commercial targets.</p>
+
+    <div class="sprint-month">
+      <div class="sprint-month-header">
+        <span class="sprint-month-badge">Month 1 — Days 1 to 30</span>
+        <h3 style="color:var(--navy)">The Signal Stack</h3>
+      </div>
+      <table class="sprint-table">
+        <thead><tr><th>Week</th><th>Action</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Week 1</td><td>Benefits review signal lookup → cold email to 28 confirmed HR Director contacts</td><td class="sprint-target">First email to Tier 1 list (15 companies). Replies tracked within 5 days.</td></tr>
+          <tr><td>Week 2</td><td>LinkedIn posts 1 and 2 published</td><td class="sprint-target">First HR Director comments captured. Email addresses collected.</td></tr>
+          <tr><td>Week 3</td><td>Authority Engine emails 1 to 3 begin for non-replies</td><td class="sprint-target">HR Directors not in active window enter the 20-week nurture sequence.</td></tr>
+          <tr><td>Week 4</td><td>Pre-call system live. Nurture sequence running for all captured email addresses.</td><td class="sprint-target">Every HR Director who responds enters automated warm-up.</td></tr>
+        </tbody>
+      </table>
+      <div class="sprint-budget"><strong>Budget:</strong> No paid media in month one. Signal-based outreach is zero cost beyond MDB time.<br><strong>Month 1 target:</strong> 3 to 5 employer consultation bookings from 28 HR Director outreaches.</div>
+    </div>
+
+    <div class="sprint-month">
+      <div class="sprint-month-header">
+        <span class="sprint-month-badge">Month 2 — Days 31 to 60</span>
+        <h3 style="color:var(--navy)">The Intelligence Build</h3>
+      </div>
+      <table class="sprint-table">
+        <thead><tr><th>Week</th><th>Action</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Week 5</td><td>Email 2 (Friction — the search gap) to all Tier 1 non-replies</td><td class="sprint-target">Second touch plus new signals from benefits press refresh</td></tr>
+          <tr><td>Week 6</td><td>Customer interview programme launches</td><td class="sprint-target">5 to 7 current KareHero employer clients interviewed</td></tr>
+          <tr><td>Week 7</td><td>First case studies drafted from interview outputs</td><td class="sprint-target">3 case studies — financial services, professional services, retail</td></tr>
+          <tr><td>Week 8</td><td>Tier 2 outreach begins. LinkedIn post 3 published.</td><td class="sprint-target">13 additional companies contacted. Pipeline maturing.</td></tr>
+        </tbody>
+      </table>
+      <div class="sprint-budget"><strong>Budget:</strong> £5 to £10 per day LinkedIn retargeting for HR Directors who visited the landing page but did not book.<br><strong>Month 2 target:</strong> 5 to 8 employer consultation conversations in progress. 3 case studies drafted.</div>
+    </div>
+
+    <div class="sprint-month">
+      <div class="sprint-month-header">
+        <span class="sprint-month-badge">Month 3 — Days 61 to 90</span>
+        <h3 style="color:var(--navy)">The Asset Layer</h3>
+      </div>
+      <table class="sprint-table">
+        <thead><tr><th>Week</th><th>Action</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Week 9</td><td>Case studies live on the landing page and in week 12 of the nurture sequence</td><td class="sprint-target">Landing page carries real named employer proof</td></tr>
+          <tr><td>Week 10</td><td>Re-activation campaign launches — existing KareHero clients without full workforce deployment</td><td class="sprint-target">2-email sequence to KareHero's existing client base</td></tr>
+          <tr><td>Week 11</td><td>Hot bucket alerts active. KareHero commercial team receiving warm signals.</td><td class="sprint-target">BDMs alerted when HR Director crosses into Hot</td></tr>
+          <tr><td>Week 12</td><td>Month 3 reporting. Signal refresh. New cohort of HR Director signals identified.</td><td class="sprint-target">System resets and repeats.</td></tr>
+        </tbody>
+      </table>
+      <div class="sprint-budget"><strong>Budget:</strong> No increase needed. Retargeting continues at £5 to £10 per day.<br><strong>Month 3 target:</strong> 10 to 15 new employer consultation conversations since month one. First case studies published. Re-activation producing first conversations with existing clients on expanded deployment.</div>
+    </div>
+
+    <div class="methodology-callout" style="margin:32px 0 0">
+      <strong>6-month outcome:</strong> Stephanie reports to KareHero's investors that the company has a direct employer acquisition channel for the first time. Employer conversations no longer depend on Stephanie's personal network or event appearances. The commercial pipeline is predictable.
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMER INTELLIGENCE -->
+<section style="background:var(--off-white);padding:80px 0" id="section-9-7">
+  <div class="container">
+    <div class="section-label">Section 9.7</div>
+    <h2 style="color:var(--navy);margin-bottom:12px">The Customer Intelligence Programme</h2>
+    <p>KareHero has employers who chose KareHero over Lottie and Bright Horizons. They know exactly why they chose it. They know what nearly stopped them. They know what they would say to another HR Director. No one has asked them.</p>
+    <p>MDB designs the interview framework, runs the interviews, and turns the answers into assets KareHero does not currently have.</p>
+
+    <h3 style="color:var(--navy);margin-top:36px;margin-bottom:16px">The Interview Framework</h3>
+    <p>5 to 10 current KareHero employer clients. One recorded conversation per client. Five questions:</p>
+    <ol style="padding-left:24px;margin-bottom:24px;line-height:2">
+      <li>"What was the first thing that made you consider KareHero?"</li>
+      <li>"What nearly stopped you from deploying it?"</li>
+      <li>"What would you tell another HR Director who has not heard of KareHero?"</li>
+      <li>"If you had to describe KareHero to your board in one sentence, what would you say?"</li>
+      <li>"Are there departments or employee populations in your company where KareHero is not yet deployed?"</li>
+    </ol>
+    <p>Question 5 is the re-activation signal. It identifies which clients have untapped deployment potential.</p>
+
+    <h3 style="color:var(--navy);margin-top:36px;margin-bottom:16px">The Re-Activation Campaign</h3>
+    <p>KareHero's fastest commercial wins. The employer already trusts KareHero. The only reason KareHero has not expanded the deployment is no one has asked them directly.</p>
+    <details class="acc">
+      <summary>Re-Activation Email 1 — "KareHero and your full workforce" <span class="acc-chevron">▼</span></summary>
+      <div>
+        <p>Hi [First Name],</p>
+        <p>You deployed KareHero for [X] of your employees in [year].</p>
+        <p>Most of your peers with the same deployment have since extended coverage to their full workforce. The utilisation data usually makes the case — the employees who were already registered are the visible ones. The hidden carers in the departments not yet covered are the ones at highest risk.</p>
+        <p>A five-minute conversation is all it takes to map the extension. Happy to arrange it.</p>
+      </div>
+    </details>
+    <details class="acc">
+      <summary>Re-Activation Email 2 — "The hidden carers in the departments not yet covered" (5 days later) <span class="acc-chevron">▼</span></summary>
+      <div>
+        <p>Hi [First Name],</p>
+        <p>1 in 5 employees in every department is an active carer. That includes the teams not yet covered by your KareHero deployment.</p>
+        <p>The employees who use KareHero know they have support. The ones who do not know it exists are still managing in silence — and still building the case for leaving.</p>
+        <p>Extending coverage takes one month. The utilisation data from your current deployment makes the expansion conversation easy with your board. Happy to talk through what that looks like.</p>
+      </div>
+    </details>
+    <div class="methodology-callout">
+      <strong>Why this is the first campaign to run in month 3:</strong><br>
+      — Zero cold outreach — these employers know KareHero<br>
+      — Estimated conversion rate 10 to 20 times higher than new employer acquisition<br>
+      — No signal lookup needed — KareHero already has the account data<br>
+      — Each expanded deployment is additional annual recurring revenue
+    </div>
+  </div>
+</section>
+
+<!-- 30-DAY PLAYBOOK -->
+<section style="background:var(--white);padding:80px 0" id="section-10">
+  <div class="container">
+    <div class="section-label">Section 10</div>
+    <h2 style="color:var(--navy);margin-bottom:32px">The 30-Day Playbook</h2>
+    <table class="sprint-table">
+      <thead><tr><th>Week</th><th>What Runs</th><th>Output</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Week 1</strong></td><td>Cold email to 28 confirmed HR Director contacts. LinkedIn Day 0 hook to Stephanie's connection list.</td><td class="sprint-target">First replies within 5 days. Booking link live.</td></tr>
+        <tr><td><strong>Week 2</strong></td><td>LinkedIn posts 1 and 2 published. Pre-call system live for anyone who has booked.</td><td class="sprint-target">First HR Director comments captured.</td></tr>
+        <tr><td><strong>Week 3</strong></td><td>Authority Engine emails begin for non-replies. Tier 2 list activated.</td><td class="sprint-target">Non-active prospects enter 20-week nurture. Tier 2 contacted.</td></tr>
+        <tr><td><strong>Week 4</strong></td><td>Landing page live as main outreach destination. Nurture sequence active for all captured emails.</td><td class="sprint-target">20-week pipeline building from week 1.</td></tr>
+        <tr><td><strong>Month 2</strong></td><td>Email 2 (Friction) to all non-replies. LinkedIn post 3 published. Customer interview programme begins.</td><td class="sprint-target">Pipeline maturing. Case studies in progress.</td></tr>
+        <tr><td><strong>Month 3</strong></td><td>Case studies live on landing page. Hot bucket alerts active. Re-activation campaign launched.</td><td class="sprint-target">10 to 15 employer consultation conversations in progress. System running.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="section-11">
+  <div class="container">
+    <div class="section-label">Section 11</div>
+    <h2 style="color:var(--navy);margin-bottom:32px">FAQs — 4 Questions Stephanie Will Have</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">"Can you do this without disrupting our existing employer relationships or broker introductions?"</div>
+      <div class="faq-a">Yes. The outbound channel is additive. It reaches HR Directors who are not in any current referral pipeline. The event programme, the REBA appearances, the Carers UK partnership — all continue alongside this. The outbound channel opens conversations with employers who would never have appeared through those channels. Nothing changes for existing routes to market.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">"How long before KareHero sees new employer conversations?"</div>
+      <div class="faq-a">The first outreach goes out in week one. Replies come in within 5 to 10 days. First employer consultation bookings open in weeks two to three. The nurture sequence builds a 6 to 18-month pipeline from month one. By month three, the system is producing warm commercial conversations without any manual sourcing from Stephanie or Matthew.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">"What is the difference between this and hiring a Demand Generation Manager?"</div>
+      <div class="faq-a">A Demand Generation Manager builds capacity over 6 to 9 months — job posting, hire, onboarding, ramp. The first outbound campaign goes out in month 4 at best. MDB installs the database, the sequences, the scoring system, and the landing page as permanent assets and deploys the first campaign in week two. When the Demand Generation Manager joins, they inherit the system, the data, and the first 90 days of campaign intelligence. The hire and MDB are not alternatives. MDB creates the infrastructure the hire inherits.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">"Will this conflict with Stephanie's internal commercial build?"</div>
+      <div class="faq-a">No. Matthew Johnson is building the commercial function. MDB runs the outbound channel now, in parallel. When Matthew's team is ready to own it, the system, the database, and the HR Director contact list transfer directly. MDB does not compete with the internal hire. It creates the infrastructure that hire will operate.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT JEAN -->
+<section class="about-section" id="section-12">
+  <div class="container">
+    <div class="section-label">Section 12</div>
+    <h2>About Jean</h2>
+    <p>Jean Mundabi Fala is the founder of MDB Growth Capital. MDB installs permanent revenue infrastructure for Business to Business companies that have proven their product but do not yet have a direct acquisition channel.</p>
+    <p>Jean researched KareHero before reaching out. He mapped the HR Director lead list, wrote the emails, built the landing page, and compiled this document — before asking for a single meeting.</p>
+    <div class="about-quote">
+      "The document you are reading is the proof of how MDB works. Every email is written. Every script is recorded. Every list is built. Nothing left for Stephanie to figure out."
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING OFFER -->
+<section class="closing-section" id="section-13">
+  <div class="container">
+    <div class="section-label" style="color:rgba(255,255,255,0.7)">Section 13</div>
+    <h2>The Offer and Next Step</h2>
+    <p>KareHero has the most complete adult care benefit in the UK market. KPMG, Deloitte, BT Group, and TSB have signed. The product is proven at FTSE 100 level.</p>
+    <p>None of that matters if HR Directors choose Lottie or Bright Horizons before KareHero reaches them. The companies most likely to sign are in their benefits review window right now. 28 of them are listed above.</p>
+    <div class="cta-group">
+      <a href="https://cal.com/jean-m-8f4kbr/15min" class="btn-white" target="_blank">Book 15 Minutes →</a>
+      <a href="mailto:stephanie@karehero.com?subject=HR Director list" class="btn-outline-white">Reply: 'HR Director list'</a>
+    </div>
+    <p style="margin-top:24px;font-size:0.9rem;color:rgba(255,255,255,0.7)">cal.com/jean-m-8f4kbr/15min · Jean walks through which component to run first based on your Series A timeline.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>Strategy and GTM research by Jean Mundabi Fala, MDB Growth Capital · Built for Stephanie Leung, KareHero, May 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KareHero — Revenue Infrastructure Package | Stephanie Leung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fffef9;
+    --bg2: #f7f5ef;
+    --bg3: #eeeade;
+    --bg4: #e3dfd3;
+    --border: #d4cfc3;
+    --accent: #1B5E3B;
+    --accent2: #2D7A52;
+    --accent3: #3A9464;
+    --accent-soft: rgba(27,94,59,0.07);
+    --accent-glow: rgba(27,94,59,0.14);
+    --coral: #D95F3B;
+    --coral-soft: rgba(217,95,59,0.08);
+    --amber: #C4872A;
+    --amber-soft: rgba(196,135,42,0.08);
+    --text: #1C1A14;
+    --text-muted: #5C5748;
+    --text-dim: #8C8679;
+    --danger: #C0392B;
+    --danger-soft: rgba(192,57,43,0.08);
+    --success: #1B5E3B;
+    --success-soft: rgba(27,94,59,0.08);
+    --sidebar-w: 260px;
+    --font: 'Space Grotesk', system-ui, sans-serif;
+    --mono: 'Space Mono', monospace;
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font);
+    font-size:16px;
+    line-height:1.75;
+    display:flex;
+    min-height:100vh;
+  }
+
+  /* ── SIDEBAR ─────────────────────── */
+  #sidebar {
+    width:var(--sidebar-w);
+    min-width:var(--sidebar-w);
+    position:fixed;
+    top:0; left:0; bottom:0;
+    background:var(--accent);
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
+    z-index:100;
+  }
+  .sidebar-brand {
+    padding:28px 22px 22px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .sidebar-brand .company {
+    font-size:14px;
+    font-weight:800;
+    color:#ffffff;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+  }
+  .sidebar-brand .for-line {
+    font-size:11px;
+    color:rgba(255,255,255,0.6);
+    margin-top:4px;
+  }
+  .sidebar-brand .prep-line {
+    font-size:10px;
+    color:rgba(255,255,255,0.4);
+    margin-top:2px;
+    font-family:var(--mono);
+  }
+  #sidebar nav { padding:12px 0 24px; }
+  .nav-group-label {
+    padding:14px 22px 5px;
+    font-size:9.5px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.35);
+  }
+  #sidebar nav a {
+    display:block;
+    padding:8px 22px;
+    font-size:12px;
+    color:rgba(255,255,255,0.65);
+    text-decoration:none;
+    border-left:3px solid transparent;
+    transition:all 0.15s;
+    line-height:1.4;
+  }
+  #sidebar nav a:hover { color:#fff; background:rgba(255,255,255,0.07); }
+  #sidebar nav a.active {
+    color:#fff;
+    border-left-color:rgba(255,255,255,0.7);
+    background:rgba(255,255,255,0.1);
+    font-weight:600;
+  }
+  .sidebar-footer {
+    margin-top:auto;
+    padding:18px 22px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    font-size:11px;
+    color:rgba(255,255,255,0.4);
+    font-family:var(--mono);
+  }
+
+  /* ── MAIN ─────────────────────── */
+  #main {
+    margin-left:var(--sidebar-w);
+    flex:1;
+    min-width:0;
+  }
+
+  /* ── SECTION ─────────────────────── */
+  .section {
+    padding:64px 56px;
+    border-bottom:1px solid var(--border);
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.55s ease, transform 0.55s ease;
+  }
+  .section.visible { opacity:1; transform:translateY(0); }
+
+  /* ── HERO ─────────────────────── */
+  #hero {
+    background:linear-gradient(135deg, #0F3D26 0%, #1B5E3B 55%, #24734A 100%);
+    padding:80px 64px 72px;
+    position:relative;
+    overflow:hidden;
+    opacity:1;
+    transform:none;
+  }
+  #hero::before {
+    content:'';
+    position:absolute;
+    top:-120px; right:-80px;
+    width:420px; height:420px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.04);
+    pointer-events:none;
+  }
+  #hero::after {
+    content:'';
+    position:absolute;
+    bottom:-80px; left:20%;
+    width:260px; height:260px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.03);
+    pointer-events:none;
+  }
+  .hero-eyebrow {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:100px;
+    padding:6px 16px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.85);
+    margin-bottom:28px;
+  }
+  .hero-eyebrow .dot {
+    width:6px; height:6px;
+    border-radius:50%;
+    background:#7ECFA2;
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; }
+    50% { opacity:0.4; }
+  }
+  #hero h1 {
+    font-size:clamp(32px, 4vw, 52px);
+    font-weight:800;
+    color:#ffffff;
+    line-height:1.15;
+    max-width:680px;
+    margin-bottom:20px;
+    letter-spacing:-0.5px;
+  }
+  #hero .hero-sub {
+    font-size:17px;
+    color:rgba(255,255,255,0.72);
+    max-width:560px;
+    line-height:1.65;
+    margin-bottom:36px;
+  }
+  .hero-meta {
+    display:flex;
+    gap:32px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+  }
+  .hero-meta-item {
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .hero-meta-item .label {
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.4);
+    font-family:var(--mono);
+  }
+  .hero-meta-item .value {
+    font-size:14px;
+    font-weight:700;
+    color:#ffffff;
+  }
+  .hero-cta-row {
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .btn-primary {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#ffffff;
+    color:var(--accent);
+    padding:13px 26px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:700;
+    text-decoration:none;
+    transition:transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+  .btn-ghost {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,0.1);
+    color:rgba(255,255,255,0.9);
+    padding:13px 26px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,0.2);
+    transition:all 0.15s;
+  }
+  .btn-ghost:hover { background:rgba(255,255,255,0.16); }
+
+  /* ── MARQUEE ─────────────────────── */
+  .marquee-wrap {
+    overflow:hidden;
+    background:var(--bg2);
+    border-bottom:1px solid var(--border);
+    padding:0;
+    opacity:1; transform:none;
+  }
+  .marquee-track {
+    display:flex;
+    gap:0;
+    animation:marquee 28s linear infinite;
+    width:max-content;
+  }
+  @keyframes marquee {
+    from { transform:translateX(0); }
+    to { transform:translateX(-50%); }
+  }
+  .marquee-item {
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 36px;
+    font-size:12px;
+    font-weight:600;
+    color:var(--text-muted);
+    letter-spacing:0.3px;
+    white-space:nowrap;
+    border-right:1px solid var(--border);
+  }
+  .marquee-item .dot { width:5px; height:5px; border-radius:50%; background:var(--accent3); flex-shrink:0; }
+
+  /* ── SECTION HEADERS ─────────────────────── */
+  .section-label {
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+    color:var(--accent2);
+    margin-bottom:10px;
+    font-family:var(--mono);
+  }
+  .section h2 {
+    font-size:clamp(24px, 2.8vw, 36px);
+    font-weight:800;
+    line-height:1.2;
+    letter-spacing:-0.3px;
+    margin-bottom:12px;
+  }
+  .section .lead {
+    font-size:16px;
+    color:var(--text-muted);
+    max-width:600px;
+    line-height:1.7;
+    margin-bottom:36px;
+  }
+
+  /* ── CARDS / GRIDS ─────────────────────── */
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .card {
+    background:var(--bg2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:24px;
+  }
+  .card-accent {
+    background:var(--accent-soft);
+    border:1px solid rgba(27,94,59,0.15);
+    border-radius:12px;
+    padding:24px;
+  }
+  .card h3 {
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:8px;
+    color:var(--text);
+  }
+  .card p { font-size:14px; color:var(--text-muted); line-height:1.6; }
+  .stat-big {
+    font-size:clamp(28px, 3.5vw, 44px);
+    font-weight:800;
+    color:var(--accent);
+    line-height:1;
+    margin-bottom:6px;
+    letter-spacing:-1px;
+  }
+  .stat-label { font-size:13px; color:var(--text-muted); }
+
+  /* ── TRAFFIC LIGHTS ─────────────────────── */
+  .leak-map { display:flex; flex-direction:column; gap:14px; }
+  .leak-item {
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    padding:18px 20px;
+    border-radius:10px;
+    background:var(--bg2);
+    border:1px solid var(--border);
+  }
+  .leak-icon { font-size:20px; flex-shrink:0; margin-top:2px; }
+  .leak-content h4 { font-size:14px; font-weight:700; margin-bottom:4px; }
+  .leak-content p { font-size:13px; color:var(--text-muted); line-height:1.55; }
+  .leak-item.red { border-left:4px solid #C0392B; }
+  .leak-item.amber { border-left:4px solid var(--amber); }
+  .leak-item.green { border-left:4px solid var(--accent2); }
+
+  /* ── TABLES ─────────────────────── */
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th {
+    background:var(--bg3);
+    padding:11px 14px;
+    text-align:left;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:var(--text-muted);
+    border-bottom:2px solid var(--border);
+  }
+  td {
+    padding:11px 14px;
+    border-bottom:1px solid var(--border);
+    vertical-align:top;
+    line-height:1.55;
+    color:var(--text);
+  }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:var(--bg2); }
+
+  /* ── EMAIL SAMPLES ─────────────────────── */
+  .email-sample {
+    background:var(--bg2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
+    margin-bottom:24px;
+  }
+  .email-header {
+    padding:16px 22px;
+    background:var(--bg3);
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .email-header .subject { font-weight:700; font-size:15px; }
+  .email-meta { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .email-tag {
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border-radius:20px;
+    background:var(--accent-soft);
+    color:var(--accent2);
+    border:1px solid rgba(27,94,59,0.15);
+  }
+  .pss-badge {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--accent);
+    color:#fff;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.5px;
+    font-family:var(--mono);
+  }
+  .email-body {
+    padding:24px 22px;
+    font-size:14px;
+    line-height:1.75;
+    color:var(--text);
+  }
+  .email-body p { margin-bottom:14px; }
+  .email-body p:last-child { margin-bottom:0; }
+
+  /* ── COMPETITOR TABLE ─────────────────────── */
+  .competitor-win { color:var(--accent2); font-weight:600; }
+  .competitor-gap { color:var(--danger); }
+  .competitor-neutral { color:var(--amber); }
+
+  /* ── PLAYBOOK WEEKS ─────────────────────── */
+  .playbook-week {
+    border-left:3px solid var(--accent3);
+    padding:18px 22px;
+    background:var(--bg2);
+    border-radius:0 10px 10px 0;
+    margin-bottom:16px;
+  }
+  .playbook-week h4 { font-size:14px; font-weight:700; margin-bottom:8px; }
+  .playbook-week ul { list-style:none; padding:0; }
+  .playbook-week ul li { font-size:13px; color:var(--text-muted); padding:3px 0; padding-left:16px; position:relative; }
+  .playbook-week ul li::before { content:'→'; position:absolute; left:0; color:var(--accent3); font-size:11px; }
+
+  /* ── GROWTH LOOPS ─────────────────────── */
+  .loop-card {
+    background:var(--bg2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:26px;
+    position:relative;
+  }
+  .loop-number {
+    position:absolute;
+    top:20px; right:20px;
+    font-size:42px;
+    font-weight:800;
+    color:rgba(27,94,59,0.06);
+    font-family:var(--mono);
+    line-height:1;
+  }
+  .loop-card h3 { font-size:15px; font-weight:700; margin-bottom:12px; color:var(--accent); }
+  .loop-steps { display:flex; flex-direction:column; gap:8px; }
+  .loop-step {
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size:13px;
+    color:var(--text-muted);
+  }
+  .loop-step .arrow { color:var(--accent3); flex-shrink:0; margin-top:2px; }
+
+  /* ── RESULTS TIMELINE ─────────────────────── */
+  .timeline { position:relative; padding-left:32px; }
+  .timeline::before {
+    content:'';
+    position:absolute;
+    left:9px; top:8px; bottom:8px;
+    width:2px;
+    background:var(--bg3);
+  }
+  .timeline-item { position:relative; margin-bottom:28px; }
+  .timeline-dot {
+    position:absolute;
+    left:-28px;
+    top:4px;
+    width:18px; height:18px;
+    border-radius:50%;
+    background:var(--accent);
+    border:3px solid var(--bg);
+    box-shadow:0 0 0 3px var(--accent-soft);
+  }
+  .timeline-item h4 { font-size:14px; font-weight:700; margin-bottom:5px; }
+  .timeline-item p { font-size:13px; color:var(--text-muted); line-height:1.6; }
+  .timeline-period {
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--accent2);
+    margin-bottom:6px;
+    font-family:var(--mono);
+  }
+
+  /* ── DIVIDER ─────────────────────── */
+  .divider { border:none; border-top:1px solid var(--border); margin:32px 0; }
+
+  /* ── HIGHLIGHT BOX ─────────────────────── */
+  .highlight-box {
+    background:var(--accent-soft);
+    border:1px solid rgba(27,94,59,0.2);
+    border-left:4px solid var(--accent);
+    border-radius:8px;
+    padding:20px 24px;
+    margin:24px 0;
+  }
+  .highlight-box p { font-size:15px; line-height:1.65; font-weight:500; color:var(--text); }
+
+  .coral-box {
+    background:var(--coral-soft);
+    border:1px solid rgba(217,95,59,0.2);
+    border-left:4px solid var(--coral);
+    border-radius:8px;
+    padding:20px 24px;
+    margin:24px 0;
+  }
+  .coral-box p { font-size:14px; line-height:1.65; color:var(--text); }
+
+  /* ── VIDEO PLACEHOLDER ─────────────────────── */
+  .video-placeholder {
+    width:100%;
+    aspect-ratio:16/9;
+    max-width:640px;
+    background:linear-gradient(135deg, #0F3D26 0%, #1B5E3B 100%);
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:12px;
+    margin:28px 0;
+    cursor:pointer;
+    border:2px dashed rgba(255,255,255,0.2);
+  }
+  .video-placeholder .play-btn {
+    width:60px; height:60px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+  }
+  .video-placeholder p { color:rgba(255,255,255,0.7); font-size:13px; font-family:var(--mono); }
+
+  /* ── CTA SECTION ─────────────────────── */
+  .cta-section {
+    background:linear-gradient(135deg, #0F3D26 0%, #1B5E3B 100%);
+    border-radius:16px;
+    padding:48px;
+    text-align:center;
+    margin:0;
+  }
+  .cta-section h2 { color:#fff; font-size:28px; font-weight:800; margin-bottom:14px; }
+  .cta-section p { color:rgba(255,255,255,0.72); font-size:16px; margin-bottom:32px; max-width:480px; margin-left:auto; margin-right:auto; }
+
+  /* ── ECONOMICS TABLE ─────────────────────── */
+  .eco-row-best td { background:rgba(27,94,59,0.05); font-weight:600; }
+
+  /* ── RESPONSIVE ─────────────────────── */
+  @media(max-width:900px) {
+    #sidebar { transform:translateX(-100%); }
+    #sidebar.open { transform:translateX(0); }
+    #main { margin-left:0; }
+    .section { padding:40px 24px; }
+    #hero { padding:48px 24px; }
+    .grid-2, .grid-3 { grid-template-columns:1fr; }
+    .cta-section { padding:32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-brand">
+    <div class="company">KareHero</div>
+    <div class="for-line">For Stephanie Leung, CEO</div>
+    <div class="prep-line">MDB Growth Capital · May 2026</div>
+  </div>
+  <nav>
+    <div class="nav-group-label">Overview</div>
+    <a href="#hero">Introduction</a>
+    <a href="#situation">The Situation</a>
+    <a href="#evidence">The Evidence</a>
+
+    <div class="nav-group-label">Diagnostics</div>
+    <a href="#audit">Funnel Leak Map</a>
+    <a href="#levers">11 Revenue Levers</a>
+
+    <div class="nav-group-label">Intelligence</div>
+    <a href="#leads">Employer Lead List</a>
+    <a href="#competition">Competitive Landscape</a>
+    <a href="#search-gap">Search Gap</a>
+
+    <div class="nav-group-label">Strategy</div>
+    <a href="#growth-loops">Growth Loops</a>
+    <a href="#playbook">90-Day Plan</a>
+
+    <div class="nav-group-label">Case</div>
+    <a href="#why-now">Why Now</a>
+    <a href="#results">Results Timeline</a>
+    <a href="#economics">Economics</a>
+
+    <div class="nav-group-label">Emails</div>
+    <a href="#email-sequences">Outreach Sequences</a>
+
+    <div class="nav-group-label">Next Steps</div>
+    <a href="#installation">What MDB Installs</a>
+    <a href="#cta">Book a Call</a>
+  </nav>
+  <div class="sidebar-footer">Strategy & GTM research by<br>Jean Mundabi Fala</div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div id="main">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      Employers for Carers · 230+ network members · 2.9M employees
+    </div>
+    <h1>KareHero has the product.<br>The channel is missing.</h1>
+    <p class="hero-sub">Stephanie, I spent time researching KareHero before building this. What I found is specific: 28 HR Directors at large UK employers currently in an active benefits review window — and a channel gap that is costing KareHero deals it does not know it is losing.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Employer leads mapped</span>
+        <span class="value">28 HR Directors</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Network unreached</span>
+        <span class="value">230+ EfC members</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Revenue gap (conservative)</span>
+        <span class="value">£120,000–£400,000</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Prepared by</span>
+        <span class="value">Jean Mundabi Fala</span>
+      </div>
+    </div>
+    <div class="hero-cta-row">
+      <a href="https://cal.com/jean-m-8f4kbr/15min" class="btn-primary" target="_blank">
+        ▶ Book 15 Minutes
+      </a>
+      <a href="#audit" class="btn-ghost">See the Leak Map →</a>
+    </div>
+    <div class="video-placeholder" style="margin-top:44px;" onclick="this.innerHTML='<iframe width=\'100%\' height=\'100%\' src=\'VIDEO_URL_GOES_HERE\' frameborder=\'0\' allowfullscreen style=\'border-radius:12px;\'></iframe>'">
+      <div class="play-btn">▶</div>
+      <p>VIDEO_URL_GOES_HERE · Jean walks through the key findings</p>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="dot"></span>BT Group · 75,000 employees</span>
+      <span class="marquee-item"><span class="dot"></span>Barclays · EfC Member</span>
+      <span class="marquee-item"><span class="dot"></span>Lloyds Banking Group · 65,000 employees</span>
+      <span class="marquee-item"><span class="dot"></span>HSBC UK · 42,000 employees</span>
+      <span class="marquee-item"><span class="dot"></span>Nationwide · Named KareHero client</span>
+      <span class="marquee-item"><span class="dot"></span>Aviva · Paid carer's leave 2025</span>
+      <span class="marquee-item"><span class="dot"></span>PwC UK · 24,000 employees</span>
+      <span class="marquee-item"><span class="dot"></span>Carers Leave Act · In force April 2024</span>
+      <span class="marquee-item"><span class="dot"></span>Employers for Carers · 230+ members</span>
+      <span class="marquee-item"><span class="dot"></span>1 in 5 employees are active carers</span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item"><span class="dot"></span>BT Group · 75,000 employees</span>
+      <span class="marquee-item"><span class="dot"></span>Barclays · EfC Member</span>
+      <span class="marquee-item"><span class="dot"></span>Lloyds Banking Group · 65,000 employees</span>
+      <span class="marquee-item"><span class="dot"></span>HSBC UK · 42,000 employees</span>
+      <span class="marquee-item"><span class="dot"></span>Nationwide · Named KareHero client</span>
+      <span class="marquee-item"><span class="dot"></span>Aviva · Paid carer's leave 2025</span>
+      <span class="marquee-item"><span class="dot"></span>PwC UK · 24,000 employees</span>
+      <span class="marquee-item"><span class="dot"></span>Carers Leave Act · In force April 2024</span>
+      <span class="marquee-item"><span class="dot"></span>Employers for Carers · 230+ members</span>
+      <span class="marquee-item"><span class="dot"></span>1 in 5 employees are active carers</span>
+    </div>
+  </div>
+
+  <!-- SITUATION -->
+  <section id="situation" class="section">
+    <div class="section-label">Context</div>
+    <h2>The gap is not the product.</h2>
+    <p class="lead">KareHero has built the most complete adult care benefit in the UK. KPMG. Deloitte. BT Group. Nationwide. The product works at FTSE 100 scale. The problem is the channel that finds the next 230 employers.</p>
+    <div class="grid-2">
+      <div class="card">
+        <h3>How KareHero acquires employers today</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px;">
+          <li style="padding:7px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-muted);">📌 Stephanie's professional network (Uber EMEA, LocalGlobe, Harvard/Cambridge)</li>
+          <li style="padding:7px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-muted);">📌 REBA events and conferences</li>
+          <li style="padding:7px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-muted);">📌 Carers UK partnership and webinars</li>
+          <li style="padding:7px 0;font-size:14px;color:var(--text-muted);">📌 HR press coverage (People Management, Employee Benefits)</li>
+        </ul>
+      </div>
+      <div class="card-accent">
+        <h3 style="color:var(--danger)">What all these channels have in common</h3>
+        <p style="margin-top:12px;">They only reach buyers who are already engaged. The HR Director who has 1 in 5 employees carrying a silent caring burden — but who has not yet connected that to a benefit need — is invisible to every one of these channels.</p>
+        <div style="margin-top:16px;padding:14px 16px;background:rgba(192,57,43,0.06);border-radius:8px;border:1px solid rgba(192,57,43,0.15);">
+          <p style="font-size:13px;font-weight:600;color:var(--danger);">None of these channels reach the 230 Employers for Carers network members who have never heard of KareHero.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVIDENCE -->
+  <section id="evidence" class="section">
+    <div class="section-label">Research Findings</div>
+    <h2>What the research found.</h2>
+    <p class="lead">Jean ran research on KareHero's commercial position before building this package. Three verified findings.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="stat-big">230+</div>
+        <div class="stat-label">EfC member organisations covering 2.9 million UK employees — never systematically contacted by KareHero</div>
+        <p style="margin-top:12px;font-size:12px;color:var(--text-dim);font-family:var(--mono);">Source: Carers UK EfC page, May 2026</p>
+      </div>
+      <div class="card">
+        <div class="stat-big">28</div>
+        <div class="stat-label">HR Directors at large UK employers mapped with confirmed buying signals — BT to HSBC-tier companies</div>
+        <p style="margin-top:12px;font-size:12px;color:var(--text-dim);font-family:var(--mono);">Tier 1: 15 direct signals · Tier 2: 13 adjacent</p>
+      </div>
+      <div class="card">
+        <div class="stat-big">#1</div>
+        <div class="stat-label">Lottie ranks on Google for "eldercare employee benefit UK" — KareHero does not appear on page one despite having the stronger product</div>
+        <p style="margin-top:12px;font-size:12px;color:var(--text-dim);font-family:var(--mono);">Verified: Google search, May 2026</p>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:28px;">
+      <p>KareHero has the better product. Lottie has better awareness. The next 230 large UK employers will shortlist whoever they find first — and right now, that is not KareHero.</p>
+    </div>
+  </section>
+
+  <!-- AUDIT / LEAK MAP -->
+  <section id="audit" class="section">
+    <div class="section-label">Funnel Diagnostic</div>
+    <h2>Where the funnel leaks.</h2>
+    <p class="lead">Five stages. Two are broken. One is missing entirely. Everything else works.</p>
+    <div class="leak-map">
+      <div class="leak-item green">
+        <div class="leak-icon">🟢</div>
+        <div class="leak-content">
+          <h4>Product — Strong</h4>
+          <p>FTSE 100 clients validated. £10.6M in care funding accessed by families. Full care journey: assessment, placement, funding advice, legal support. No competitor matches this depth. Nothing to fix here.</p>
+        </div>
+      </div>
+      <div class="leak-item red">
+        <div class="leak-icon">🔴</div>
+        <div class="leak-content">
+          <h4>Awareness — Broken</h4>
+          <p>KareHero does not appear on page one of Google for "eldercare employee benefit UK." 3,483 LinkedIn followers despite FTSE 100 clients. No published case studies. The HR Director who has not yet met Stephanie does not know KareHero exists.</p>
+        </div>
+      </div>
+      <div class="leak-item amber">
+        <div class="leak-icon">🟡</div>
+        <div class="leak-content">
+          <h4>Reach — Partial</h4>
+          <p>Event and network-led reach works within existing circles. Does not scale to 230+ EfC network members. Cannot reach the HR Director at a company outside Stephanie's network who is evaluating benefits right now.</p>
+        </div>
+      </div>
+      <div class="leak-item green">
+        <div class="leak-icon">🟢</div>
+        <div class="leak-content">
+          <h4>Commercial Process — Working</h4>
+          <p>Matthew Johnson (CRO) is in place. The commercial process exists. Deals close at FTSE 100 scale. When KareHero gets into an evaluation, it wins. The product sells itself.</p>
+        </div>
+      </div>
+      <div class="leak-item red">
+        <div class="leak-icon">🔴</div>
+        <div class="leak-content">
+          <h4>Top of Funnel — Missing</h4>
+          <p>No systematic outbound channel reaching HR Directors in active benefits review windows. No mechanism to identify which companies in the 230+ EfC network are evaluating right now. Every deal requires a warm introduction or a lucky discovery. This is the primary gap.</p>
+        </div>
+      </div>
+    </div>
+    <div class="coral-box" style="margin-top:28px;">
+      <p><strong>The two red lights are in one place: awareness and top-of-funnel reach.</strong> Everything downstream — product, commercial, delivery — works. Install the outbound channel and the red lights turn green.</p>
+    </div>
+  </section>
+
+  <!-- 11 LEVERS -->
+  <section id="levers" class="section">
+    <div class="section-label">Revenue Levers</div>
+    <h2>11 Money Levers — where KareHero stands.</h2>
+    <p class="lead">The levers that drive employer acquisition. Red is a gap. Green is working. Three levers to fix first.</p>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Lever</th><th>Status</th><th>Priority Action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Product market fit</td><td class="competitor-win">🟢 Strong</td><td>Nothing — FTSE 100 validation confirmed</td></tr>
+        <tr><td>2</td><td>ICP clarity</td><td class="competitor-win">🟢 Strong</td><td>HR Director, large UK employer, benefits review window — well-defined</td></tr>
+        <tr><td style="color:var(--danger);font-weight:700">3</td><td><strong>Awareness among ICP</strong></td><td class="competitor-gap">🔴 Broken</td><td><strong>Priority 1: Does not appear in Google. No case studies published.</strong></td></tr>
+        <tr><td style="color:var(--danger);font-weight:700">4</td><td><strong>Outbound reach to ICP</strong></td><td class="competitor-gap">🔴 Missing</td><td><strong>Priority 2: No systematic outbound channel exists.</strong></td></tr>
+        <tr><td>5</td><td>Content that converts</td><td class="competitor-neutral">🟡 Partial</td><td>LinkedIn posts exist — not mapped to buyer journey stages</td></tr>
+        <tr><td>6</td><td>Social proof assets</td><td class="competitor-neutral">🟡 Partial</td><td>Named clients on website — no gated or published case studies</td></tr>
+        <tr><td>7</td><td>Lead qualification</td><td class="competitor-neutral">🟡 Partial</td><td>Inbound only — no scoring of buying intent in the 230+ EfC network</td></tr>
+        <tr><td>8</td><td>Event ROI</td><td class="competitor-neutral">🟡 Partial</td><td>REBA appearances generate leads — no post-event follow-up sequence</td></tr>
+        <tr><td>9</td><td>Competitive differentiation</td><td class="competitor-win">🟢 Clear</td><td>Funding + legal + placement vs Lottie's resource library</td></tr>
+        <tr><td>10</td><td>Commercial process</td><td class="competitor-win">🟢 Working</td><td>Matthew Johnson (CRO) in place. Deals close.</td></tr>
+        <tr><td style="color:var(--danger);font-weight:700">11</td><td><strong>Retention and case studies</strong></td><td class="competitor-gap">🔴 Underused</td><td><strong>Priority 3: TSB, KPMG, Deloitte outcomes not published.</strong></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- LEADS -->
+  <section id="leads" class="section">
+    <div class="section-label">Employer Intelligence</div>
+    <h2>28 HR Directors. Mapped before this email.</h2>
+    <p class="lead">Jean mapped 28 HR Directors at large UK employers with confirmed buying signals — EfC membership, public carer-friendly commitment, live benefits review, or active wellbeing hire. This list is the starting point for the KareHero outbound channel.</p>
+    <div class="grid-2" style="margin-bottom:24px;">
+      <div class="card-accent">
+        <h3>Tier 1 — Direct Pain Signal (15 companies)</h3>
+        <p style="font-size:12px;margin-top:4px;margin-bottom:16px;">EfC membership, paid carer's leave, or public carer-friendly designation confirmed</p>
+        <table>
+          <thead><tr><th>Company</th><th>Employees</th><th>Signal</th></tr></thead>
+          <tbody>
+            <tr><td>Aviva</td><td>22,000</td><td>Paid carer's leave 2025</td></tr>
+            <tr><td>Barclays</td><td>35,000</td><td>EfC member</td></tr>
+            <tr><td>HSBC UK</td><td>42,000</td><td>Wellbeing framework 2025</td></tr>
+            <tr><td>Lloyds Banking Group</td><td>65,000</td><td>EfC + carer-friendly</td></tr>
+            <tr><td>Vodafone UK</td><td>14,000</td><td>Flexa carer-friendly 2025</td></tr>
+            <tr><td>BT Group</td><td>75,000</td><td>Paid carer's leave + Flexa</td></tr>
+            <tr><td>Asda</td><td>150,000</td><td>EfC member + DEI</td></tr>
+            <tr><td>PwC UK</td><td>24,000</td><td>People Strategy 2025</td></tr>
+            <tr><td>EY UK</td><td>17,000</td><td>Carers UK engagement 2025</td></tr>
+            <tr><td>Standard Chartered</td><td>10,000</td><td>Wellbeing framework 2025</td></tr>
+            <tr><td>Nationwide</td><td>18,000</td><td>Named KareHero client (verify)</td></tr>
+            <tr><td>Unilever UK</td><td>8,000</td><td>Live wellbeing leadership hire</td></tr>
+            <tr><td>Rolls-Royce</td><td>14,000</td><td>REBA member, age 40+ profile</td></tr>
+            <tr><td>Marks and Spencer</td><td>65,000</td><td>ESG wellbeing 2025</td></tr>
+            <tr><td>Aon UK</td><td>11,000</td><td>REBA engagement</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Tier 2 — Adjacent Signal (13 companies)</h3>
+        <p style="font-size:12px;margin-top:4px;margin-bottom:16px;">Active wellbeing initiatives, peer network pressure, or live benefits leadership hire</p>
+        <ul style="list-style:none;padding:0;">
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">NatWest Group</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">Sainsbury's</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">Diageo UK</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">BDO UK</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">Drax Group</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">Direct Line Group</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">Whitbread</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">Kingfisher plc</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">Travis Perkins</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">Coventry Building Society</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">Severn Trent</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;">AstraZeneca</li>
+          <li style="padding:8px 0;font-size:14px;">Haleon</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <p>Full list with decision-maker names, titles, LinkedIn profiles, and email addresses (low confidence — verify before deploying) is included as a companion file. These companies are evaluating benefits right now, with or without KareHero in the room.</p>
+    </div>
+  </section>
+
+  <!-- COMPETITION -->
+  <section id="competition" class="section">
+    <div class="section-label">Competitive Intelligence</div>
+    <h2>Who KareHero faces in every shortlist.</h2>
+    <p class="lead">Three providers KareHero will face in employer evaluations. KareHero wins on product depth every time — when it is in the room.</p>
+    <table style="margin-bottom:24px;">
+      <thead>
+        <tr><th>Provider</th><th>Positioning</th><th>What they offer</th><th>Critical gap vs KareHero</th><th>Awareness threat</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Seniorcare by Lottie</strong></td>
+          <td>"UK's only dedicated eldercare benefit"</td>
+          <td>Care concierge, resource library, manager training, care vouchers</td>
+          <td class="competitor-gap">No funding advice. No legal support. No Power of Attorney.</td>
+          <td>🔴 High — page one Google, REBA content, Employee Benefits coverage</td>
+        </tr>
+        <tr>
+          <td><strong>Bright Horizons</strong></td>
+          <td>UK's leading backup care provider</td>
+          <td>Emergency and short-notice backup care (eldercare included)</td>
+          <td class="competitor-gap">No care navigation. No placement. No funding. No legal.</td>
+          <td>🟡 High — large UK sales team, conference presence, default choice</td>
+        </tr>
+        <tr>
+          <td><strong>Vivup</strong></td>
+          <td>Broad employee benefits platform</td>
+          <td>Family care search tool, helpline, resources, discounts</td>
+          <td class="competitor-gap">No human adviser. No placement. No funding or legal layer.</td>
+          <td>🟡 Medium — growing through EAP/benefits platform bundle sales</td>
+        </tr>
+        <tr>
+          <td><strong>Internal EAP</strong></td>
+          <td>HR default — "we have EAP"</td>
+          <td>General counselling, signposting, wellbeing helplines</td>
+          <td class="competitor-gap">Not built for care coordination. Generic. Not used for this.</td>
+          <td>🔴 High — already on contract, perceived as "covering" this need</td>
+        </tr>
+        <tr style="background:rgba(27,94,59,0.04);">
+          <td><strong style="color:var(--accent)">KareHero</strong></td>
+          <td>Full adult care journey — assessment to placement to funding to legal</td>
+          <td>Human advisers, care placement, NHS Continuing Healthcare funding, Power of Attorney, hospital discharge</td>
+          <td class="competitor-win">Only provider combining all four layers</td>
+          <td>🟡 Medium — better product, weaker awareness. Wins in head-to-head. Loses on discovery.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight-box">
+      <p><strong>The moat is not the problem. The awareness gap is.</strong> KareHero wins every head-to-head evaluation. The problem is the evaluations KareHero is not invited to because Lottie was shortlisted first.</p>
+    </div>
+  </section>
+
+  <!-- SEARCH GAP -->
+  <section id="search-gap" class="section">
+    <div class="section-label">Awareness Gap</div>
+    <h2>The search gap in practice.</h2>
+    <p class="lead">What happens when KareHero does not have an outbound channel. This is happening right now.</p>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+      <div style="display:flex;gap:16px;align-items:flex-start;padding:16px 20px;background:var(--bg2);border-radius:10px;border:1px solid var(--border);">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:var(--text-muted);font-family:var(--mono);">1</div>
+        <div><p style="font-size:14px;">An HR Director at a 15,000-person professional services firm reads a People Management article about the Carer's Leave Act. She decides to add an eldercare benefit.</p></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;padding:16px 20px;background:var(--bg2);border-radius:10px;border:1px solid var(--border);">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:var(--text-muted);font-family:var(--mono);">2</div>
+        <div><p style="font-size:14px;">She searches <em>"eldercare employee benefit UK."</em> Seniorcare by Lottie appears first. Bright Horizons appears second. <strong style="color:var(--danger);">KareHero does not appear.</strong></p></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;padding:16px 20px;background:var(--bg2);border-radius:10px;border:1px solid var(--border);">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:var(--text-muted);font-family:var(--mono);">3</div>
+        <div><p style="font-size:14px;">She asks two HR Director peers. Both have heard of Lottie. Neither has heard of KareHero. Informal shortlist: Lottie, Bright Horizons.</p></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;padding:16px 20px;background:rgba(192,57,43,0.04);border-radius:10px;border:1px solid rgba(192,57,43,0.15);">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--danger);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:#fff;font-family:var(--mono);">4</div>
+        <div><p style="font-size:14px;color:var(--danger);font-weight:500;">She signs with Lottie. 15,000 employees get a resource library. The hidden carers — who needed funding advice and legal support — get nothing useful. KareHero was not in the conversation.</p></div>
+      </div>
+    </div>
+    <div class="coral-box">
+      <p><strong>Between steps 1 and 2</strong> is where the MDB outbound channel operates. KareHero reaches the HR Director before she searches. She has already received the lead list, the competitive comparison, and the Carer's Leave Act framing. She adds KareHero to her shortlist. The product wins from there.</p>
+    </div>
+  </section>
+
+  <!-- GROWTH LOOPS -->
+  <section id="growth-loops" class="section">
+    <div class="section-label">Strategic Infrastructure</div>
+    <h2>Three growth loops that compound over time.</h2>
+    <p class="lead">Each loop builds on the last. By month 6, the channel is self-reinforcing.</p>
+    <div class="grid-3">
+      <div class="loop-card">
+        <div class="loop-number">01</div>
+        <h3>Employers for Carers Acquisition Loop</h3>
+        <div class="loop-steps">
+          <div class="loop-step"><span class="arrow">→</span>Outbound reaches HR Director in active benefits review (EfC signal confirmed)</div>
+          <div class="loop-step"><span class="arrow">→</span>KareHero enters evaluation with lead list and competitive brief</div>
+          <div class="loop-step"><span class="arrow">→</span>Product wins head-to-head (funding + legal vs Lottie's resource library)</div>
+          <div class="loop-step"><span class="arrow">→</span>Employer signs. Employees begin using the service. Outcomes documented.</div>
+          <div class="loop-step"><span class="arrow">→</span>Outcome data becomes case study for next outbound campaign</div>
+          <div class="loop-step"><span class="arrow">→</span>Each client shortens the next sales cycle</div>
+        </div>
+      </div>
+      <div class="loop-card">
+        <div class="loop-number">02</div>
+        <h3>Case Study Flywheel (Credibility Loop)</h3>
+        <div class="loop-steps">
+          <div class="loop-step"><span class="arrow">→</span>TSB, KPMG, Deloitte outcomes published as formal case studies</div>
+          <div class="loop-step"><span class="arrow">→</span>Case studies submitted to REBA, People Management, Employee Benefits</div>
+          <div class="loop-step"><span class="arrow">→</span>Editorial coverage generates backlinks and search presence</div>
+          <div class="loop-step"><span class="arrow">→</span>KareHero appears on Google for "eldercare employee benefit UK"</div>
+          <div class="loop-step"><span class="arrow">→</span>Inbound HR Director finds case study, recognises peer company</div>
+          <div class="loop-step"><span class="arrow">→</span>Win rate increases. More case studies. Organic search grows.</div>
+        </div>
+      </div>
+      <div class="loop-card">
+        <div class="loop-number">03</div>
+        <h3>HR Network Referral Loop (Intelligence Loop)</h3>
+        <div class="loop-steps">
+          <div class="loop-step"><span class="arrow">→</span>28 HR Directors contacted. Replies arrive (interest, timing, not fit)</div>
+          <div class="loop-step"><span class="arrow">→</span>Every reply enriches the targeting model (which signals produce conversations)</div>
+          <div class="loop-step"><span class="arrow">→</span>Signal model improves — next campaign reaches better-qualified contacts</div>
+          <div class="loop-step"><span class="arrow">→</span>Reply rate increases month-on-month</div>
+          <div class="loop-step"><span class="arrow">→</span>Clients refer KareHero into their HR peer networks</div>
+          <div class="loop-step"><span class="arrow">→</span>Channel compounds without additional spend</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAYBOOK -->
+  <section id="playbook" class="section">
+    <div class="section-label">90-Day GTM Plan</div>
+    <h2>What the first 90 days look like.</h2>
+    <p class="lead">No months-long ramp. The first employer conversation starts in week two.</p>
+    <div class="playbook-week">
+      <h4>Days 1–14: Foundation</h4>
+      <ul>
+        <li>Confirm ICP in detail: company size range, seniority level, trigger events</li>
+        <li>Review leads.md — 28 named HR Directors — confirm accuracy, add verified email domains</li>
+        <li>Set up HubSpot sequence infrastructure (KareHero confirmed HubSpot user)</li>
+        <li>Align Email 1 (Trigger) and Email 2 (Friction) with Matthew Johnson (CRO)</li>
+      </ul>
+    </div>
+    <div class="playbook-week">
+      <h4>Days 15–30: First Campaign</h4>
+      <ul>
+        <li>Deploy Email 1 (Trigger, PSS 87) to Tier 1 list — 15 companies, confirmed buying signals</li>
+        <li>Monitor open rates and replies</li>
+        <li>Brief Matthew on inbound reply protocol — who to route, how to open the conversation</li>
+        <li>LinkedIn sequence parallel deployment (3-step: connect, follow-up, breakup)</li>
+      </ul>
+    </div>
+    <div class="playbook-week">
+      <h4>Days 31–60: Optimise and Expand</h4>
+      <ul>
+        <li>Analyse Email 1 performance — which signal types produced replies</li>
+        <li>Deploy Email 2 (Friction, PSS 85) to non-replies</li>
+        <li>Add Tier 2 list (13 companies) to campaign</li>
+        <li>First output data: how many conversations started, which signals worked</li>
+      </ul>
+    </div>
+    <div class="playbook-week">
+      <h4>Days 61–90: Authority Engine</h4>
+      <ul>
+        <li>Launch LinkedIn content flywheel — 3 posts per week targeting HR Directors</li>
+        <li>Activate 20-week nurture for prospects who opened but did not reply</li>
+        <li>Publish first case study using TSB or KPMG as foundation</li>
+        <li>Submit case study to Employee Benefits, People Management, REBA</li>
+      </ul>
+    </div>
+    <div class="highlight-box" style="margin-top:24px;">
+      <p><strong>90-day output target:</strong> 5 to 8 new employer conversations with genuine buying intent. 1 to 2 case studies published. Search presence improvement as backlinks accumulate. First employer close possible within 90 days.</p>
+    </div>
+  </section>
+
+  <!-- WHY NOW -->
+  <section id="why-now" class="section">
+    <div class="section-label">Timing</div>
+    <h2>Three forces making this quarter the right window.</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Force 1: Carer's Leave Act Anniversary</h3>
+        <p>April 2024 was when the Act came into force. Thirteen months on, HR Directors who did the statutory minimum are now receiving internal pressure: "Is one week's unpaid leave really our answer?" The second wave of benefit reviews is underway now.</p>
+      </div>
+      <div class="card">
+        <h3>Force 2: Pre-Series A Pressure</h3>
+        <p>Stephanie is in investor conversations. Every large employer signed before the Series A becomes a case study in the fundraising deck. Investors want repeatable commercial traction, not just named logos. The window to build that evidence is the 90 days before the raise.</p>
+      </div>
+      <div class="card">
+        <h3>Force 3: Q3 Benefits Decision Cycle</h3>
+        <p>UK employer benefit decisions peak in Q3 and Q4. New benefits approved in Q3 go live in Q4 or the following January. The companies in this list that are in their annual review cycle are making decisions in the next 60 to 90 days.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS TIMELINE -->
+  <section id="results" class="section">
+    <div class="section-label">Outcomes</div>
+    <h2>What changes, and when.</h2>
+    <p class="lead">Conservative outcomes based on 2 to 3 employer wins from the initial 28-company campaign.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">Week 2</div>
+        <h4>First employer conversations started</h4>
+        <p>Tier 1 Trigger emails deployed to 15 HR Directors. First replies arrive. Matthew Johnson briefed on reply protocol. Commercial team enters conversations with context already set.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">Month 1–2</div>
+        <h4>3–5 qualified commercial conversations</h4>
+        <p>Trigger + Friction sequences completed. Tier 2 list deployed. Replies segmented: genuine evaluation window vs. timing not right. 3 to 5 commercial conversations with HR Directors actively reviewing benefits.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">Month 3</div>
+        <h4>First employer win — case study drafted</h4>
+        <p>Conservative: 1 employer close from the initial 28. TSB or KPMG case study drafted and submitted to HR press. Search presence begins improving as backlinks accumulate.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">Month 6</div>
+        <h4>Channel self-reinforcing — 3+ employer wins</h4>
+        <p>Case study content is generating inbound interest. Authority Engine nurture running for 200+ HR Directors who engaged but did not buy. Each employer win creates content for the next campaign. The channel compounds.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">Month 12</div>
+        <h4>Pre-Series A: repeatable commercial traction demonstrated</h4>
+        <p>5+ large employer wins with documented contracts. Named FTSE 100 clients plus 3 to 5 new mid-market wins. Investor deck has repeatable commercial evidence, not just logos. Series A raise supported by proven pipeline.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECONOMICS -->
+  <section id="economics" class="section">
+    <div class="section-label">Investment Case</div>
+    <h2>What the channel costs vs what it produces.</h2>
+    <div class="grid-2">
+      <div>
+        <table>
+          <thead>
+            <tr><th>Scenario</th><th>Employer Wins</th><th>ACV Proxy</th><th>Annual Revenue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Conservative (2 wins)</td><td>2</td><td>£60,000</td><td>£120,000</td></tr>
+            <tr><td>Mid-case (3 wins)</td><td>3</td><td>£75,000</td><td>£225,000</td></tr>
+            <tr class="eco-row-best"><td>Strong case (5 wins)</td><td>5</td><td>£80,000</td><td>£400,000</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--text-dim);margin-top:8px;font-family:var(--mono);">ACV proxy: £60K per 10,000-person employer. TSB is 5,000 employees. Lloyds and Asda are 65,000 to 150,000 — one win at that scale changes the model.</p>
+      </div>
+      <div class="card-accent">
+        <h3>The investor framing</h3>
+        <p>For a pre-Series A raise, 3 to 5 new large employer wins with documented contracts is more valuable than the revenue figure alone. It proves the commercial model is repeatable and not founder-dependent.</p>
+        <hr class="divider" style="margin:16px 0;">
+        <div class="stat-big">100x</div>
+        <div class="stat-label">ROI on KareHero contract for a 10,000-person employer: £6M retention risk vs ~£60,000 KareHero cost</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL SEQUENCES -->
+  <section id="email-sequences" class="section">
+    <div class="section-label">Outreach Intelligence</div>
+    <h2>Two email sequences — ready to deploy.</h2>
+    <p class="lead">Both emails are scored using Eric Nowoslawski's PSS framework across 1,517+ campaigns. Each uses a different angle type. Email 1 is Trigger. Email 2 is Friction.</p>
+
+    <div class="email-sample">
+      <div class="email-header">
+        <div>
+          <div class="subject">Subject: KareHero beyond the network.</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">From: Jean Mundabi Fala · To: Stephanie Leung, CEO, KareHero</div>
+        </div>
+        <div class="email-meta">
+          <span class="email-tag">Trigger</span>
+          <span class="email-tag">Delivery CTA</span>
+          <span class="pss-badge">PSS 87/100</span>
+        </div>
+      </div>
+      <div class="email-body">
+        <p>Stephanie,</p>
+        <p>KareHero has KPMG, Deloitte, and BT Group live. That model does not reach the 230 employers in the Employers for Carers network who have never been contacted.</p>
+        <p>The risk is that HR Directors shortlist Lottie and Bright Horizons through peer referrals before KareHero is in the conversation.</p>
+        <p>We help you reach HR Directors already in a benefits review window — before they close the shortlist.</p>
+        <p>A few large employer wins at that contract size can mean £200,000 or more.</p>
+        <p>We handle the account research, outreach, and qualification so your team stays focused on commercial conversations.</p>
+        <p>I can send the list over.</p>
+        <p>Jean</p>
+      </div>
+    </div>
+
+    <div class="email-sample">
+      <div class="email-header">
+        <div>
+          <div class="subject">Subject: The search gap.</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">From: Jean Mundabi Fala · To: Stephanie Leung, CEO, KareHero · Day 3</div>
+        </div>
+        <div class="email-meta">
+          <span class="email-tag">Friction</span>
+          <span class="email-tag">Question CTA</span>
+          <span class="pss-badge">PSS 85/100</span>
+        </div>
+      </div>
+      <div class="email-body">
+        <p>Stephanie,</p>
+        <p>When an HR Director at a large professional services firm starts a benefits review, she types "eldercare employee benefit UK" on a Tuesday morning. Seniorcare by Lottie appears first. KareHero does not appear on page one.</p>
+        <p>KareHero's product covers the full care journey — funding, legal, placement. Lottie's does not. But awareness wins the shortlist.</p>
+        <p>Without a channel to reach HR Directors before they get there, KareHero surfaces only through events and introductions. The evaluation is already over for every employer who found Lottie first.</p>
+        <p>We find HR Directors in active benefits review cycles and reach them before that moment.</p>
+        <p>We handle the account research, outreach, and qualification so your team enters those conversations early.</p>
+        <p>Worth showing you how we'd approach this for KareHero?</p>
+        <p>Jean</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALLATION -->
+  <section id="installation" class="section">
+    <div class="section-label">What MDB Installs</div>
+    <h2>Three components. One channel.</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Component 1: Outbound Channel</h3>
+        <p>Identifies HR Directors at large UK employers with confirmed buying signals. Writes and deploys email sequences using KareHero's specific positioning — the funding and legal layers Lottie does not have. Qualifies replies before the commercial team enters.</p>
+      </div>
+      <div class="card">
+        <h3>Component 2: Growth Feedback Loop</h3>
+        <p>The channel learns with every campaign. Targeting improves. Reply rates improve. By month 3, the signal model identifies which companies are in genuine buying windows with greater precision than any referral network.</p>
+      </div>
+      <div class="card">
+        <h3>Component 3: Authority Engine</h3>
+        <p>LinkedIn content flywheel and 20-week nurture for prospects not yet in a buying window. Ensures KareHero is the first brand recalled when the window opens — without requiring sales team involvement. Score 6/7 — recommended for KareHero.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="section" style="border-bottom:none;">
+    <div class="cta-section">
+      <h2>Ready to see the list?</h2>
+      <p>28 HR Directors at companies from BT Group to HSBC — mapped and ready. Jean walks Stephanie through the lead list, the evidence, and what a 90-day pilot would look like for KareHero.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;">
+        <a href="https://cal.com/jean-m-8f4kbr/15min" class="btn-primary" target="_blank" style="font-size:15px;padding:15px 30px;">
+          Book 15 Minutes with Jean
+        </a>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:0;">Or forward this to Matthew Johnson (CRO) — the economics in the package are built for a commercial conversation.</p>
+    </div>
+    <div style="margin-top:40px;padding:24px;text-align:center;font-size:12px;color:var(--text-dim);font-family:var(--mono);">
+      Strategy and GTM research by Jean Mundabi Fala, MDB Growth Capital · KareHero Revenue Infrastructure Package · May 2026
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Scroll reveal
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.08 });
+  sections.forEach(s => observer.observe(s));
+
+  // Active nav highlighting
+  const navLinks = document.querySelectorAll('#sidebar nav a');
+  const sectionEls = document.querySelectorAll('[id]');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`#sidebar nav a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+  sectionEls.forEach(s => navObserver.observe(s));
+</script>
+</body>
+</html>

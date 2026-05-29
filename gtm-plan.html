@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KareHero GTM Plan | MDB Growth Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep:#0F3D26;--green-primary:#1B5E3B;--green-mid:#2D7A52;--green-light:#3A9464;
+    --coral:#D95F3B;--amber:#C4872A;--cream:#FFFEF9;--cream2:#F7F5EF;--cream3:#EEEADE;
+    --border:#D4CFC3;--text:#1C1A14;--text-muted:#5C5748;--text-dim:#8C8679;
+    --font:'Space Grotesk',system-ui,sans-serif;--mono:'Space Mono',monospace;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.7;}
+
+  header{background:linear-gradient(135deg,var(--green-deep),var(--green-primary));padding:60px 48px 52px;color:#fff;}
+  header .label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,0.5);font-family:var(--mono);margin-bottom:12px;}
+  header h1{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.15;letter-spacing:-0.5px;margin-bottom:12px;}
+  header p{font-size:17px;color:rgba(255,255,255,0.7);max-width:560px;}
+
+  main{max-width:1100px;margin:0 auto;padding:60px 48px;}
+
+  h2{font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-0.3px;margin-bottom:10px;}
+  .section-label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--green-mid);margin-bottom:8px;font-family:var(--mono);}
+  .lead{font-size:16px;color:var(--text-muted);max-width:580px;margin-bottom:32px;line-height:1.7;}
+
+  .block{margin-bottom:64px;}
+  .divider{border:none;border-top:1px solid var(--border);margin:40px 0;}
+
+  /* PILLARS */
+  .pillar{background:#fff;border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:16px;display:grid;grid-template-columns:48px 1fr;gap:20px;align-items:start;}
+  .pillar-num{width:48px;height:48px;border-radius:50%;background:var(--green-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;font-family:var(--mono);flex-shrink:0;}
+  .pillar h3{font-size:17px;font-weight:700;margin-bottom:8px;}
+  .pillar p{font-size:14px;color:var(--text-muted);line-height:1.6;margin-bottom:10px;}
+  .pillar .tools{display:flex;gap:8px;flex-wrap:wrap;}
+  .tool-tag{font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:var(--cream3);color:var(--text-muted);border:1px solid var(--border);font-family:var(--mono);}
+  .pillar .kpi{font-size:12px;font-style:italic;color:var(--green-mid);margin-top:8px;font-family:var(--mono);}
+
+  /* 10-DAY TABLE */
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{background:var(--cream3);padding:11px 14px;text-align:left;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text-muted);border-bottom:2px solid var(--border);}
+  td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
+  tr:last-child td{border-bottom:none;}
+  tr:hover td{background:var(--cream2);}
+  .day-badge{display:inline-block;background:var(--green-primary);color:#fff;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:700;font-family:var(--mono);}
+  .chan-badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;font-family:var(--mono);}
+  .chan-email{background:rgba(27,94,59,0.08);color:var(--green-mid);border:1px solid rgba(27,94,59,0.15);}
+  .chan-li{background:rgba(0,119,181,0.08);color:#0077B5;border:1px solid rgba(0,119,181,0.15);}
+  .chan-research{background:var(--cream3);color:var(--text-muted);border:1px solid var(--border);}
+
+  /* 12-WEEK ROADMAP */
+  .roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .roadmap-phase{background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;border-top:4px solid var(--green-primary);}
+  .roadmap-phase:nth-child(2){border-top-color:var(--amber);}
+  .roadmap-phase:nth-child(3){border-top-color:var(--green-light);}
+  .phase-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px;font-family:var(--mono);}
+  .roadmap-phase h4{font-size:15px;font-weight:700;margin-bottom:14px;}
+  .roadmap-phase ul{list-style:none;padding:0;}
+  .roadmap-phase ul li{font-size:13px;color:var(--text-muted);padding:5px 0 5px 16px;position:relative;border-bottom:1px solid var(--cream3);}
+  .roadmap-phase ul li:last-child{border-bottom:none;}
+  .roadmap-phase ul li::before{content:'→';position:absolute;left:0;color:var(--green-mid);font-size:11px;}
+
+  /* KPIs */
+  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px;}
+  .kpi-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;}
+  .kpi-num{font-size:32px;font-weight:800;color:var(--green-primary);line-height:1;margin-bottom:4px;}
+  .kpi-label{font-size:12px;color:var(--text-muted);line-height:1.4;}
+
+  footer{background:var(--cream2);border-top:1px solid var(--border);padding:24px 48px;font-size:12px;color:var(--text-dim);font-family:var(--mono);}
+
+  @media(max-width:768px){
+    main,header,footer{padding:32px 24px;}
+    .roadmap{grid-template-columns:1fr;}
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">GTM Strategy — KareHero · MDB Growth Capital · May 2026</div>
+  <h1>KareHero Go-to-Market Plan</h1>
+  <p>5 pillars. 10-day outreach sequence. 12-week roadmap to 5 to 8 qualified employer conversations. Built for Stephanie Leung and the KareHero commercial team.</p>
+</header>
+
+<main>
+
+  <!-- 5 PILLARS -->
+  <div class="block">
+    <div class="section-label">The Five Pillars</div>
+    <h2>How the KareHero channel is built.</h2>
+    <p class="lead">Five acquisition pillars, each targeting a specific buying signal. Together they reach HR Directors in active windows through multiple entry points simultaneously.</p>
+
+    <div class="pillar">
+      <div class="pillar-num">1</div>
+      <div>
+        <h3>Employers for Carers Network Mapping</h3>
+        <p>The Employers for Carers network is the definitive signal list. 230+ member organisations covering 2.9 million UK employees. MDB maps each member company, identifies the Head of Benefits or Chief People Officer, and segments by buying signal strength (EfC pledge active, carer-friendly designation, or peer membership only).</p>
+        <p>Output: A tiered contact database of the 230+ EfC member companies with confirmed HR decision-makers. Updated quarterly as new members join.</p>
+        <div class="tools"><span class="tool-tag">Clay</span><span class="tool-tag">Apollo</span><span class="tool-tag">LinkedIn Sales Navigator</span><span class="tool-tag">EfC member directory</span></div>
+        <div class="kpi">KPI: 100+ verified HR Director contacts from EfC network in 30 days</div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">2</div>
+      <div>
+        <h3>Carer's Leave Act Compliance Trigger</h3>
+        <p>The Carer's Leave Act came into force April 2024. Thirteen months on, employers who did the statutory minimum are now in a second review wave: "Is one week's unpaid leave really our answer?" MDB tracks employers who made compliance announcements in 2024 and are now 12 to 18 months post-announcement — the natural review point.</p>
+        <p>Output: A list of employers who made public compliance statements in 2024 and have not yet publicly announced a benefit upgrade. These are the highest-priority warm targets.</p>
+        <div class="tools"><span class="tool-tag">Google Alerts</span><span class="tool-tag">HR press monitoring</span><span class="tool-tag">People Management</span><span class="tool-tag">Employee Benefits</span></div>
+        <div class="kpi">KPI: 40 to 60 compliance-triggered targets identified per quarter</div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">3</div>
+      <div>
+        <h3>Employee Assistance Programme Gap Channel</h3>
+        <p>Large employers whose Employee Assistance Programme contract is up for renewal in the next 6 to 12 months are in an active benefits evaluation window. MDB identifies companies with procurement cycle signals — new Head of Benefits hire (typically triggers benefits review in first 90 to 180 days), job postings for benefits roles, or LinkedIn announcements of benefits platform changes.</p>
+        <p>Output: A rolling list of employers in benefits procurement windows, refreshed monthly from LinkedIn and HR press sources.</p>
+        <div class="tools"><span class="tool-tag">Clay</span><span class="tool-tag">LinkedIn</span><span class="tool-tag">Job board signals</span><span class="tool-tag">REBA</span></div>
+        <div class="kpi">KPI: 20 to 30 Employee Assistance Programme-gap targets identified per month</div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">4</div>
+      <div>
+        <h3>FTSE 250 Anchor Client Leverage</h3>
+        <p>KareHero's existing clients — KPMG, Deloitte, BT Group, Nationwide — are the strongest proof of concept for their HR Director peers. When these clients publish case studies (currently unpublished), outbound emails to their peer companies at similar-scale organisations will reference the specific employer: "Your peers at [Company] deployed KareHero and documented [outcome]. Here is how that translates to your workforce."</p>
+        <p>Output: Published case studies for TSB and KPMG as priority, with specific metrics. Outbound sequences using these case studies as proof lines for peer organisations.</p>
+        <div class="tools"><span class="tool-tag">HubSpot</span><span class="tool-tag">KareHero website</span><span class="tool-tag">REBA editorial</span><span class="tool-tag">Employee Benefits</span></div>
+        <div class="kpi">KPI: 2 published case studies within 90 days; peer referral conversions tracked</div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">5</div>
+      <div>
+        <h3>HR Director Content and Authority Engine</h3>
+        <p>Stephanie's LinkedIn profile and the KareHero company page are the primary awareness channel for HR Directors who are not yet in a buying window. The Authority Engine (LinkedIn content flywheel + 20-week nurture) warms this audience over 18 months — so when the window opens, KareHero is already the provider they trust, not a cold vendor.</p>
+        <p>Three posts per week targeting specific HR buyer pain: hidden carer data, Carer's Leave Act benchmarking, NHS funding guidance for employees. Each post ends with a low-friction resource offer that creates a DM conversation.</p>
+        <div class="tools"><span class="tool-tag">LinkedIn</span><span class="tool-tag">HubSpot nurture</span><span class="tool-tag">Meta retargeting £5-10/day</span><span class="tool-tag">CIPD</span></div>
+        <div class="kpi">KPI: LinkedIn follower growth from 3,483 to 10,000 within 12 months; 200+ nurture sequence contacts by month 3</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 10-DAY OUTREACH SEQUENCE -->
+  <div class="block">
+    <div class="section-label">Outreach Sequence</div>
+    <h2>10-day multi-touch sequence for each HR Director.</h2>
+    <p class="lead">Email and LinkedIn in parallel. Each touchpoint uses a different angle. The sequence stops on the first positive reply.</p>
+    <table>
+      <thead>
+        <tr><th>Day</th><th>Channel</th><th>Action</th><th>Angle</th><th>CTA</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="day-badge">Day 0</span></td>
+          <td><span class="chan-badge chan-email">Email 1</span></td>
+          <td>Trigger email — KareHero beyond the network</td>
+          <td>Trigger (why now: 230 EfC employers unreached, Lottie shortlist risk)</td>
+          <td>Delivery: "I can send the list over." PSS 87</td>
+        </tr>
+        <tr>
+          <td><span class="day-badge">Day 1</span></td>
+          <td><span class="chan-badge chan-li">LinkedIn</span></td>
+          <td>Connection request with personal note</td>
+          <td>Social proof: TSB launch, REBA content, product depth</td>
+          <td>Connect — soft, no ask</td>
+        </tr>
+        <tr>
+          <td><span class="day-badge">Day 3</span></td>
+          <td><span class="chan-badge chan-email">Email 2</span></td>
+          <td>Friction email — the search gap</td>
+          <td>Friction (Tuesday morning Google search, Lottie page one, KareHero invisible)</td>
+          <td>Question: "Worth showing you how we'd approach this for KareHero?" PSS 85</td>
+        </tr>
+        <tr>
+          <td><span class="day-badge">Day 5</span></td>
+          <td><span class="chan-badge chan-li">LinkedIn</span></td>
+          <td>Follow-up DM (if connected)</td>
+          <td>Intelligence delivery: 28 HR Directors mapped, offer to share the list</td>
+          <td>Value delivery: "I can share it if useful."</td>
+        </tr>
+        <tr>
+          <td><span class="day-badge">Day 8</span></td>
+          <td><span class="chan-badge chan-li">LinkedIn</span></td>
+          <td>Breakup message</td>
+          <td>Low pressure — leave the door open for next quarter</td>
+          <td>No hard ask — "Leaving it open in case timing is better next quarter."</td>
+        </tr>
+        <tr>
+          <td><span class="day-badge">Day 21</span></td>
+          <td><span class="chan-badge chan-research">HubSpot</span></td>
+          <td>Nurture sequence trigger</td>
+          <td>Value: Carer's Leave Act checklist or hidden carer data report</td>
+          <td>Authority Engine: add to 20-week nurture, no sales ask</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 12-WEEK ROADMAP -->
+  <div class="block">
+    <div class="section-label">12-Week Roadmap</div>
+    <h2>What gets built, and when.</h2>
+    <p class="lead">Three phases. Foundation, campaign, and authority. Each phase builds on the last.</p>
+    <div class="roadmap">
+      <div class="roadmap-phase">
+        <div class="phase-label">Weeks 1 to 4 — Foundation</div>
+        <h4>Infrastructure and first contacts</h4>
+        <ul>
+          <li>ICP confirmation with Stephanie and Matthew Johnson</li>
+          <li>28-company list verified and loaded into HubSpot</li>
+          <li>Email sequences configured in HubSpot sequences</li>
+          <li>LinkedIn profile optimised for outbound activity</li>
+          <li>Tier 1 Trigger email deployed to 15 companies</li>
+          <li>First replies received and qualified</li>
+        </ul>
+      </div>
+      <div class="roadmap-phase">
+        <div class="phase-label">Weeks 5 to 8 — Campaign</div>
+        <h4>Expand and optimise</h4>
+        <ul>
+          <li>Friction email deployed to Tier 1 non-replies</li>
+          <li>Tier 2 list (13 companies) added to campaign</li>
+          <li>LinkedIn sequence completed for all Tier 1</li>
+          <li>First output data: reply rate by signal type</li>
+          <li>3 to 5 commercial conversations qualified</li>
+          <li>Monthly signal update: 20 to 30 new companies added</li>
+        </ul>
+      </div>
+      <div class="roadmap-phase">
+        <div class="phase-label">Weeks 9 to 12 — Authority</div>
+        <h4>Content flywheel and case study</h4>
+        <ul>
+          <li>LinkedIn content flywheel live (3 posts/week)</li>
+          <li>20-week nurture sequence activated for non-buyers</li>
+          <li>First case study drafted (TSB or KPMG)</li>
+          <li>Case study submitted to Employee Benefits, REBA</li>
+          <li>Search presence improvement as backlinks accumulate</li>
+          <li>First employer win documented and reported to investors</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="block">
+    <div class="section-label">Key Performance Indicators</div>
+    <h2>How we measure the channel.</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-num">5–8</div><div class="kpi-label">Qualified employer conversations in 90 days</div></div>
+      <div class="kpi-card"><div class="kpi-num">1–2</div><div class="kpi-label">Employer wins in first 90 days (conservative)</div></div>
+      <div class="kpi-card"><div class="kpi-num">2</div><div class="kpi-label">Case studies published by month 3</div></div>
+      <div class="kpi-card"><div class="kpi-num">£120K+</div><div class="kpi-label">Annual revenue from conservative scenario (2 wins)</div></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>Strategy and GTM research by Jean Mundabi Fala, MDB Growth Capital · KareHero GTM Plan · May 2026</footer>
+</body>
+</html>

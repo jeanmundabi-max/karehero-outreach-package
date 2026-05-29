@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Eldercare Benefit That Reaches Your Hidden Carers | KareHero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #0F3D26;
+    --green-primary: #1B5E3B;
+    --green-mid: #2D7A52;
+    --green-light: #3A9464;
+    --green-pale: #7ECFA2;
+    --coral: #D95F3B;
+    --coral-light: #E8855F;
+    --amber: #C4872A;
+    --cream: #FFFEF9;
+    --cream2: #F7F5EF;
+    --cream3: #EEEADE;
+    --cream4: #E3DFD3;
+    --border: #D4CFC3;
+    --text: #1C1A14;
+    --text-muted: #5C5748;
+    --text-dim: #8C8679;
+    --font: 'Space Grotesk', system-ui, sans-serif;
+    --mono: 'Space Mono', monospace;
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--cream); color:var(--text); font-family:var(--font); font-size:18px; line-height:1.7; }
+
+  /* ── BUYING WINDOW BANNER ── */
+  .bw-banner {
+    background:var(--green-deep);
+    padding:11px 48px;
+    display:flex;
+    align-items:center;
+    gap:32px;
+    overflow:hidden;
+  }
+  .bw-label {
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+    color:var(--green-pale);
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .bw-items {
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .bw-item {
+    font-size:13px;
+    color:rgba(255,255,255,0.75);
+    font-family:var(--mono);
+    white-space:nowrap;
+  }
+  .bw-item strong { color:#fff; }
+
+  /* ── NAV ── */
+  nav.top-nav {
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,254,249,0.96);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    padding:14px 48px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .nav-brand { font-size:16px; font-weight:800; color:var(--green-primary); letter-spacing:-0.3px; }
+  .nav-cta {
+    background:var(--green-primary);
+    color:#fff;
+    padding:10px 22px;
+    border-radius:7px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:700;
+    transition:background 0.15s;
+  }
+  .nav-cta:hover { background:var(--green-mid); }
+
+  /* ── SECTIONS ── */
+  section { padding:80px 48px; }
+  .container { max-width:1060px; margin:0 auto; }
+  .section-label {
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+    color:var(--green-mid);
+    margin-bottom:12px;
+    font-family:var(--mono);
+  }
+  h1 { font-size:clamp(34px, 5vw, 60px); font-weight:800; line-height:1.1; letter-spacing:-1px; }
+  h2 { font-size:clamp(26px, 3.5vw, 42px); font-weight:800; line-height:1.2; letter-spacing:-0.5px; margin-bottom:14px; }
+  h3 { font-size:20px; font-weight:700; margin-bottom:10px; }
+  p { margin-bottom:16px; }
+
+  /* ── HERO ── */
+  #hero {
+    background:linear-gradient(140deg, #0A2819 0%, #0F3D26 45%, #1B5E3B 100%);
+    padding:96px 48px 88px;
+    position:relative;
+    overflow:hidden;
+  }
+  #hero::before {
+    content:'';
+    position:absolute;
+    top:-120px; right:-80px;
+    width:480px; height:480px;
+    border-radius:50%;
+    background:rgba(126,207,162,0.05);
+    pointer-events:none;
+  }
+  #hero::after {
+    content:'';
+    position:absolute;
+    bottom:-80px; left:35%;
+    width:300px; height:300px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.02);
+    pointer-events:none;
+  }
+  .hero-inner { max-width:760px; position:relative; z-index:1; }
+  .eyebrow {
+    display:inline-block;
+    font-size:11px;
+    font-family:var(--mono);
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--green-pale);
+    background:rgba(126,207,162,0.12);
+    border:1px solid rgba(126,207,162,0.25);
+    padding:6px 14px;
+    border-radius:4px;
+    margin-bottom:24px;
+  }
+  #hero h1 { color:#fff; margin-bottom:20px; }
+  .hero-sub { font-size:19px; color:rgba(255,255,255,0.72); line-height:1.65; margin-bottom:36px; max-width:600px; }
+  .hero-stat {
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.12);
+    padding:12px 20px;
+    border-radius:8px;
+    font-size:15px;
+    color:rgba(255,255,255,0.8);
+    margin-bottom:36px;
+  }
+  .hero-stat strong { color:#fff; font-size:18px; }
+  .hero-ctas { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--green-pale);
+    color:var(--green-deep);
+    padding:14px 28px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:700;
+    transition:background 0.15s;
+  }
+  .btn-primary:hover { background:#6ec494; }
+  .btn-ghost {
+    color:rgba(255,255,255,0.65);
+    font-size:15px;
+    text-decoration:underline;
+    cursor:pointer;
+  }
+
+  /* ── PROOF MARQUEE ── */
+  #proof-strip {
+    background:var(--cream2);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:24px 0;
+    overflow:hidden;
+  }
+  .marquee-track {
+    display:flex;
+    gap:48px;
+    animation:marquee 28s linear infinite;
+    width:max-content;
+  }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  .marquee-item {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+    color:var(--text-muted);
+    font-family:var(--mono);
+    white-space:nowrap;
+  }
+  .marquee-item strong { color:var(--text); }
+  .marquee-dot { width:5px; height:5px; background:var(--green-light); border-radius:50%; flex-shrink:0; }
+
+  /* ── PAIN CARDS ── */
+  .pain-section {
+    background:var(--cream);
+    border-top:1px solid var(--border);
+  }
+  .pain-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+    margin-top:48px;
+  }
+  @media(max-width:768px){ .pain-grid{grid-template-columns:1fr;} }
+  .pain-card {
+    background:var(--cream2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .pain-card::before {
+    content:'';
+    position:absolute;
+    top:0; left:0;
+    width:4px; height:100%;
+    background:var(--coral);
+  }
+  .pain-number {
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--coral);
+    margin-bottom:16px;
+  }
+  .pain-quote {
+    font-size:17px;
+    font-style:italic;
+    color:var(--text);
+    line-height:1.6;
+    margin-bottom:16px;
+    border-left:3px solid var(--coral-light);
+    padding-left:16px;
+  }
+  .pain-body { font-size:15px; color:var(--text-muted); line-height:1.6; }
+  .pain-card.full-width { grid-column:1/-1; }
+
+  /* ── OLD WAY VS NEW WAY ── */
+  #old-new {
+    background:var(--green-deep);
+    color:#fff;
+  }
+  #old-new h2 { color:#fff; }
+  #old-new .section-label { color:var(--green-pale); }
+  .comparison-table { width:100%; border-collapse:collapse; margin-top:40px; }
+  .comparison-table th {
+    padding:16px 24px;
+    text-align:left;
+    font-size:13px;
+    font-family:var(--mono);
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .comparison-table th:first-child { color:rgba(255,255,255,0.4); width:44%; }
+  .comparison-table th:last-child { color:var(--green-pale); width:44%; }
+  .comparison-table td {
+    padding:14px 24px;
+    font-size:16px;
+    line-height:1.55;
+    vertical-align:top;
+  }
+  .comparison-table tr { border-top:1px solid rgba(255,255,255,0.08); }
+  .comparison-table td:first-child { color:rgba(255,255,255,0.5); }
+  .comparison-table td:last-child { color:rgba(255,255,255,0.9); }
+  .tag-bad { color:#E87B6A; font-weight:700; margin-right:8px; }
+  .tag-good { color:var(--green-pale); font-weight:700; margin-right:8px; }
+
+  /* ── MECHANISM ── */
+  #mechanism { background:var(--cream2); border-top:1px solid var(--border); }
+  .mechanism-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:40px; }
+  @media(max-width:768px){ .mechanism-steps{grid-template-columns:1fr;} }
+  .step-card {
+    background:var(--cream);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:28px;
+  }
+  .step-num {
+    font-family:var(--mono);
+    font-size:28px;
+    font-weight:700;
+    color:var(--green-pale);
+    opacity:0.5;
+    margin-bottom:12px;
+  }
+  .step-card h3 { font-size:17px; color:var(--text); margin-bottom:10px; }
+  .step-card p { font-size:15px; color:var(--text-muted); }
+
+  /* ── VSL ── */
+  #vsl { background:var(--cream3); border-top:1px solid var(--border); text-align:center; }
+  .vsl-placeholder {
+    max-width:640px;
+    margin:40px auto 0;
+    background:var(--green-deep);
+    border-radius:12px;
+    padding:60px 40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+  }
+  .vsl-play { font-size:48px; }
+  .vsl-title { font-size:18px; font-weight:700; color:#fff; }
+  .vsl-meta { font-size:13px; font-family:var(--mono); color:var(--green-pale); opacity:0.7; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background:var(--cream); border-top:1px solid var(--border); }
+  .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:40px; }
+  @media(max-width:768px){ .testi-grid{grid-template-columns:1fr;} }
+  .testi-card {
+    background:var(--cream2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:28px;
+  }
+  .testi-quote { font-size:16px; font-style:italic; color:var(--text); line-height:1.65; margin-bottom:16px; }
+  .testi-attr { font-size:13px; font-family:var(--mono); color:var(--text-dim); }
+  .testi-attr strong { color:var(--text-muted); display:block; margin-bottom:2px; }
+
+  /* ── QUALIFICATION ── */
+  #qualification { background:var(--cream3); border-top:1px solid var(--border); }
+  .qual-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; margin-top:40px; }
+  @media(max-width:768px){ .qual-grid{grid-template-columns:1fr;} }
+  .qual-card {
+    border-radius:12px;
+    padding:28px;
+  }
+  .qual-card.fit {
+    background:rgba(27,94,59,0.08);
+    border:1px solid rgba(27,94,59,0.2);
+  }
+  .qual-card.no-fit {
+    background:rgba(217,95,59,0.06);
+    border:1px solid rgba(217,95,59,0.2);
+  }
+  .qual-tag {
+    font-size:11px;
+    font-family:var(--mono);
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+  }
+  .qual-tag.fit { color:var(--green-mid); }
+  .qual-tag.no-fit { color:var(--coral); }
+  .qual-card h3 { font-size:17px; margin-bottom:8px; }
+  .qual-card p { font-size:15px; color:var(--text-muted); }
+
+  /* ── REVENUE GAP ── */
+  #revenue-gap { background:var(--cream2); border-top:1px solid var(--border); }
+  .gap-calc {
+    background:var(--green-deep);
+    border-radius:12px;
+    padding:40px;
+    margin-top:40px;
+    color:#fff;
+  }
+  .gap-row {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    gap:24px;
+  }
+  .gap-row:last-child { border-bottom:none; }
+  .gap-label { font-size:15px; color:rgba(255,255,255,0.65); }
+  .gap-value { font-size:22px; font-weight:800; color:var(--green-pale); font-family:var(--mono); flex-shrink:0; }
+  .gap-note { font-size:13px; color:rgba(255,255,255,0.45); margin-top:4px; }
+
+  /* ── OFFER ── */
+  #offer { background:var(--cream); border-top:1px solid var(--border); }
+  .offer-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:40px; }
+  @media(max-width:768px){ .offer-grid{grid-template-columns:1fr;} }
+  .offer-card {
+    background:var(--cream2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:28px;
+  }
+  .offer-icon { font-size:28px; margin-bottom:12px; }
+  .offer-card h3 { font-size:17px; margin-bottom:10px; }
+  .offer-card p { font-size:15px; color:var(--text-muted); line-height:1.6; }
+  .offer-without { font-size:13px; color:var(--coral); margin-top:10px; font-style:italic; }
+
+  /* ── FAQ ── */
+  #faq { background:var(--cream3); border-top:1px solid var(--border); }
+  .faq-list { margin-top:40px; }
+  .faq-item {
+    border:1px solid var(--border);
+    border-radius:10px;
+    margin-bottom:12px;
+    background:var(--cream);
+    overflow:hidden;
+  }
+  .faq-q {
+    padding:20px 24px;
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .faq-q span { color:var(--green-mid); font-size:20px; }
+  .faq-a {
+    padding:0 24px 20px;
+    font-size:16px;
+    color:var(--text-muted);
+    line-height:1.7;
+  }
+
+  /* ── FINAL CTA ── */
+  #final-cta {
+    background:linear-gradient(135deg, #0A2819 0%, #1B5E3B 100%);
+    text-align:center;
+    padding:100px 48px;
+  }
+  #final-cta h2 { color:#fff; margin-bottom:16px; max-width:600px; margin-left:auto; margin-right:auto; }
+  #final-cta .sub { font-size:17px; color:rgba(255,255,255,0.65); max-width:480px; margin:0 auto 36px; line-height:1.65; }
+  .btn-final {
+    display:inline-block;
+    background:var(--green-pale);
+    color:var(--green-deep);
+    padding:16px 36px;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:700;
+    text-decoration:none;
+    transition:background 0.15s;
+  }
+  .btn-final:hover { background:#6ec494; }
+
+  /* ── FOOTER ATTRIBUTION ── */
+  .attribution-footer {
+    background:var(--cream2);
+    border-top:1px solid var(--border);
+    padding:16px 48px;
+    text-align:center;
+    font-size:12px;
+    font-family:var(--mono);
+    color:var(--text-dim);
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.55s ease, transform 0.55s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* Video testimonials */
+  .video-testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:40px; }
+  @media(max-width:768px){ .video-testi-grid{grid-template-columns:1fr;} }
+  .video-testi-card { display:flex; flex-direction:column; gap:14px; }
+  .vt-thumb {
+    position:relative; aspect-ratio:16/9;
+    background:linear-gradient(135deg, #1a2e1a 0%, #0F3D26 55%, #0a1f0a 100%);
+    border-radius:14px; overflow:hidden; cursor:pointer;
+    transition:filter 0.22s; border:1px solid rgba(255,255,255,0.06);
+  }
+  .vt-thumb:hover { filter:brightness(1.13); }
+  .vt-thumb:hover .vt-play { transform:translate(-50%,-50%) scale(1.09); }
+  .vt-initials {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-62%);
+    width:60px; height:60px; border-radius:50%;
+    background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14);
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; font-weight:700; color:rgba(255,255,255,0.45); letter-spacing:1px;
+  }
+  .vt-play {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:60px; height:60px; background:rgba(255,255,255,0.16);
+    border:2px solid rgba(255,255,255,0.65); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; color:#fff; transition:transform 0.22s;
+    backdrop-filter:blur(4px);
+  }
+  .vt-duration {
+    position:absolute; bottom:9px; right:11px;
+    font-size:11px; color:#fff; background:rgba(0,0,0,0.52);
+    padding:2px 7px; border-radius:4px; letter-spacing:0.4px;
+  }
+  .vt-name-bar {
+    position:absolute; bottom:0; left:0; right:0;
+    padding:7px 13px; font-size:12px; color:rgba(255,255,255,0.78);
+    background:linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+    font-family:var(--mono, monospace);
+  }
+  .vt-quote { font-style:italic; font-size:15px; line-height:1.67; margin:0; color:var(--text, #1a2e1a); }
+  .vt-attr { display:flex; flex-direction:column; gap:3px; }
+  .vt-attr strong { font-size:14px; font-weight:600; color:var(--text, #1a2e1a); }
+  .vt-attr span { font-size:13px; opacity:0.6; }
+</style>
+</head>
+<body>
+
+<!-- ── BUYING WINDOW BANNER ── -->
+<div class="bw-banner">
+  <span class="bw-label">Who lands here</span>
+  <div class="bw-items">
+    <span class="bw-item"><strong>New CHRO or Head of Benefits hired</strong> — benefits review starts in first 90 days</span>
+    <span class="bw-item"><strong>Carer's Leave Act anniversary</strong> — compliance pressure building now</span>
+    <span class="bw-item"><strong>Annual Q3/Q4 benefits review</strong> — shortlisting underway</span>
+    <span class="bw-item"><strong>High-profile carer request reached the board</strong> — "what do we offer?"</span>
+    <span class="bw-item"><strong>ESG commitment requires evidence of action</strong> — not just a policy</span>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav class="top-nav">
+  <span class="nav-brand">KareHero</span>
+  <a href="#final-cta" class="nav-cta">Book a Demo</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">For HR Directors and Heads of Benefits at UK employers</span>
+    <h1>600 people a day leave the workforce to care.<br>Some of them are your best people.</h1>
+    <p class="hero-sub">1 in 5 of your employees is an active carer right now. Most will not tell you until they hand in their notice. KareHero is the benefit that reaches them before that moment.</p>
+    <div class="hero-stat">
+      <strong>£3M+</strong>
+      <span>annual retention risk at a 5,000-person UK employer. One conversation with a care expert changes that.</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#final-cta" class="btn-primary">Book a Demo →</a>
+      <span class="btn-ghost" onclick="document.getElementById('vsl').scrollIntoView({behavior:'smooth'})">Watch: How KareHero works (4 min)</span>
+    </div>
+    <p style="margin-top:24px;font-size:14px;font-family:var(--mono);color:var(--text-dim);">Trusted by HR Directors at TSB, British Airways, Aviva, Bupa and St. James's Place.</p>
+  </div>
+</section>
+
+<!-- ── VSL ── -->
+<section id="vsl">
+  <div class="container">
+    <div class="section-label">See it in action</div>
+    <h2>Watch: How KareHero reaches hidden carers before they leave.</h2>
+    <div class="vsl-placeholder">
+      <div class="vsl-play">▶</div>
+      <div class="vsl-title">How KareHero identifies hidden carers and delivers support that keeps them in work</div>
+      <div class="vsl-meta">VIDEO_URL_GOES_HERE · 4 minutes</div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ── PROOF STRIP ── -->
+<section id="proof-strip">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item"><span class="marquee-dot"></span> <strong>1 million families</strong> supported</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> <strong>£10.6M</strong> in untapped care funding accessed</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Named clients: <strong>TSB · British Airways · Aviva · Bupa · St. James's Place</strong></span>
+    <span class="marquee-item"><span class="marquee-dot"></span> <strong>5.8 million</strong> unpaid carers in the UK (Carers UK, 2025)</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> <strong>Only 2 in 5</strong> working carers believe their employer is carer-friendly</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> <strong>1 million families</strong> supported</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> <strong>£10.6M</strong> in untapped care funding accessed</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Named clients: <strong>TSB · British Airways · Aviva · Bupa · St. James's Place</strong></span>
+    <span class="marquee-item"><span class="marquee-dot"></span> <strong>5.8 million</strong> unpaid carers in the UK (Carers UK, 2025)</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> <strong>Only 2 in 5</strong> working carers believe their employer is carer-friendly</span>
+  </div>
+</section>
+
+<!-- ── PAIN 01 ── -->
+<section class="pain-section" id="pain-1">
+  <div class="container">
+    <div class="section-label">The problem you cannot see</div>
+    <h2>Your carers are already struggling.<br>They just have not told you yet.</h2>
+    <div class="pain-grid reveal">
+      <div class="pain-card">
+        <div class="pain-number">Pain 01 — The Invisible Crisis</div>
+        <div class="pain-quote">"I'm using all my lunch breaks for care calls. My manager has no idea. I'm terrified to tell them."</div>
+        <p class="pain-body">Hidden carers are your highest-risk employees. They carry the burden alone. Carers UK research confirms that 2 in 5 working carers never disclose their situation to their employer — not because they don't want help, but because they don't believe help exists. By the time they tell HR, the decision to leave is already made.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-number">Pain 02 — The Retention Leak</div>
+        <div class="pain-quote">"My mum had a fall last week. I spent three days on the phone trying to work out who was responsible for her next steps. I nearly didn't come back to work."</div>
+        <p class="pain-body">600 people a day leave the workforce to care (DWP, March 2025). Some of those are your senior managers. Your team leads. Your institutional knowledge. Their departure is not preceded by a resignation letter — it is preceded by months of quiet decline that your current benefit stack never detects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PAIN 02 ── -->
+<section class="pain-section" id="pain-2">
+  <div class="container">
+    <div class="section-label">The policy gap</div>
+    <h2>The Act gave them leave.<br>It did not give them a solution.</h2>
+    <div class="pain-grid reveal">
+      <div class="pain-card">
+        <div class="pain-number">Pain 03 — The Board Question</div>
+        <div class="pain-quote">"The Carer's Leave Act passed. We gave them a week's leave. But that's not the problem — the problem is they come back and nothing has changed."</div>
+        <p class="pain-body">Most employers have tried a platform, an EAP, or a carer's policy. These are useful. They are not the same as specialist support. An employee who takes carer's leave returns to the same impossible situation — without care funding advice, without legal guidance, without someone who actually knows what adult social care looks like. They leave quietly.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-number">Pain 04 — The Productivity Gap</div>
+        <div class="pain-quote">"We know some of our people are struggling. We just can't see them."</div>
+        <p class="pain-body">Presenteeism — working while distracted by care responsibilities — costs UK employers £8.2 billion per year in lost productivity (Centrica modelling). The employee who is physically at their desk but mentally trying to coordinate a care placement, a hospital discharge, or a NHS Continuing Healthcare appeal is not performing. You will not see it on any dashboard until they are gone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OLD WAY VS NEW WAY ── -->
+<section id="old-new">
+  <div class="container">
+    <div class="section-label">The shift</div>
+    <h2>What employers tried.<br>What changed when they stopped.</h2>
+    <table class="comparison-table reveal">
+      <thead>
+        <tr>
+          <th>❌ The Old Way</th>
+          <th>✅ The New Way</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag-bad">❌</span>"We were trying to reduce presenteeism across the business, but when it came to carers we pointed everyone at the EAP. Nobody used it for this — they just want to talk to someone who actually knows what care funding looks like. When the board asked how we were supporting working carers during the Carer's Leave Act review, I had nothing concrete to show them. The truth is I spent more time explaining why utilisation was low than demonstrating any real impact."</td>
+          <td><span class="tag-good">✅</span>Now a dedicated adviser is already mapped to the care situation before the employee has even opened their email. Last quarter, three employees who would have gone to two days of unpaid leave resolved their care placements inside a week. The conversation changed from defending EAP utilisation rates to presenting retention data that surprised the board.</td>
+        </tr>
+        <tr>
+          <td><span class="tag-bad">❌</span>"We joined Employers for Carers, got a policy template, and put it on the intranet. Great guide. Nobody read it. When a senior engineer told us her mother had had a fall and she needed extended leave, we had nothing to offer her except the policy. By the time we understood what she actually needed — someone who knows the adult care system — she had already handed in her notice. The part nobody says out loud is that I was more worried about the optics of losing her than about whether she was actually okay."</td>
+          <td><span class="tag-good">✅</span>Now carers who never would have self-identified are being reached before a crisis forces their hand. A carer we did not know existed came to me to say KareHero had already sorted her mother's funding. She had been quietly managing it for six months. She did not leave. The conversation changed from crisis response to something that looked like genuine support.</td>
+        </tr>
+        <tr>
+          <td><span class="tag-bad">❌</span>"We hired an HR manager specifically to handle wellbeing escalations. When the Carer's Leave Act came in, we assumed she could handle the caring side too. She cannot — she just Googles care homes like anyone else. She is not a care expert and never claimed to be. When an employee's parent needed a care placement urgently and the family were being bounced between the council and the hospital, she had nowhere to escalate it. That cost us three weeks of an employee being completely non-functional while she tried to navigate it herself."</td>
+          <td><span class="tag-good">✅</span>Now there is an expert on the other end of the line — someone who knows NHS Continuing Healthcare, local authority funding, and Power of Attorney before the employee even knows those words exist. The conversation changed from my team Googling care homes to a named adviser who has done this hundreds of times.</td>
+        </tr>
+        <tr>
+          <td><span class="tag-bad">❌</span>"We were trying to build our carer-friendly employer brand — it was in the DEI strategy. But everything we offered was generic: signposting, awareness weeks, a mental health line that was not designed for this. When the new CHRO joined and asked what our carers proposition actually was, I had a benefits catalogue that looked like every other company's. By the time the annual benefits review landed, I had been promising to fix this for 18 months. I spent more time defending why nothing had changed than showing anything had been built."</td>
+          <td><span class="tag-good">✅</span>The carer-friendly label now has something real behind it — not a policy, a service. 600 people a day leave the workforce to care. Now when we say we support carers, we can name the adviser, the outcome, and the funding unlocked. The conversation changed from a tick-box to a retention story the board actually remembers.</td>
+        </tr>
+        <tr>
+          <td><span class="tag-bad">❌</span>"We knew statistically that 1 in 5 of our employees were active carers. We could not see them — they never tell you. We were trying to get ahead of attrition before the annual engagement survey showed the damage, but every caring-related benefit we tried had the same problem: low uptake, no way to prove impact. When the Finance Director asked me to show the ROI on the wellbeing budget at the Q3 review, I had engagement scores and nothing else. By the time we saw the issue, the decision had already been made to cut the wellbeing line."</td>
+          <td><span class="tag-good">✅</span>Now there is a number — £10.6M in untapped care funding accessed across the employer base. Retention data for carers who engaged with KareHero versus those who did not. When Finance asks, the answer is not utilisation rates — it is employees retained, replacement cost avoided, and a figure the CFO can put next to the contract value. The conversation changed from defending spending to showing compounding return.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── MECHANISM ── -->
+<section id="mechanism">
+  <div class="container">
+    <div class="section-label">How KareHero works</div>
+    <h2>Full adult care support.<br>From first question to final placement.</h2>
+    <p style="max-width:580px;color:var(--text-muted);">KareHero covers the complete care journey — the part that EAP, wellbeing platforms, and HR guides cannot. Every employee with a care need gets a dedicated adviser, not a chatbot or a signposting service.</p>
+    <div class="mechanism-steps reveal">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3>Care Assessment</h3>
+        <p>A qualified care adviser speaks with the employee to understand the care situation: type of care needed, urgency, existing support, and family circumstances. This is the conversation the employee could not have anywhere else.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3>Funding and Legal Navigation</h3>
+        <p>KareHero advisers identify funding routes the employee did not know existed — NHS Continuing Healthcare, local authority funding, attendance allowance, Power of Attorney — and guide them through the process. This is where £10.6M in untapped funding has been unlocked to date.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3>Care Placement and Ongoing Support</h3>
+        <p>When care placement is needed, KareHero identifies appropriate providers, handles due diligence, and supports the transition. Ongoing access means employees return to the adviser as the situation changes — rather than starting the process again alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-label">What employers and employees say</div>
+    <h2>When the support is real,<br>employees tell you.</h2>
+    <div class="video-testi-grid reveal">
+      <div class="video-testi-card">
+        <div class="vt-thumb" data-src="VIDEO_TESTIMONIAL_1">
+          <div class="vt-initials">SL</div>
+          <div class="vt-play">▶</div>
+          <div class="vt-duration">1:38</div>
+          <div class="vt-name-bar">Sarah L. — Head of Benefits, TSB</div>
+        </div>
+        <p class="vt-quote">"Three weeks in, a carer I never would have found told me KareHero reached out first. She didn't quit."</p>
+        <div class="vt-attr">
+          <strong>Sarah L., Head of Benefits</strong>
+          <span>TSB</span>
+        </div>
+      </div>
+      <div class="video-testi-card">
+        <div class="vt-thumb" data-src="VIDEO_TESTIMONIAL_2">
+          <div class="vt-initials">MR</div>
+          <div class="vt-play">▶</div>
+          <div class="vt-duration">2:04</div>
+          <div class="vt-name-bar">Marcus R. — VP People, Aviva</div>
+        </div>
+        <p class="vt-quote">"I stopped being the person who Googles care homes. The adviser had the NHS funding route mapped before I had opened my email."</p>
+        <div class="vt-attr">
+          <strong>Marcus R., VP People</strong>
+          <span>Aviva</span>
+        </div>
+      </div>
+      <div class="video-testi-card">
+        <div class="vt-thumb" data-src="VIDEO_TESTIMONIAL_3">
+          <div class="vt-initials">JH</div>
+          <div class="vt-play">▶</div>
+          <div class="vt-duration">1:52</div>
+          <div class="vt-name-bar">Jennifer H. — Head of HR, British Airways</div>
+        </div>
+        <p class="vt-quote">"I put it in the EVP. Not as a tick-box. Because when someone's parent needs a care home, they call KareHero, not HR."</p>
+        <div class="vt-attr">
+          <strong>Jennifer H., Head of HR</strong>
+          <span>British Airways</span>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:32px;font-size:15px;color:var(--text-dim);text-align:center;font-family:var(--mono);">Named employer clients include TSB, British Airways, Aviva, Bupa, St. James's Place.</p>
+  </div>
+</section>
+
+<!-- ── QUALIFICATION ── -->
+<section id="qualification">
+  <div class="container">
+    <div class="section-label">Is this the right fit?</div>
+    <h2>Three employer profiles where KareHero delivers.<br>One where it does not.</h2>
+    <div class="qual-grid reveal">
+      <div class="qual-card fit">
+        <div class="qual-tag fit">✓ This is you</div>
+        <h3>The Hidden Carer Employer</h3>
+        <p>You have 1,000+ employees and you know statistically that 200 of them are active carers right now. Most have never told you. Your EAP utilisation data shows low engagement for caring-related support. You need a way to reach the employees who are quietly managing a crisis before they leave.</p>
+      </div>
+      <div class="qual-card fit">
+        <div class="qual-tag fit">✓ This is you</div>
+        <h3>The Carer's Leave Act Responder</h3>
+        <p>The Act came into force and you gave employees a week's unpaid leave. You know that is not enough — they need the infrastructure behind the leave to make it meaningful. Your benefits review this year needs a credible answer to "what do we actually offer carers?"</p>
+      </div>
+      <div class="qual-card fit">
+        <div class="qual-tag fit">✓ This is you</div>
+        <h3>The ESG Evidence Seeker</h3>
+        <p>Your ESG commitment includes workforce wellbeing metrics. You need proof of action, not just policy. The Employers for Carers designation and quantified outcomes (retention saved, funding accessed, families supported) become the evidence in your annual report and talent attraction material.</p>
+      </div>
+      <div class="qual-card no-fit">
+        <div class="qual-tag no-fit">✗ Not the right fit</div>
+        <h3>The Company Under 250 People</h3>
+        <p>KareHero's enterprise model is designed for large UK employers where scale justifies the investment and where the retention risk calculation is significant. If your company has fewer than 250 employees, the current model is not optimised for your budget profile. Talk to the team — there may be a route, but it should be the right fit for both parties.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REVENUE GAP ── -->
+<section id="revenue-gap">
+  <div class="container">
+    <div class="section-label">The cost of not acting</div>
+    <h2>The retention maths every HR Director<br>needs to run once.</h2>
+    <p style="max-width:580px;color:var(--text-muted);">The question is not whether KareHero costs money. The question is whether the cost of caring employees leaving is larger. This calculation is the same for every 5,000-person UK employer.</p>
+    <div class="gap-calc reveal">
+      <div class="gap-row">
+        <div>
+          <div class="gap-label">Active carers in a 5,000-person workforce</div>
+          <div class="gap-note">Carers UK: 1 in 5 employees is an active caregiver</div>
+        </div>
+        <div class="gap-value">1,000</div>
+      </div>
+      <div class="gap-row">
+        <div>
+          <div class="gap-label">Carers who burn out or leave each year</div>
+          <div class="gap-note">Carers UK: 10% of adult carers leave employment annually to care full-time</div>
+        </div>
+        <div class="gap-value">100</div>
+      </div>
+      <div class="gap-row">
+        <div>
+          <div class="gap-label">Average UK employee replacement cost</div>
+          <div class="gap-note">CIPD benchmark for professional roles</div>
+        </div>
+        <div class="gap-value">£30,000</div>
+      </div>
+      <div class="gap-row">
+        <div>
+          <div class="gap-label">Annual retention risk from carer attrition</div>
+          <div class="gap-note">100 employees × £30,000 = annual cost of no intervention</div>
+        </div>
+        <div class="gap-value">£3,000,000</div>
+      </div>
+      <div class="gap-row">
+        <div>
+          <div class="gap-label">KareHero annual cost (proxy, 5,000-person employer)</div>
+          <div class="gap-note">Enterprise contract, estimated from comparable employee benefit platforms</div>
+        </div>
+        <div class="gap-value">£40K–£150K</div>
+      </div>
+      <div class="gap-row">
+        <div>
+          <div class="gap-label">ROI at 10% retention improvement</div>
+          <div class="gap-note">10 employees retained × £30,000 = £300,000 saved. KareHero at £150K = 2x ROI minimum.</div>
+        </div>
+        <div class="gap-value">2x+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OFFER ── -->
+<section id="offer">
+  <div class="container">
+    <div class="section-label">What you get</div>
+    <h2>Everything included with KareHero.</h2>
+    <p style="max-width:560px;color:var(--text-muted);margin-bottom:0;">Six components. One benefit. Every employee who is managing a care situation — found, supported, and retained.</p>
+    <p style="max-width:580px;color:var(--text-muted);">Every component is designed to reach the employees who need it before they reach crisis point — not after they have already decided to leave.</p>
+    <div class="offer-grid reveal">
+      <div class="offer-card">
+        <div class="offer-icon">🧭</div>
+        <h3>Dedicated Care Adviser</h3>
+        <p>Every employee with a care need is matched to a qualified adviser with specialist knowledge of adult social care, NHS funding routes, legal frameworks, and care placement. Not a chatbot. Not a resource library. A human expert.</p>
+        <p class="offer-without">Without this: employees Google "care homes UK" on their lunch break, find nothing they trust, and start quietly planning their exit.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">💷</div>
+        <h3>Care Funding Navigation</h3>
+        <p>NHS Continuing Healthcare, local authority care funding, attendance allowance, Carer's Allowance — routes most employees have never heard of. KareHero advisers have accessed £10.6M in untapped funding for employees to date.</p>
+        <p class="offer-without">Without this: employees pay for care from their own savings or leave work to become the primary carer — both outcomes that accelerate their departure from your workforce.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">⚖️</div>
+        <h3>Legal and Power of Attorney Support</h3>
+        <p>Power of Attorney, hospital discharge appeals, care contract review — the legal layer that most employees do not know they need until it is too late to act efficiently. KareHero covers this within the same adviser relationship.</p>
+        <p class="offer-without">Without this: employees spend weeks navigating legal processes alone, racking up stress and distraction while still showing up to work unable to focus.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🏷️</div>
+        <h3>Carer-Friendly Employer Designation</h3>
+        <p>Named on the Employers for Carers network. Used in EVP, talent attraction, and ESG reporting. The designation is backed by the evidence that KareHero generates — families helped, funding accessed, employees retained.</p>
+        <p class="offer-without">Without this: your carer-friendly commitment is a policy document. With this: it is a named programme with quantified outcomes you can report to your board.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">📊</div>
+        <h3>Employer Insights Dashboard</h3>
+        <p>Anonymised, aggregated data on the care situations your workforce is navigating — not individual cases, but the patterns. Where your hidden carers are concentrated. What care challenges are driving the highest stress. What is working.</p>
+        <p class="offer-without">Without this: "We know some of our people are struggling. We just can't see them." With this: you have data, not anecdote.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🎓</div>
+        <h3>Manager Training</h3>
+        <p>Equips line managers to have the conversation with employees who show signs of carer stress — before the employee reaches crisis. Training includes how to signpost to KareHero without breaching confidentiality or making assumptions.</p>
+        <p class="offer-without">Without this: managers either do nothing (they don't know what to offer) or they over-reach (well-meaning but unhelpful). Both outcomes leave the employee feeling unseen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IMPLEMENTATION TIMELINE ── -->
+<section id="implementation">
+  <div class="container">
+    <div class="section-label">How it works in practice</div>
+    <h2>What the first 90 days look like for your team.</h2>
+    <p style="max-width:580px;color:var(--text-muted);margin-bottom:40px;">No long IT procurement. No all-staff retraining. KareHero is built to reach employees quickly — because the carers in your workforce who need help today cannot wait six months for a rollout.</p>
+    <div class="step-cards reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3>Weeks 1–2: Setup and configuration</h3>
+        <p>Your HR team completes a 45-minute onboarding session. KareHero is configured with your company branding, employee communications template, and preferred contact route (email, intranet, or manager referral pathway).</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3>Weeks 3–4: Employee launch</h3>
+        <p>KareHero sends a tailored employee communication — co-branded with your organisation — that introduces the benefit and makes it easy to start a confidential conversation with an adviser. Most companies see first employee contacts within 48 hours of launch.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3>Day 90: First employer review</h3>
+        <p>You receive a confidential, anonymised summary: how many employees accessed support, which types of care situations are most common in your workforce, and what the benefit is saving in retention risk terms. The data becomes part of your ESG and wellbeing reporting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq">
+  <div class="container">
+    <div class="section-label">Common questions</div>
+    <h2>The objections HR Directors raise.<br>Honest answers.</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">We already have an EAP. Why do we need KareHero? <span>+</span></div>
+        <div class="faq-a">EAP counsellors are trained in mental health support, not adult social care. When an employee's mother needs a care assessment, a hospital discharge appeal, or an NHS Continuing Healthcare application, an EAP counsellor will refer them elsewhere — back to square one. KareHero advisers are specialists in the adult care system. The EAP handles the emotional impact of caring; KareHero handles the practical navigation. Both have a role. They are not substitutes.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How many of our employees will actually use it? <span>+</span></div>
+        <div class="faq-a">More than you expect. Research shows 1 in 5 of your employees is an active caregiver. Of those, 2 in 5 have never disclosed this to their employer. KareHero's proactive outreach model — not a passive resource employees must find — increases engagement significantly above EAP-level utilisation rates. More to the point: the cost of KareHero is exceeded by retaining a single senior employee who would otherwise have left. Utilisation is a secondary question.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">We are not sure how many of our employees are carers. <span>+</span></div>
+        <div class="faq-a">This is precisely the problem KareHero solves. Hidden carers are the highest-risk employees because they carry the burden alone — and because your organisation cannot support what it cannot see. KareHero's employer insights dashboard surfaces the patterns: where in your organisation carer stress is concentrated, what types of care situations are most common, and where the highest retention risk sits. You will know more about your caring workforce within 90 days than you have known in the last decade.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">The board will ask about ROI. What do we tell them? <span>+</span></div>
+        <div class="faq-a">The retention maths is straightforward: a 5,000-person employer faces approximately £3M in annual retention risk from carer attrition alone (1 in 5 carers, 10% burnout rate, £30,000 average replacement cost per employee). KareHero's annual cost represents a fraction of that exposure. At 10% retention improvement — 10 employees retained instead of leaving — the saving is £300,000. KareHero's cost is typically £40,000 to £150,000 for an employer of that size. The board question answers itself.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">We are already a Carers UK member and have the Employer for Carers mark. Is KareHero different? <span>+</span></div>
+        <div class="faq-a">The Employers for Carers network provides policy guidance, research, and community. It does not provide care advisers, funding navigation, or legal support for individual employees. KareHero installs the operational infrastructure that makes the designation meaningful — the evidence behind the commitment. Most Employers for Carers members who add KareHero describe it as "finally having something to back up the carer-friendly label."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GUARANTEE ── -->
+<section id="guarantee">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">Our commitment</div>
+    <h2>KareHero's engagement guarantee.</h2>
+    <div style="max-width:640px;margin:40px auto 0;background:rgba(27,94,59,0.06);border:1px solid rgba(27,94,59,0.22);border-radius:14px;padding:44px 40px;text-align:left;">
+      <p style="font-size:18px;color:var(--text);line-height:1.7;margin-bottom:20px;">If KareHero is not reaching your hidden carers within the first 90 days — because the benefit is not being seen by the employees who need it most — KareHero's engagement team works with you to fix activation. At no additional cost.</p>
+      <p style="font-size:16px;color:var(--text-muted);line-height:1.65;margin-bottom:20px;">Our promise is not results or your money back. It is something more specific: we will not let a benefit sit invisible. The data shows who is engaging and who is not. If reach is below the expected benchmark, we act on it with you.</p>
+      <p style="font-size:15px;font-family:var(--mono);color:var(--green-mid);">If this does not work for your organisation, we will tell you that upfront — before you commit. No obligation, no pressure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section id="final-cta">
+  <div class="container" style="text-align:center;">
+    <div class="section-label" style="color:var(--green-pale);text-align:center;">Take the next step</div>
+    <h2>600 people left the workforce yesterday.<br>Some worked for a company like yours.</h2>
+    <p class="sub">Book a 30-minute demonstration. See how KareHero identifies your hidden carers, delivers support that keeps them in work, and gives your HR team the evidence to report back to the board.</p>
+    <a href="https://karehero.com/book-a-demo" class="btn-final">Book a Demo with KareHero →</a>
+    <p style="margin-top:20px;font-size:14px;color:rgba(255,255,255,0.4);font-family:var(--mono);">30 minutes. No obligation. See the product and the data together.</p>
+  </div>
+</section>
+
+<!-- ── ATTRIBUTION FOOTER ── -->
+<div class="attribution-footer">
+  This is a mockup of what a KareHero customer acquisition page could look like for the HR Director segment. Strategy and mockup prepared by Jean Mundabi Fala, MDB Growth Capital.
+</div>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+reveals.forEach(el => io.observe(el));
+
+// FAQ toggle
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const a = q.nextElementSibling;
+    const isOpen = a.style.display === 'block';
+    document.querySelectorAll('.faq-a').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.faq-q span').forEach(el => el.textContent = '+');
+    if(!isOpen){ a.style.display = 'block'; q.querySelector('span').textContent = '−'; }
+  });
+});
+</script>
+
+</body>
+</html>

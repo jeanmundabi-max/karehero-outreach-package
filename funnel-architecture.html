@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KareHero Funnel Architecture | MDB Growth Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep:#0F3D26;--green-primary:#1B5E3B;--green-mid:#2D7A52;--green-light:#3A9464;
+    --coral:#D95F3B;--amber:#C4872A;--cream:#FFFEF9;--cream2:#F7F5EF;--cream3:#EEEADE;
+    --border:#D4CFC3;--text:#1C1A14;--text-muted:#5C5748;--text-dim:#8C8679;
+    --font:'Space Grotesk',system-ui,sans-serif;--mono:'Space Mono',monospace;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.7;}
+
+  header{background:linear-gradient(135deg,var(--green-deep),var(--green-primary));padding:56px 48px;color:#fff;}
+  header .label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,0.5);font-family:var(--mono);margin-bottom:10px;}
+  header h1{font-size:clamp(26px,4vw,42px);font-weight:800;margin-bottom:10px;letter-spacing:-0.5px;}
+  header p{font-size:16px;color:rgba(255,255,255,0.7);max-width:520px;}
+
+  main{max-width:1100px;margin:0 auto;padding:56px 48px;}
+
+  .section-label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--green-mid);margin-bottom:8px;font-family:var(--mono);}
+  h2{font-size:clamp(22px,3vw,34px);font-weight:800;letter-spacing:-0.3px;margin-bottom:10px;}
+  .lead{font-size:16px;color:var(--text-muted);max-width:580px;margin-bottom:36px;line-height:1.7;}
+
+  /* CASCADE TABLE */
+  .cascade-wrap{overflow-x:auto;margin-bottom:60px;}
+  .cascade{width:100%;border-collapse:collapse;font-size:14px;}
+  .cascade th{padding:14px 18px;text-align:left;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;border-bottom:2px solid var(--border);white-space:nowrap;}
+  .cascade th:first-child{background:var(--cream3);color:var(--text-muted);}
+  .cascade th.today{background:rgba(192,57,43,0.08);color:var(--coral);}
+  .cascade th.after{background:rgba(27,94,59,0.08);color:var(--green-mid);}
+  .cascade th.missing{background:rgba(196,135,42,0.08);color:var(--amber);}
+  .cascade td{padding:16px 18px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+  .cascade tr:last-child td{border-bottom:none;}
+  .cascade td:first-child{font-weight:700;font-size:13px;white-space:nowrap;background:var(--cream2);border-right:1px solid var(--border);}
+  .cascade td.today-cell{background:rgba(192,57,43,0.03);}
+  .cascade td.after-cell{background:rgba(27,94,59,0.03);}
+  .cascade td.missing-cell{background:rgba(196,135,42,0.03);}
+
+  .status-red{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--coral);font-family:var(--mono);}
+  .status-green{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--green-mid);font-family:var(--mono);}
+  .status-amber{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--amber);font-family:var(--mono);}
+
+  /* STAGE HEADER */
+  .stage-label{
+    display:flex;align-items:center;gap:12px;
+    padding:14px 0;
+    margin-bottom:0;
+  }
+  .stage-icon{width:36px;height:36px;border-radius:8px;background:var(--green-primary);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+  .stage-name{font-size:14px;font-weight:700;}
+  .stage-sub{font-size:12px;color:var(--text-muted);}
+
+  /* GROWTH LOOPS */
+  .loops{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+  .loop{background:#fff;border:1px solid var(--border);border-radius:14px;padding:28px;position:relative;overflow:hidden;}
+  .loop::before{content:attr(data-n);position:absolute;top:16px;right:20px;font-size:52px;font-weight:800;color:rgba(27,94,59,0.05);font-family:var(--mono);line-height:1;}
+  .loop h3{font-size:16px;font-weight:700;color:var(--green-primary);margin-bottom:14px;}
+  .loop-steps{display:flex;flex-direction:column;gap:8px;}
+  .loop-step{display:flex;gap:8px;font-size:13px;color:var(--text-muted);align-items:flex-start;line-height:1.5;}
+  .loop-step .arr{color:var(--green-light);flex-shrink:0;margin-top:2px;}
+
+  /* LEAK SUMMARY */
+  .leak-summary{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px;}
+  .leak-item{padding:20px;border-radius:12px;border:1px solid var(--border);}
+  .leak-item.red{background:rgba(192,57,43,0.04);border-left:4px solid var(--coral);}
+  .leak-item.green{background:rgba(27,94,59,0.04);border-left:4px solid var(--green-mid);}
+  .leak-item h4{font-size:14px;font-weight:700;margin-bottom:6px;}
+  .leak-item p{font-size:13px;color:var(--text-muted);line-height:1.55;}
+
+  footer{background:var(--cream2);border-top:1px solid var(--border);padding:24px 48px;font-size:12px;color:var(--text-dim);font-family:var(--mono);}
+
+  @media(max-width:768px){main,header,footer{padding:32px 24px;}.loops{grid-template-columns:1fr;}.leak-summary{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">Funnel Architecture — KareHero · MDB Growth Capital · May 2026</div>
+  <h1>KareHero Funnel Architecture</h1>
+  <p>4-stage cascade × 3 columns: Today, After MDB, and Missing. Shows exactly where the funnel leaks and what gets installed to fix it.</p>
+</header>
+
+<main>
+
+  <div class="section-label">Funnel Cascade</div>
+  <h2>Where attention becomes revenue — and where it does not.</h2>
+  <p class="lead">KareHero's product works. The commercial process works. The two broken stages are at the top — awareness and outbound reach. These are the only stages that require external infrastructure.</p>
+
+  <div class="cascade-wrap">
+    <table class="cascade">
+      <thead>
+        <tr>
+          <th>Stage</th>
+          <th class="today">TODAY — What exists</th>
+          <th class="after">AFTER MDB — What gets built</th>
+          <th class="missing">MISSING — What is absent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="stage-label">
+              <div>
+                <div class="stage-name">Top of Funnel</div>
+                <div class="stage-sub">Attraction</div>
+              </div>
+            </div>
+          </td>
+          <td class="today-cell">
+            <div class="status-red">🔴 Broken</div>
+            <p style="margin-top:8px;">Stephanie's professional network (Uber EMEA, Harvard, LocalGlobe VC). REBA events and Carers UK conferences. LinkedIn posts (3,483 followers). HR press coverage when it appears. All require buyers to already be engaged or already know KareHero exists.</p>
+          </td>
+          <td class="after-cell">
+            <div class="status-green">✅ Channel live</div>
+            <p style="margin-top:8px;">28 HR Directors in active benefits review windows contacted by week two. Signal-based targeting: Employers for Carers members, Carer's Leave Act compliance reviewers, new Head of Benefits hires. 20 to 30 new targets added monthly as signals are found.</p>
+          </td>
+          <td class="missing-cell">
+            <div class="status-amber">⚠️ Not yet built</div>
+            <p style="margin-top:8px;">Case study content for organic search (TSB, KPMG outcomes unpublished). CIPD authority positioning. Comparison page addressing "KareHero vs EAP" in buyer language. Backlink strategy to fix Google page one absence for "eldercare employee benefit UK."</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stage-label">
+              <div>
+                <div class="stage-name">Middle of Funnel</div>
+                <div class="stage-sub">Alignment</div>
+              </div>
+            </div>
+          </td>
+          <td class="today-cell">
+            <div class="status-amber">🟡 Partial</div>
+            <p style="margin-top:8px;">When buyers engage, the product communicates well. Named FTSE 100 clients provide credibility. Care Sourcer acquisition adds scale credibility. The commercial team enters well-prepared. But buyers who find KareHero in a benefits review have already built an informal shortlist. KareHero enters late.</p>
+          </td>
+          <td class="after-cell">
+            <div class="status-green">✅ Enters early</div>
+            <p style="margin-top:8px;">Outbound sequences position KareHero before the informal shortlist forms. The HR Director who received the lead list and the search gap email has KareHero framed as the product with deeper coverage before she opens Google. Lottie is no longer the default reference point.</p>
+          </td>
+          <td class="missing-cell">
+            <div class="status-amber">⚠️ Nurture layer absent</div>
+            <p style="margin-top:8px;">No 20-week nurture sequence for buyers who engaged but are not yet in a window. No retargeting for buyers who opened content. Authority Engine not yet installed — the 95% who are not evaluating right now have no warm-up path.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stage-label">
+              <div>
+                <div class="stage-name">Bottom of Funnel</div>
+                <div class="stage-sub">Activation</div>
+              </div>
+            </div>
+          </td>
+          <td class="today-cell">
+            <div class="status-green">🟢 Working</div>
+            <p style="margin-top:8px;">Matthew Johnson (CRO) is in place. The commercial process exists. Deals close with major employers — KPMG, Deloitte, BT Group, TSB. When KareHero gets into an evaluation, the product sells itself. Close rate and ACV are not the problem.</p>
+          </td>
+          <td class="after-cell">
+            <div class="status-green">✅ Better context on entry</div>
+            <p style="margin-top:8px;">When the commercial team enters conversations sourced through MDB outbound, the HR Director has already seen the lead list, the competitive comparison, and the Carer's Leave Act framing. The first commercial call starts further down the funnel.</p>
+          </td>
+          <td class="missing-cell">
+            <div class="status-amber">⚠️ Proof not deployed</div>
+            <p style="margin-top:8px;">TSB, KPMG, Deloitte outcomes not published as formal case studies. These proof points exist but are not being used in the commercial process at scale. A published TSB case study would close 30-second credibility questions before the first call.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stage-label">
+              <div>
+                <div class="stage-name">Post-Sale</div>
+                <div class="stage-sub">Compounding</div>
+              </div>
+            </div>
+          </td>
+          <td class="today-cell">
+            <div class="status-amber">🟡 Partial</div>
+            <p style="margin-top:8px;">Clients are successful (1M+ families supported, £10.6M care funding accessed). Employer outcomes are real. But outcomes are not documented, published, or converted into acquisition content. Each client is a self-contained relationship — not a case study that feeds the top of funnel.</p>
+          </td>
+          <td class="after-cell">
+            <div class="status-green">✅ Flywheel starts</div>
+            <p style="margin-top:8px;">Case study production begins with TSB in month 2. Published outcome data becomes outbound email content ("A 5,000-person employer accessed £X in care funding for its employees in year one"). Each new client makes the next outbound campaign more specific and more credible.</p>
+          </td>
+          <td class="missing-cell">
+            <div class="status-amber">⚠️ Referral system absent</div>
+            <p style="margin-top:8px;">No structured HR Director referral programme. KareHero's FTSE 100 clients have peer networks of hundreds of HR Directors — none of whom are being systematically introduced to KareHero by their peers through any structured programme.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:0 0 56px 0;">
+
+  <!-- GROWTH LOOPS -->
+  <div class="section-label">Growth Feedback Loops</div>
+  <h2>Three loops that compound over time.</h2>
+  <p class="lead">Each loop self-reinforces. By month 6, the channel is stronger than it was in month one — without additional investment.</p>
+  <div class="loops">
+    <div class="loop" data-n="01">
+      <h3>Employers for Carers Acquisition Loop</h3>
+      <div class="loop-steps">
+        <div class="loop-step"><span class="arr">→</span>Outbound reaches HR Director in active benefits review (EfC signal confirmed)</div>
+        <div class="loop-step"><span class="arr">→</span>KareHero enters evaluation with lead list and competitive comparison</div>
+        <div class="loop-step"><span class="arr">→</span>Product wins head-to-head (funding + legal vs Lottie's resource library)</div>
+        <div class="loop-step"><span class="arr">→</span>Employer signs. Employee outcomes documented.</div>
+        <div class="loop-step"><span class="arr">→</span>Outcome data becomes case study for next outbound campaign</div>
+        <div class="loop-step"><span class="arr">→</span>Each client shortens the next sales cycle ↩</div>
+      </div>
+    </div>
+    <div class="loop" data-n="02">
+      <h3>Case Study Credibility Flywheel</h3>
+      <div class="loop-steps">
+        <div class="loop-step"><span class="arr">→</span>TSB, KPMG outcomes published as formal case studies</div>
+        <div class="loop-step"><span class="arr">→</span>Case studies submitted to REBA, People Management, Employee Benefits</div>
+        <div class="loop-step"><span class="arr">→</span>Editorial coverage generates backlinks and search presence</div>
+        <div class="loop-step"><span class="arr">→</span>KareHero appears on Google for "eldercare employee benefit UK"</div>
+        <div class="loop-step"><span class="arr">→</span>Inbound HR Director finds case study, recognises peer company</div>
+        <div class="loop-step"><span class="arr">→</span>Win rate increases. More case studies. Organic search grows. ↩</div>
+      </div>
+    </div>
+    <div class="loop" data-n="03">
+      <h3>HR Network Intelligence Loop</h3>
+      <div class="loop-steps">
+        <div class="loop-step"><span class="arr">→</span>28 HR Directors contacted. Replies arrive (interest, timing, not fit)</div>
+        <div class="loop-step"><span class="arr">→</span>Every reply enriches targeting model (which signals produce replies)</div>
+        <div class="loop-step"><span class="arr">→</span>Signal model improves. Next campaign more precise.</div>
+        <div class="loop-step"><span class="arr">→</span>Reply rate increases month-on-month</div>
+        <div class="loop-step"><span class="arr">→</span>Clients refer KareHero into HR peer networks</div>
+        <div class="loop-step"><span class="arr">→</span>Channel compounds without additional spend ↩</div>
+      </div>
+    </div>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:56px 0 40px 0;">
+
+  <!-- LEAK SUMMARY -->
+  <div class="section-label">Priority Action Summary</div>
+  <h2>Fix these two things first.</h2>
+  <div class="leak-summary">
+    <div class="leak-item red">
+      <h4>🔴 Priority 1: Outbound channel (Top of Funnel)</h4>
+      <p>No systematic way to reach HR Directors at the 230+ Employers for Carers members who have never been contacted. This is the primary revenue gap. MDB installs this in week one.</p>
+    </div>
+    <div class="leak-item red">
+      <h4>🔴 Priority 2: Case study publication (Post-Sale → Top of Funnel)</h4>
+      <p>TSB, KPMG, and Deloitte outcomes exist but are not published. Each unpublished case study is a missed opportunity for search presence, credibility content, and peer referrals.</p>
+    </div>
+    <div class="leak-item green">
+      <h4>🟢 Working: Product and commercial process</h4>
+      <p>KareHero's product wins every head-to-head evaluation. Matthew Johnson (CRO) closes deals at FTSE 100 scale. These do not need fixing — they need more at-bats.</p>
+    </div>
+    <div class="leak-item green">
+      <h4>🟢 Working: Named client credibility</h4>
+      <p>KPMG, Deloitte, BT Group, TSB, British Airways on the client list gives KareHero more social proof than most pre-Series A companies. The proof exists. It needs to be deployed in outbound.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>Strategy and GTM research by Jean Mundabi Fala, MDB Growth Capital · KareHero Funnel Architecture · May 2026</footer>
+</body>
+</html>

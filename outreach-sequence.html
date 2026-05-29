@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KareHero Outreach Sequence | MDB Growth Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep:#0F3D26;--green-primary:#1B5E3B;--green-mid:#2D7A52;--green-light:#3A9464;
+    --coral:#D95F3B;--amber:#C4872A;--cream:#FFFEF9;--cream2:#F7F5EF;--cream3:#EEEADE;
+    --border:#D4CFC3;--text:#1C1A14;--text-muted:#5C5748;--text-dim:#8C8679;
+    --li:#0077B5;
+    --font:'Space Grotesk',system-ui,sans-serif;--mono:'Space Mono',monospace;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.7;}
+
+  header{background:linear-gradient(135deg,var(--green-deep),var(--green-primary));padding:56px 48px;color:#fff;}
+  header .label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,0.5);font-family:var(--mono);margin-bottom:10px;}
+  header h1{font-size:clamp(26px,4vw,42px);font-weight:800;margin-bottom:12px;letter-spacing:-0.5px;}
+  header p{font-size:16px;color:rgba(255,255,255,0.7);max-width:520px;}
+
+  /* STATS BAR */
+  .stats-bar{background:var(--cream2);border-bottom:1px solid var(--border);padding:18px 48px;}
+  .stats-inner{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;max-width:800px;margin:0 auto;}
+  .stat-item{text-align:center;}
+  .stat-num{font-size:22px;font-weight:800;color:var(--green-primary);}
+  .stat-lbl{font-size:11px;color:var(--text-muted);font-family:var(--mono);}
+
+  main{max-width:900px;margin:0 auto;padding:56px 48px;}
+
+  .section-label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--green-mid);margin-bottom:8px;font-family:var(--mono);}
+  h2{font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-0.3px;margin-bottom:10px;}
+  .lead{font-size:16px;color:var(--text-muted);max-width:580px;margin-bottom:40px;line-height:1.7;}
+
+  /* TIMELINE */
+  .timeline{position:relative;padding-left:72px;margin-bottom:60px;}
+  .timeline::before{content:'';position:absolute;left:20px;top:24px;bottom:0;width:2px;background:var(--border);}
+
+  .tl-item{position:relative;margin-bottom:24px;}
+  .tl-dot{
+    position:absolute;
+    left:-55px;
+    top:14px;
+    width:32px;height:32px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:11px;font-weight:700;
+    font-family:var(--mono);
+    border:2px solid var(--bg2);
+    flex-shrink:0;
+  }
+  .tl-dot.email{background:var(--green-primary);color:#fff;}
+  .tl-dot.linkedin{background:var(--li);color:#fff;}
+  .tl-dot.nurture{background:var(--amber);color:#fff;}
+
+  .tl-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .tl-header{padding:14px 20px;background:var(--cream2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;cursor:pointer;}
+  .tl-header:hover{background:var(--cream3);}
+  .tl-header-left{display:flex;align-items:center;gap:12px;}
+  .day-badge{display:inline-flex;align-items:center;gap:5px;background:var(--green-primary);color:#fff;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:700;font-family:var(--mono);}
+  .day-badge.li{background:var(--li);}
+  .day-badge.nurture{background:var(--amber);}
+  .tl-title{font-size:15px;font-weight:700;}
+  .tl-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .meta-tag{font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 9px;border-radius:20px;border:1px solid;font-family:var(--mono);}
+  .meta-tag.email-tag{background:rgba(27,94,59,0.08);color:var(--green-mid);border-color:rgba(27,94,59,0.15);}
+  .meta-tag.li-tag{background:rgba(0,119,181,0.08);color:var(--li);border-color:rgba(0,119,181,0.15);}
+  .meta-tag.nurture-tag{background:rgba(196,135,42,0.08);color:var(--amber);border-color:rgba(196,135,42,0.15);}
+  .pss-badge{display:inline-flex;align-items:center;gap:5px;background:var(--green-primary);color:#fff;padding:3px 11px;border-radius:20px;font-size:10px;font-weight:700;font-family:var(--mono);}
+  .toggle-btn{font-size:18px;color:var(--text-muted);}
+
+  .tl-body{display:none;padding:20px 22px;font-size:14px;line-height:1.75;border-top:1px solid var(--border);}
+  .tl-body.open{display:block;}
+  .tl-body p{margin-bottom:12px;}
+  .tl-body p:last-child{margin-bottom:0;}
+  .email-subject{font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--text-dim);font-family:var(--mono);margin-bottom:14px;}
+
+  .tl-note{padding:12px 20px;background:var(--cream2);border-top:1px solid var(--border);font-size:12px;color:var(--text-muted);font-family:var(--mono);}
+
+  footer{background:var(--cream2);border-top:1px solid var(--border);padding:24px 48px;font-size:12px;color:var(--text-dim);font-family:var(--mono);}
+
+  @media(max-width:768px){main,header,.stats-bar,footer{padding:32px 24px;}.timeline{padding-left:48px;}.tl-dot{left:-38px;width:24px;height:24px;font-size:9px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">Outreach Sequence — KareHero · MDB Growth Capital · May 2026</div>
+  <h1>KareHero Outreach Sequence</h1>
+  <p>21-day multi-channel sequence for Stephanie Leung. Email and LinkedIn in parallel. Click each touchpoint to expand the full message.</p>
+</header>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">2</div><div class="stat-lbl">emails</div></div>
+    <div class="stat-item"><div class="stat-num">3</div><div class="stat-lbl">LinkedIn touches</div></div>
+    <div class="stat-item"><div class="stat-num">21-day</div><div class="stat-lbl">sequence</div></div>
+    <div class="stat-item"><div class="stat-num">PSS avg 86</div><div class="stat-lbl">email quality score</div></div>
+    <div class="stat-item"><div class="stat-num">Trigger + Friction</div><div class="stat-lbl">angle types</div></div>
+  </div>
+</div>
+
+<main>
+  <div class="section-label">Full Sequence</div>
+  <h2>Day-by-day touchpoint schedule.</h2>
+  <p class="lead">Each touchpoint uses a different angle. The sequence stops on the first positive reply. LinkedIn runs in parallel to email, not as a replacement.</p>
+
+  <div class="timeline">
+
+    <!-- DAY 0 — LINKEDIN DM TEXT HOOK -->
+    <div class="tl-item">
+      <div class="tl-dot linkedin">LI</div>
+      <div class="tl-card">
+        <div class="tl-header" onclick="toggle(this)">
+          <div class="tl-header-left">
+            <span class="day-badge li">Day 0</span>
+            <div>
+              <div class="tl-title">LinkedIn DM — Text Hook (after connection accepted)</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Intrigue gap — no ask, no link, no CTA. Just the hook.</div>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <span class="meta-tag li-tag">LinkedIn DM</span>
+            <span class="toggle-btn">+</span>
+          </div>
+        </div>
+        <div class="tl-body">
+          <p>Hey Stephanie, saw your post about the TSB partnership reaching 5,000 colleagues with carer support. Had an idea for turning that exact visibility gap into something that attracts more HR Directors mid-benefits-review. Sending a quick video shortly.</p>
+        </div>
+        <div class="tl-note">Recipient: Stephanie Leung · Send after connection accepted · No video link yet — hook only · Wait 24–48 hours then send Day 1 video</div>
+      </div>
+    </div>
+
+    <!-- DAY 1 — LINKEDIN DM VIDEO DROP -->
+    <div class="tl-item">
+      <div class="tl-dot linkedin">LI</div>
+      <div class="tl-card">
+        <div class="tl-header" onclick="toggle(this)">
+          <div class="tl-header-left">
+            <span class="day-badge li">Day 1</span>
+            <div>
+              <div class="tl-title">LinkedIn DM — Video Drop (24–48 hrs after text hook)</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">She is expecting this — send whether or not she replied to Day 0</div>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <span class="meta-tag li-tag">LinkedIn DM</span>
+            <span class="toggle-btn">+</span>
+          </div>
+        </div>
+        <div class="tl-body">
+          <p>Here it is — LINKEDIN_DM_VSL_URL</p>
+          <p>And the page: https://jeanmundabi-max.github.io/karehero-outreach-package/landing-page-hr-director-eldercare.html</p>
+          <p>Happy to walk through how we'd drive the right traffic to this specifically.</p>
+        </div>
+        <div class="tl-note">Recipient: Stephanie Leung · Replace LINKEDIN_DM_VSL_URL with Loom/Tella screen-recording link · Send even if no reply to Day 0</div>
+      </div>
+    </div>
+
+    <!-- DAY 0 — EMAIL 1 -->
+    <div class="tl-item">
+      <div class="tl-dot email">E1</div>
+      <div class="tl-card">
+        <div class="tl-header" onclick="toggle(this)">
+          <div class="tl-header-left">
+            <span class="day-badge">Day 0</span>
+            <div>
+              <div class="tl-title">Email 1 — Trigger: "KareHero beyond the network."</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Delivery CTA — 28 HR Directors lead list as hook</div>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <span class="meta-tag email-tag">Trigger</span>
+            <span class="pss-badge">PSS 87/100</span>
+            <span class="toggle-btn">+</span>
+          </div>
+        </div>
+        <div class="tl-body">
+          <div class="email-subject">Subject: KareHero beyond the network.</div>
+          <p>Stephanie,</p>
+          <p>KareHero has KPMG, Deloitte, and BT Group live. That model does not reach the 230 employers in the Employers for Carers network who have never been contacted.</p>
+          <p>The risk is that HR Directors shortlist Lottie and Bright Horizons through peer referrals before KareHero is in the conversation.</p>
+          <p>We help you reach HR Directors already in a benefits review window — before they close the shortlist.</p>
+          <p>A few large employer wins at that contract size can mean £200,000 or more.</p>
+          <p>We handle the account research, outreach, and qualification so your team stays focused on commercial conversations.</p>
+          <p>I can send the list over.</p>
+          <p>Jean</p>
+        </div>
+        <div class="tl-note">Angle: Trigger (why now: 230 EfC employers unreached, Lottie shortlist risk) · Word count: 97 · CTA: Delivery (leads.md confirmed, 28 named entries)</div>
+      </div>
+    </div>
+
+    <!-- DAY 1 — LINKEDIN CONNECT -->
+    <div class="tl-item">
+      <div class="tl-dot linkedin">LI</div>
+      <div class="tl-card">
+        <div class="tl-header" onclick="toggle(this)">
+          <div class="tl-header-left">
+            <span class="day-badge li">Day 1</span>
+            <div>
+              <div class="tl-title">LinkedIn — Connection Request</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Soft connection — no ask, just context</div>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <span class="meta-tag li-tag">LinkedIn Connect</span>
+            <span class="toggle-btn">+</span>
+          </div>
+        </div>
+        <div class="tl-body">
+          <p>Hi Stephanie, I've been following KareHero's work on working carer support — the TSB launch and the REBA content have been sharp. I work with early-stage B2B companies building their outbound channel. Would love to connect.</p>
+        </div>
+        <div class="tl-note">Profile: linkedin.com/in/steph2020 · Tone: warm, informed — not a pitch · References TSB and REBA specifically</div>
+      </div>
+    </div>
+
+    <!-- DAY 3 — EMAIL 2 -->
+    <div class="tl-item">
+      <div class="tl-dot email">E2</div>
+      <div class="tl-card">
+        <div class="tl-header" onclick="toggle(this)">
+          <div class="tl-header-left">
+            <span class="day-badge">Day 3</span>
+            <div>
+              <div class="tl-title">Email 2 — Friction: "The search gap."</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Question CTA — different angle from Email 1</div>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <span class="meta-tag email-tag">Friction</span>
+            <span class="pss-badge">PSS 85/100</span>
+            <span class="toggle-btn">+</span>
+          </div>
+        </div>
+        <div class="tl-body">
+          <div class="email-subject">Subject: The search gap.</div>
+          <p>Stephanie,</p>
+          <p>When an HR Director at a large professional services firm starts a benefits review, she types "eldercare employee benefit UK" on a Tuesday morning. Seniorcare by Lottie appears first. KareHero does not appear on page one.</p>
+          <p>KareHero's product covers the full care journey — funding, legal, placement. Lottie's does not. But awareness wins the shortlist.</p>
+          <p>Without a channel to reach HR Directors before they get there, KareHero surfaces only through events and introductions. The evaluation is already over for every employer who found Lottie first.</p>
+          <p>We find HR Directors in active benefits review cycles and reach them before that moment.</p>
+          <p>We handle the account research, outreach, and qualification so your team enters those conversations early.</p>
+          <p>Worth showing you how we'd approach this for KareHero?</p>
+          <p>Jean</p>
+        </div>
+        <div class="tl-note">Angle: Friction (the search gap — Tuesday morning Google search, Lottie page one) · Word count: 115 · CTA: Question (different from Email 1 Delivery CTA)</div>
+      </div>
+    </div>
+
+    <!-- DAY 5 — LINKEDIN DM -->
+    <div class="tl-item">
+      <div class="tl-dot linkedin">LI</div>
+      <div class="tl-card">
+        <div class="tl-header" onclick="toggle(this)">
+          <div class="tl-header-left">
+            <span class="day-badge li">Day 5</span>
+            <div>
+              <div class="tl-title">LinkedIn — Follow-Up DM (if connected)</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Intelligence delivery — offers the lead list</div>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <span class="meta-tag li-tag">LinkedIn DM</span>
+            <span class="toggle-btn">+</span>
+          </div>
+        </div>
+        <div class="tl-body">
+          <p>Thanks for connecting, Stephanie. I spent time researching KareHero before reaching out. The product depth — funding advice, Power of Attorney, placement — is significantly ahead of what Lottie and Bright Horizons offer. The gap is not the product.</p>
+          <p>I mapped 28 HR Directors at large UK employers currently in active benefits review windows. I can share it if useful.</p>
+        </div>
+        <div class="tl-note">Condition: only send if Stephanie accepted the connection request · Offers value (lead list) without asking for a call · Specific product differentiators named</div>
+      </div>
+    </div>
+
+    <!-- DAY 8 — LINKEDIN BREAKUP -->
+    <div class="tl-item">
+      <div class="tl-dot linkedin">LI</div>
+      <div class="tl-card">
+        <div class="tl-header" onclick="toggle(this)">
+          <div class="tl-header-left">
+            <span class="day-badge li">Day 8</span>
+            <div>
+              <div class="tl-title">LinkedIn — Breakup Message</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Low pressure — leaves door open for next quarter</div>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <span class="meta-tag li-tag">LinkedIn Breakup</span>
+            <span class="toggle-btn">+</span>
+          </div>
+        </div>
+        <div class="tl-body">
+          <p>One last note, Stephanie. The list is still here if you want it. 28 HR Directors, Tier 1 with EfC membership or carer-friendly designation, Tier 2 with live benefits review signals. Leaving it open in case the timing is better next quarter.</p>
+        </div>
+        <div class="tl-note">Tone: graceful exit, not desperate · Reminds of the value (28 HR Directors) · No hard close · Leaves the door open without creating friction</div>
+      </div>
+    </div>
+
+    <!-- DAY 21 — NURTURE -->
+    <div class="tl-item">
+      <div class="tl-dot nurture">N</div>
+      <div class="tl-card">
+        <div class="tl-header" onclick="toggle(this)">
+          <div class="tl-header-left">
+            <span class="day-badge nurture">Day 21</span>
+            <div>
+              <div class="tl-title">HubSpot Nurture — Authority Engine Trigger</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">20-week value sequence begins — no sales ask</div>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <span class="meta-tag nurture-tag">Nurture</span>
+            <span class="toggle-btn">+</span>
+          </div>
+        </div>
+        <div class="tl-body">
+          <p><strong>What happens at Day 21:</strong></p>
+          <p>Stephanie is added to the 20-week Authority Engine nurture sequence in HubSpot. The sequence delivers pure value — no pitches, no CTAs for a call — for 20 weeks. Sample content delivered in the nurture:</p>
+          <p>Week 1: "The Carer's Leave Act employer checklist — what to offer beyond the statutory minimum" (guide)</p>
+          <p>Week 4: "How TSB deployed KareHero across 5,000 employees and what HR teams at similar-size companies can learn from it" (case study — when published)</p>
+          <p>Week 8: "Hidden carers: why 2 in 5 employees with caring responsibilities never tell their employer" (data insight)</p>
+          <p>Week 12: "What the Employers for Carers benchmark looks like and how to get from compliance minimum to carer-friendly employer designation" (how-to guide)</p>
+          <p>When Stephanie or a KareHero commercial contact engages with nurture content (opens, clicks, downloads), the engagement is flagged as a warm signal and Jean is notified to reach out again.</p>
+        </div>
+        <div class="tl-note">Authority Engine Score: 6/7 — RECOMMENDED · 20-week sequence activated in HubSpot · No sales ask for 20 weeks · Hot-bucket alert when engagement threshold crossed</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SEQUENCE NOTES -->
+  <div style="background:var(--cream2);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:48px;">
+    <div class="section-label" style="margin-bottom:10px;">Sequence Rules</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div>
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:8px;">When the sequence stops</h4>
+        <ul style="list-style:none;padding:0;font-size:14px;color:var(--text-muted);">
+          <li style="padding:5px 0;border-bottom:1px solid var(--border);">✅ Positive reply to Email 1 or Email 2 → stop, hand to commercial team</li>
+          <li style="padding:5px 0;border-bottom:1px solid var(--border);">✅ LinkedIn DM reply with interest → stop, Jean responds directly</li>
+          <li style="padding:5px 0;border-bottom:1px solid var(--border);">✅ "Not now, try Q4" reply → stop active sequence, continue nurture only</li>
+          <li style="padding:5px 0;">✅ Unsubscribe or "not interested" → stop all sequences permanently</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:8px;">What Jean does on positive reply</h4>
+        <ul style="list-style:none;padding:0;font-size:14px;color:var(--text-muted);">
+          <li style="padding:5px 0;border-bottom:1px solid var(--border);">1. Send the lead list immediately (if Delivery CTA triggered the reply)</li>
+          <li style="padding:5px 0;border-bottom:1px solid var(--border);">2. Book a 15-minute call via cal.com/jean-m-8f4kbr/15min</li>
+          <li style="padding:5px 0;border-bottom:1px solid var(--border);">3. On the call: confirm ICP, review lead list together, discuss 90-day pilot scope</li>
+          <li style="padding:5px 0;">4. Follow up with proposal within 24 hours of the call</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>Strategy and GTM research by Jean Mundabi Fala, MDB Growth Capital · KareHero Outreach Sequence · May 2026</footer>
+
+<script>
+  function toggle(header) {
+    const body = header.nextElementSibling;
+    const btn = header.querySelector('.toggle-btn');
+    const isOpen = body.classList.contains('open');
+    // close all
+    document.querySelectorAll('.tl-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.toggle-btn').forEach(t => t.textContent = '+');
+    // open this one
+    if (!isOpen) {
+      body.classList.add('open');
+      btn.textContent = '−';
+    }
+  }
+</script>
+</body>
+</html>
